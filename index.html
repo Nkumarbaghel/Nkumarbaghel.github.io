@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CG Neel Baghel Official - Personal Website" />
+  <meta name="description" content="CG Neel Baghel — Official Personal Website" />
+  <meta name="theme-color" content="#090909" />
   <title>CG Neel Baghel | Official</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <header class="nav-wrap">
-  <nav class="nav container">
-    <a class="brand" href="#home"><img src="assets/logo.jpeg" alt="CG Neel Baghel logo"><span>CG Neel Baghel</span></a>
-    <button class="menu" aria-label="Menu">☰</button>
-    <div class="links">
+  <nav class="nav container" aria-label="मुख्य मेन्यू">
+    <a class="brand" href="#home" aria-label="CG Neel Baghel Home">
+      <img src="assets/logo.jpeg" alt="CG Neel Baghel logo">
+      <span>CG Neel Baghel</span>
+    </a>
+    <button class="menu" aria-label="Menu खोलें" aria-expanded="false" aria-controls="site-links">☰</button>
+    <div class="links" id="site-links">
       <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
     </div>
   </nav>
@@ -29,15 +33,22 @@
       <h1>नमस्कार! मैं <span>Neel Baghel</span></h1>
       <p class="lead">यह मेरी आधिकारिक व्यक्तिगत वेबसाइट है, जहाँ आप मेरे बारे में, मेरे काम और मेरी ऑनलाइन गतिविधियों के बारे में जानकारी पा सकते हैं।</p>
       <div class="buttons"><a class="btn primary" href="#about">मेरे बारे में</a><a class="btn ghost" href="#contact">संपर्क करें</a></div>
-      <div class="social-mini"><span>CG</span><span>CREATIVE</span><span>OFFICIAL</span></div>
+      <div class="social-mini" aria-label="पहचान"><span>CG</span><span>CREATIVE</span><span>OFFICIAL</span></div>
     </div>
-    <div class="hero-photo"><div class="ring"></div><img src="assets/profile.jpeg" alt="Neel Baghel profile photo"></div>
+    <div class="hero-photo">
+      <div class="ring" aria-hidden="true"></div>
+      <img src="assets/profile.jpeg" alt="Neel Baghel profile photo" loading="eager">
+    </div>
   </div>
 </section>
 
 <section id="about" class="section">
   <div class="container two-col">
-    <div><p class="eyebrow">ABOUT ME</p><h2>मेरे बारे में</h2><p>मैं Neel Baghel हूँ। यह वेबसाइट मेरी व्यक्तिगत ऑनलाइन पहचान और मेरे कार्यों को एक जगह प्रस्तुत करने के लिए बनाई गई है। यहाँ समय के साथ मेरी उपलब्धियाँ, प्रोजेक्ट, सोशल मीडिया और अन्य महत्वपूर्ण जानकारी जोड़ी जा सकती है।</p><p>मेरा उद्देश्य एक साफ-सुथरी, भरोसेमंद और आधुनिक डिजिटल पहचान बनाना है।</p></div>
+    <div>
+      <p class="eyebrow">ABOUT ME</p><h2>मेरे बारे में</h2>
+      <p>मैं Neel Baghel हूँ। यह वेबसाइट मेरी व्यक्तिगत ऑनलाइन पहचान और मेरे कार्यों को एक जगह प्रस्तुत करने के लिए बनाई गई है। यहाँ समय के साथ मेरी उपलब्धियाँ, प्रोजेक्ट, सोशल मीडिया और अन्य महत्वपूर्ण जानकारी जोड़ी जा सकती है।</p>
+      <p>मेरा उद्देश्य एक साफ-सुथरी, भरोसेमंद और आधुनिक डिजिटल पहचान बनाना है।</p>
+    </div>
     <div class="card highlight"><div class="big">CG.</div><h3>Chhattisgarh से जुड़ी पहचान</h3><p>स्थानीय संस्कृति, रचनात्मकता और डिजिटल कंटेंट को एक आधुनिक प्लेटफॉर्म पर प्रस्तुत करने की कोशिश।</p></div>
   </div>
 </section>
@@ -54,11 +65,24 @@
 
 <section id="contact" class="section">
   <div class="container contact-grid">
-    <div><p class="eyebrow">GET IN TOUCH</p><h2>संपर्क करें</h2><p>किसी काम, सहयोग या जानकारी के लिए मुझसे संपर्क करें। नीचे अपना वास्तविक मोबाइल नंबर, ईमेल और सोशल मीडिया लिंक बाद में जोड़ सकते हैं।</p><div class="contact-list"><div><b>📧 Email</b><span>your@email.com</span></div><div><b>📞 Phone</b><span>+91 XXXXX XXXXX</span></div><div><b>📍 Location</b><span>Chhattisgarh, India</span></div></div></div>
-    <form class="contact-form" onsubmit="return sendMessage(event)"><input id="name" required placeholder="आपका नाम"><input id="email" type="email" required placeholder="आपका Email"><textarea id="message" required rows="5" placeholder="आपका संदेश"></textarea><button class="btn primary" type="submit">संदेश भेजें</button><p id="form-status" class="status"></p></form>
+    <div><p class="eyebrow">GET IN TOUCH</p><h2>संपर्क करें</h2><p>किसी काम, सहयोग या जानकारी के लिए मुझसे संपर्क करें। वास्तविक मोबाइल नंबर और ईमेल उपलब्ध होने पर यहाँ जोड़े जा सकते हैं।</p>
+      <div class="contact-list">
+        <div><b>📧 Email</b><span>जल्द जोड़ा जाएगा</span></div>
+        <div><b>📞 Phone</b><span>जल्द जोड़ा जाएगा</span></div>
+        <div><b>📍 Location</b><span>Chhattisgarh, India</span></div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return sendMessage(event)">
+      <input id="name" required placeholder="आपका नाम" autocomplete="name">
+      <input id="email" type="email" required placeholder="आपका Email" autocomplete="email">
+      <textarea id="message" required rows="5" placeholder="आपका संदेश"></textarea>
+      <button class="btn primary" type="submit">संदेश भेजें</button>
+      <p id="form-status" class="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 </main>
 <footer><div class="container footer"><span>© <span id="year"></span> CG Neel Baghel. All Rights Reserved.</span><a href="#home">Back to top ↑</a></div></footer>
 <script src="script.js"></script>
-</body></html>
+</body>
+</html>

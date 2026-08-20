@@ -1,1 +1,20 @@
-const menu=document.querySelector('.menu'),links=document.querySelector('.links');menu.addEventListener('click',()=>links.classList.toggle('open'));document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));document.getElementById('year').textContent=new Date().getFullYear();function sendMessage(e){e.preventDefault();const name=document.getElementById('name').value;const msg=document.getElementById('message').value;const status=document.getElementById('form-status');const text=encodeURIComponent(`Name: ${name}\n\n${msg}`);status.textContent='आपका संदेश तैयार है। WhatsApp/Email को अपने वास्तविक संपर्क से जोड़ना बाकी है।';window.location.href=`mailto:your@email.com?subject=${encodeURIComponent('Website Contact - '+name)}&body=${text}`;return false}
+const menu = document.querySelector('.menu');
+const links = document.querySelector('.links');
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
+if (menu && links) {
+  menu.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+  }));
+}
+function sendMessage(event) {
+  event.preventDefault();
+  const status = document.getElementById('form-status');
+  if (status) status.textContent = 'धन्यवाद! संपर्क फॉर्म तैयार है। ईमेल/WhatsApp लिंक जोड़ने पर संदेश सीधे भेजा जा सकेगा।';
+  return false;
+}
