@@ -1,20 +1,32 @@
-const menu = document.querySelector('.menu');
-const links = document.querySelector('.links');
-const year = document.getElementById('year');
-if (year) year.textContent = new Date().getFullYear();
-if (menu && links) {
-  menu.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    menu.setAttribute('aria-expanded', String(open));
+const menuToggle = document.getElementById("menuToggle");
+const siteNav = document.getElementById("siteNav");
+const toTop = document.getElementById("toTop");
+
+menuToggle?.addEventListener("click", () => {
+  const open = siteNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+});
+
+document.querySelectorAll(".nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    siteNav.classList.remove("open");
+    menuToggle?.setAttribute("aria-expanded", "false");
   });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    menu.setAttribute('aria-expanded', 'false');
-  }));
-}
-function sendMessage(event) {
-  event.preventDefault();
-  const status = document.getElementById('form-status');
-  if (status) status.textContent = 'धन्यवाद! संपर्क फॉर्म तैयार है। ईमेल/WhatsApp लिंक जोड़ने पर संदेश सीधे भेजा जा सकेगा।';
-  return false;
-}
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+window.addEventListener("scroll", () => {
+  toTop?.classList.toggle("show", window.scrollY > 600);
+});
+
+toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
