@@ -1,11 +1,11 @@
 CG NEEL BAGHEL - FREE WEBSITE
 
 Files:
-- index.html
-- style.css
-- script.js
-- assets/logo.jpeg
-- assets/profile.jpeg
+index.html
+logo.jpeg
+profile.jpeg
+script.js
+style.css
 
 FREE HOSTING OPTION:
 GitHub Pages is recommended. Upload these files to a GitHub repository, then enable Settings > Pages > Deploy from branch (main/root).
