@@ -10,29 +10,113 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="blog-style.css">
 
+<style>
+
+/* ADMIN PANEL BUTTON */
+
+.admin-panel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 22px;
+    padding: 12px 22px;
+
+    background: #ff1e25;
+    color: #fff;
+
+    border: 1px solid #ff1e25;
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 30, 37, 0.18);
+}
+
+.admin-panel-btn:hover {
+    background: transparent;
+    color: #ff1e25;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 30, 37, 0.25);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .admin-panel-btn {
+        width: auto;
+        padding: 11px 18px;
+        font-size: 14px;
+        margin-top: 18px;
+    }
+
+}
+
+</style>
+
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <header>
 
 <div class="navbar">
 
 <a href="index.html" class="brand">
-<img src="logo.jpeg" alt="CG Neel Baghel Logo">
+
+<img
+src="logo.jpeg"
+alt="CG Neel Baghel Logo"
+>
+
 <span>CG Neel Baghel</span>
+
 </a>
 
-<button id="menu" class="menu-btn">☰</button>
+
+<button
+id="menu"
+class="menu-btn"
+>
+☰
+</button>
+
 
 <nav id="nav">
 
-<a href="index.html">Home</a>
-<a href="index.html#about">About</a>
-<a href="index.html#services">Services</a>
-<a href="blog.html" class="active">Blog</a>
-<a href="index.html#gallery">Gallery</a>
-<a href="index.html#contact">Contact</a>
+<a href="index.html">
+Home
+</a>
+
+<a href="index.html#about">
+About
+</a>
+
+<a href="index.html#services">
+Services
+</a>
+
+<a href="blog.html" class="active">
+Blog
+</a>
+
+<a href="index.html#gallery">
+Gallery
+</a>
+
+<a href="index.html#contact">
+Contact
+</a>
 
 </nav>
 
@@ -41,25 +125,48 @@
 </header>
 
 
+
+<!-- MAIN BLOG -->
+
 <main class="blog-page">
+
 
 <!-- BLOG HEADER -->
 
 <section class="blog-hero">
 
+
 <div class="eyebrow">
 CG NEEL BAGHEL
 </div>
 
+
 <h1>
+
 मेरे लेख <span>&amp; ब्लॉग</span>
+
 </h1>
 
+
 <p>
+
 मेरे विचार, अनुभव, जानकारी और छत्तीसगढ़ से जुड़े लेख।
+
 </p>
 
+
+<!-- ADMIN BUTTON -->
+
+<a
+href="admin.html"
+class="admin-panel-btn"
+>
+🔐 Admin Panel / नया लेख
+</a>
+
+
 </section>
+
 
 
 <!-- SEARCH -->
@@ -73,6 +180,7 @@ placeholder="लेख खोजें..."
 autocomplete="off"
 >
 
+
 <select id="cat">
 
 <option value="all">
@@ -84,42 +192,73 @@ autocomplete="off"
 </section>
 
 
+
 <!-- BLOG LIST -->
 
-<section id="posts" class="posts">
+<section
+id="posts"
+class="posts"
+>
 
 </section>
+
 
 
 <!-- SINGLE ARTICLE -->
 
-<section id="detail" class="detail">
+<section
+id="detail"
+class="detail"
+>
 
 </section>
+
 
 </main>
 
 
+
+<!-- FOOTER -->
+
 <footer>
 
 <p>
+
 © 2026 CG Neel Baghel. All Rights Reserved.
+
 </p>
+
 
 <p>
 
-<a href="index.html">Home</a>
-<a href="index.html#about">About</a>
-<a href="blog.html">Blog</a>
-<a href="index.html#contact">Contact</a>
+<a href="index.html">
+Home
+</a>
+
+<a href="index.html#about">
+About
+</a>
+
+<a href="blog.html">
+Blog
+</a>
+
+<a href="index.html#contact">
+Contact
+</a>
 
 </p>
 
 </footer>
 
 
+
+<!-- JAVASCRIPT -->
+
 <script src="posts.js"></script>
+
 <script src="script.js"></script>
+
 
 </body>
 
