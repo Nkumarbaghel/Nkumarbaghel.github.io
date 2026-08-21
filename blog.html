@@ -1,84 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Blog | CG Neel Baghel</title>
+<title>मेरे लेख & ब्लॉग | CG Neel Baghel</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="blog-style.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="blog-style.css">
+
 </head>
 
 <body>
 
-  <header class="header">
+<header>
 
-    <a class="brand" href="index.html">
-      <img src="logo.jpeg" alt="CG Neel Baghel">
-      <span>CG Neel Baghel</span>
-    </a>
+<div class="navbar">
 
-    <button id="menu">☰</button>
+<a href="index.html" class="brand">
+<img src="logo.jpeg" alt="CG Neel Baghel Logo">
+<span>CG Neel Baghel</span>
+</a>
 
-    <nav id="nav">
+<button id="menu" class="menu-btn">☰</button>
 
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#services">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#contact">Contact</a>
+<nav id="nav">
 
-    </nav>
+<a href="index.html">Home</a>
+<a href="index.html#about">About</a>
+<a href="index.html#services">Services</a>
+<a href="blog.html" class="active">Blog</a>
+<a href="index.html#gallery">Gallery</a>
+<a href="index.html#contact">Contact</a>
 
-  </header>
+</nav>
 
+</div>
 
-  <main class="blog">
-
-    <p class="eyebrow">CG NEEL BAGHEL</p>
-
-    <h1>मेरे लेख & ब्लॉग</h1>
-
-    <p class="lead">
-      मेरे विचार, अनुभव, जानकारी और छत्तीसगढ़ से जुड़े लेख।
-    </p>
+</header>
 
 
-    <div class="tools">
+<main class="blog-page">
 
-      <input
-        id="search"
-        type="search"
-        placeholder="लेख खोजें..."
-      >
+<!-- BLOG HEADER -->
 
-      <select id="cat">
-        <option value="all">सभी श्रेणियाँ</option>
-      </select>
+<section class="blog-hero">
 
-    </div>
+<div class="eyebrow">
+CG NEEL BAGHEL
+</div>
 
+<h1>
+मेरे लेख <span>&amp; ब्लॉग</span>
+</h1>
 
-    <!-- सभी ब्लॉग यहाँ दिखाई देंगे -->
-    <section id="posts"></section>
+<p>
+मेरे विचार, अनुभव, जानकारी और छत्तीसगढ़ से जुड़े लेख।
+</p>
 
-
-    <!-- पूरा लेख यहाँ दिखाई देगा -->
-    <article id="detail" class="card"></article>
-
-  </main>
+</section>
 
 
-  <footer>
-    © 2026 CG Neel Baghel. All Rights Reserved.
-  </footer>
+<!-- SEARCH -->
+
+<section class="blog-tools">
+
+<input
+type="search"
+id="search"
+placeholder="लेख खोजें..."
+autocomplete="off"
+>
+
+<select id="cat">
+
+<option value="all">
+सभी श्रेणियाँ
+</option>
+
+</select>
+
+</section>
 
 
-  <script src="posts.js"></script>
-  <script src="script.js"></script>
+<!-- BLOG LIST -->
+
+<section id="posts" class="posts">
+
+</section>
+
+
+<!-- SINGLE ARTICLE -->
+
+<section id="detail" class="detail">
+
+</section>
+
+</main>
+
+
+<footer>
+
+<p>
+© 2026 CG Neel Baghel. All Rights Reserved.
+</p>
+
+<p>
+
+<a href="index.html">Home</a>
+<a href="index.html#about">About</a>
+<a href="blog.html">Blog</a>
+<a href="index.html#contact">Contact</a>
+
+</p>
+
+</footer>
+
+
+<script src="posts.js"></script>
+<script src="script.js"></script>
 
 </body>
 
