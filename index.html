@@ -21,14 +21,19 @@ body{
     line-height:1.7;
 }
 
+/* =========================
+   HEADER
+   ========================= */
+
 header{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     z-index:1000;
-    background:rgba(5,5,5,.95);
+    background:rgba(5,5,5,.96);
     border-bottom:1px solid #292929;
+    backdrop-filter:blur(8px);
 }
 
 .navbar{
@@ -70,7 +75,7 @@ nav a{
 }
 
 nav a:hover{
-    color:#ff3333;
+    color:#e60000;
 }
 
 .menu-btn{
@@ -82,35 +87,58 @@ nav a:hover{
     cursor:pointer;
 }
 
+
+/* =========================
+   HOME
+   ========================= */
+
 .hero{
     min-height:100vh;
-    padding:130px 20px 70px;
+    padding:120px 20px 70px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
+
     background:
-    radial-gradient(circle at 70% 40%,rgba(130,0,0,.35),transparent 40%),
-    linear-gradient(135deg,#030303,#210306,#050505);
+    radial-gradient(
+        circle at 50% 35%,
+        rgba(120,0,0,.30),
+        transparent 38%
+    ),
+    linear-gradient(
+        135deg,
+        #030303,
+        #180204,
+        #050505
+    );
 }
 
 .hero-content{
     max-width:850px;
 }
 
+/* Home Profile Photo */
+
 .hero img{
-    width:150px;
-    height:150px;
+    width:115px;
+    height:115px;
     object-fit:cover;
+    object-position:center;
     border-radius:50%;
-    border:4px solid #e60000;
-    margin-bottom:25px;
-    box-shadow:0 0 35px rgba(255,0,0,.35);
+    border:3px solid #e60000;
+    margin-bottom:22px;
+    box-shadow:
+        0 0 25px rgba(255,0,0,.25);
 }
 
+/* Home Heading */
+
 .hero h1{
-    font-size:clamp(38px,7vw,75px);
-    margin-bottom:10px;
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.2;
+    margin-bottom:15px;
+    font-weight:800;
 }
 
 .hero h1 span{
@@ -119,13 +147,16 @@ nav a:hover{
 
 .hero p{
     color:#ccc;
-    font-size:20px;
-    margin-bottom:30px;
+    font-size:19px;
+    max-width:700px;
+    margin:0 auto 28px;
 }
+
+/* Buttons */
 
 .btn{
     display:inline-block;
-    padding:13px 28px;
+    padding:12px 25px;
     border-radius:30px;
     background:#e60000;
     color:#fff;
@@ -133,12 +164,20 @@ nav a:hover{
     font-weight:bold;
     margin:6px;
     transition:.3s;
+    border:1px solid #e60000;
 }
 
 .btn:hover{
     background:#ff3333;
+    border-color:#ff3333;
     transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(230,0,0,.25);
 }
+
+
+/* =========================
+   SECTIONS
+   ========================= */
 
 section{
     max-width:1100px;
@@ -158,7 +197,7 @@ section{
 
 
 /* =========================
-   ABOUT SECTION
+   ABOUT
    ========================= */
 
 .about{
@@ -168,7 +207,8 @@ section{
     align-items:center;
 }
 
-/* About Me Photo - छोटा और balanced */
+/* छोटा और balanced About Photo */
+
 .about > img{
     width:260px;
     height:360px;
@@ -246,6 +286,7 @@ section{
     border-radius:25px;
     color:#fff;
     text-decoration:none;
+    transition:.3s;
 }
 
 .social a:hover{
@@ -328,13 +369,34 @@ footer a{
         display:block;
     }
 
+    /* Home */
+
+    .hero{
+        padding:105px 18px 60px;
+    }
+
+    .hero img{
+        width:100px;
+        height:100px;
+        margin-bottom:18px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    /* About */
+
     .about{
         grid-template-columns:1fr;
         text-align:center;
         gap:30px;
     }
 
-    /* मोबाइल में और छोटा */
     .about > img{
         width:220px;
         height:310px;
@@ -349,15 +411,34 @@ footer a{
         font-size:27px;
     }
 
+    /* Services */
+
     .cards{
         grid-template-columns:1fr;
     }
 
-    .hero{
-        padding-top:110px;
-    }
 }
 
+
+/* =========================
+   SMALL PHONES
+   ========================= */
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .btn{
+        padding:11px 20px;
+    }
+
+}
 </style>
 </head>
 
@@ -430,7 +511,6 @@ Contact
 </header>
 
 
-
 <!-- =========================
      HOME
      ========================= -->
@@ -466,7 +546,6 @@ CG <span>Neel Baghel</span>
 </section>
 
 
-
 <!-- =========================
      ABOUT
      ========================= -->
@@ -477,12 +556,10 @@ CG <span>Neel Baghel</span>
 About <span>Me</span>
 </h2>
 
-
 <div class="about">
 
 <img src="profile.jpeg"
      alt="Neel Kumar Baghel">
-
 
 <div class="about-text">
 
@@ -514,7 +591,6 @@ About <span>Me</span>
 </section>
 
 
-
 <!-- =========================
      SERVICES
      ========================= -->
@@ -525,9 +601,7 @@ About <span>Me</span>
 My <span>Services</span>
 </h2>
 
-
 <div class="cards">
-
 
 <div class="card">
 
@@ -570,11 +644,9 @@ Chhattisgarhi Culture
 
 </div>
 
-
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -587,9 +659,7 @@ Chhattisgarhi Culture
 My <span>Gallery</span>
 </h2>
 
-
 <div class="cards">
-
 
 <div class="card">
 
@@ -613,7 +683,6 @@ Open Gallery
 </div>
 
 
-
 <div class="card">
 
 <h3>
@@ -635,11 +704,9 @@ YouTube
 
 </div>
 
-
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -651,7 +718,6 @@ YouTube
 <h2 class="section-title">
 My <span>Blogs</span>
 </h2>
-
 
 <div class="card">
 
@@ -676,7 +742,6 @@ My <span>Blogs</span>
 </section>
 
 
-
 <!-- =========================
      CONTACT
      ========================= -->
@@ -686,7 +751,6 @@ My <span>Blogs</span>
 <h2 class="section-title">
 Contact <span>Me</span>
 </h2>
-
 
 <div class="contact-box">
 
@@ -710,27 +774,19 @@ Contact <span>Me</span>
 <a
 href="https://www.facebook.com/share/1GFaE1AY8N/"
 target="_blank">
-
 Facebook
-
 </a>
-
 
 <a
 href="https://www.instagram.com/cg.neelbaghelofficial_/"
 target="_blank">
-
 Instagram
-
 </a>
-
 
 <a
 href="https://www.youtube.com/@cg.neelbaghelofficial"
 target="_blank">
-
 YouTube
-
 </a>
 
 </div>
@@ -738,7 +794,6 @@ YouTube
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -774,7 +829,6 @@ Contact
 </footer>
 
 
-
 <!-- =========================
      JAVASCRIPT
      ========================= -->
@@ -801,7 +855,6 @@ function closeMenu(){
 }
 
 </script>
-
 
 </body>
 </html>
