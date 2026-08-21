@@ -129,12 +129,7 @@ h1 span{color:var(--red)}
   background: #050505;
 }
 
-/* Mobile */
-@media (max-width: 700px) {
 
-  .post-image {
-    height: 190px;
-  }
 
   .article-image {
   max-height: 380px;
