@@ -1,144 +1,386 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const nav = document.querySelector("#nav");
-  const menu = document.querySelector("#menu");
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
-  menu?.addEventListener("click", () => {
-    nav?.classList.toggle("open");
-  });
+    const nav = document.querySelector("#nav");
+    const menu = document.querySelector("#menu");
 
-  const box = document.querySelector("#posts");
-  const detail = document.querySelector("#detail");
+    if (menu && nav) {
 
-  if (!box || typeof posts === "undefined") return;
+        menu.addEventListener("click", () => {
+            nav.classList.toggle("open");
+        });
 
-  const search = document.querySelector("#search");
-  const cat = document.querySelector("#cat");
+        // Menu link पर क्लिक करने के बाद menu बंद
+        nav.querySelectorAll("a").forEach(link => {
 
-  const date = s =>
-    new Date(s + "T00:00:00").toLocaleDateString("hi-IN", {
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    });
+            link.addEventListener("click", () => {
+                nav.classList.remove("open");
+            });
 
-  const esc = s =>
-    String(s).replace(/[&<>"]/g, c => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;"
-    }[c]));
+        });
 
-  // Categories
-  if (cat) {
-    cat.innerHTML = `<option value="all">सभी श्रेणियाँ</option>`;
+    }
 
-    posts.forEach(p => {
-      cat.insertAdjacentHTML(
-        "beforeend",
-        `<option value="${esc(p.category)}">${esc(p.category)}</option>`
-      );
-    });
-  }
 
-  // Blog Card — फोटो पूरी तरह हटाई गई है
-  function card(p) {
-    return `
-      <article class="card blog-card">
+    /* =====================================================
+       BLOG ELEMENTS
+    ===================================================== */
 
-        <div class="post-info">
+    const box = document.querySelector("#posts");
+    const detail = document.querySelector("#detail");
 
-          <small>
-            ${esc(p.category)} • ${date(p.date)}
-          </small>
+    // posts.js उपलब्ध नहीं है तो आगे कुछ न करें
+    if (!box || typeof posts === "undefined") {
+        return;
+    }
 
-          <h2>${esc(p.title)}</h2>
+    const search = document.querySelector("#search");
+    const cat = document.querySelector("#cat");
 
-          <p>${esc(p.excerpt)}</p>
 
-          <a href="blog.html?post=${encodeURIComponent(p.id)}">
-            पूरा लेख पढ़ें →
-          </a>
+    /* =====================================================
+       DATE FORMAT
+    ===================================================== */
 
-        </div>
+    const date = (s) => {
 
-      </article>
-    `;
-  }
+        return new Date(s + "T00:00:00").toLocaleDateString(
+            "hi-IN",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
 
-  // Blog List
-  function render() {
+    };
 
-    const q = search ? (search.value || "").toLowerCase().trim() : "";
-    const c = cat ? cat.value : "all";
 
-    const filtered = posts.filter(p =>
-      (c === "all" || p.category === c) &&
-      (
-        !q ||
-        (p.title + " " + p.excerpt + " " + p.content)
-          .toLowerCase()
-          .includes(q)
-      )
-    );
+    /* =====================================================
+       HTML ESCAPE
+    ===================================================== */
 
-    box.innerHTML =
-      filtered.map(card).join("") ||
-      "<div class='card'>कोई लेख नहीं मिला।</div>";
-  }
+    const esc = (s) => {
 
-  search?.addEventListener("input", render);
-  cat?.addEventListener("change", render);
+        return String(s ?? "").replace(/[&<>"]/g, c => ({
 
-  // Single Article
-  const id = new URLSearchParams(location.search).get("post");
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;"
 
-  if (id) {
+        }[c]));
 
-    const p = posts.find(x => x.id === id);
+    };
 
-    if (p) {
 
-      box.style.display = "none";
+    /* =====================================================
+       CATEGORIES
+    ===================================================== */
 
-      const tools = document.querySelector(".tools");
-      if (tools) tools.style.display = "none";
+    if (cat) {
 
-      // Article — फोटो पूरी तरह हटाई गई है
-      detail.innerHTML = `
-        <a href="blog.html">← सभी लेख</a>
+        const categories = [
+            ...new Set(
+                posts
+                    .map(p => p.category)
+                    .filter(Boolean)
+            )
+        ];
 
-        <small>
-          ${esc(p.category)} • ${date(p.date)}
-        </small>
+        cat.innerHTML = `
+            <option value="all">
+                सभी श्रेणियाँ
+            </option>
+        `;
 
-        <h1>${esc(p.title)}</h1>
+        categories.forEach(category => {
 
-        <div class="article">
-          ${p.content}
-        </div>
-      `;
+            cat.insertAdjacentHTML(
+                "beforeend",
+                `
+                <option value="${esc(category)}">
+                    ${esc(category)}
+                </option>
+                `
+            );
 
-      detail.style.display = "block";
+        });
+
+    }
+
+
+    /* =====================================================
+       BLOG CARD
+    ===================================================== */
+
+    function card(p) {
+
+        return `
+            <article class="card blog-card">
+
+                <div class="post-info">
+
+                    <small>
+                        ${esc(p.category || "सामान्य")}
+                        •
+                        ${date(p.date)}
+                    </small>
+
+                    <h2>
+                        ${esc(p.title)}
+                    </h2>
+
+                    <p>
+                        ${esc(p.excerpt || "")}
+                    </p>
+
+                    <a
+                        href="blog.html?post=${encodeURIComponent(p.id)}"
+                    >
+                        पूरा लेख पढ़ें →
+                    </a>
+
+                </div>
+
+            </article>
+        `;
+
+    }
+
+
+    /* =====================================================
+       BLOG LIST RENDER
+    ===================================================== */
+
+    function render() {
+
+        const q = search
+            ? (search.value || "").toLowerCase().trim()
+            : "";
+
+        const c = cat
+            ? cat.value
+            : "all";
+
+
+        const filtered = posts.filter(p => {
+
+            const categoryMatch =
+                c === "all" ||
+                p.category === c;
+
+
+            const text = (
+                (p.title || "") +
+                " " +
+                (p.excerpt || "") +
+                " " +
+                (p.content || "")
+            ).toLowerCase();
+
+
+            const searchMatch =
+                !q ||
+                text.includes(q);
+
+
+            return categoryMatch && searchMatch;
+
+        });
+
+
+        box.innerHTML = filtered.length
+
+            ? filtered.map(card).join("")
+
+            : `
+                <div class="card no-posts">
+                    <h2>कोई लेख नहीं मिला।</h2>
+
+                    <p>
+                        कृपया दूसरा शब्द या श्रेणी चुनकर फिर से खोजें।
+                    </p>
+                </div>
+            `;
+
+    }
+
+
+    /* =====================================================
+       SEARCH & CATEGORY
+    ===================================================== */
+
+    if (search) {
+        search.addEventListener("input", render);
+    }
+
+    if (cat) {
+        cat.addEventListener("change", render);
+    }
+
+
+    /* =====================================================
+       SINGLE ARTICLE
+    ===================================================== */
+
+    const id =
+        new URLSearchParams(location.search).get("post");
+
+
+    if (id) {
+
+        const p = posts.find(x => String(x.id) === String(id));
+
+
+        if (p) {
+
+            /* Blog list hide */
+            box.style.display = "none";
+
+
+            /* Search / category tools hide */
+            const tools =
+                document.querySelector(".blog-tools");
+
+            if (tools) {
+                tools.style.display = "none";
+            }
+
+
+            /* Blog Hero hide */
+            const hero =
+                document.querySelector(".blog-hero");
+
+            if (hero) {
+                hero.style.display = "none";
+            }
+
+
+            /* Article show */
+            detail.innerHTML = `
+
+                <article class="article-page">
+
+                    <a
+                        href="blog.html"
+                        class="back-link"
+                    >
+                        ← सभी लेख
+                    </a>
+
+
+                    <small class="article-meta">
+
+                        ${esc(p.category || "सामान्य")}
+                        •
+                        ${date(p.date)}
+
+                    </small>
+
+
+                    <h1>
+                        ${esc(p.title)}
+                    </h1>
+
+
+                    ${
+                        p.excerpt
+                        ? `
+                            <p class="article-excerpt">
+                                ${esc(p.excerpt)}
+                            </p>
+                          `
+                        : ""
+                    }
+
+
+                    <div class="article">
+
+                        ${p.content || ""}
+
+                    </div>
+
+                </article>
+
+            `;
+
+
+            detail.style.display = "block";
+
+
+        } else {
+
+            /* =================================================
+               ARTICLE NOT FOUND
+            ================================================= */
+
+            box.style.display = "none";
+
+            const tools =
+                document.querySelector(".blog-tools");
+
+            if (tools) {
+                tools.style.display = "none";
+            }
+
+
+            detail.innerHTML = `
+
+                <div class="card">
+
+                    <h2>
+                        लेख नहीं मिला
+                    </h2>
+
+                    <p>
+                        जिस लेख को आप खोलना चाहते हैं,
+                        वह उपलब्ध नहीं है।
+                    </p>
+
+                    <a href="blog.html">
+                        ← सभी लेखों पर वापस जाएँ
+                    </a>
+
+                </div>
+
+            `;
+
+
+            detail.style.display = "block";
+
+        }
+
 
     } else {
 
-      detail.innerHTML = `
-        <div class="card">
-          <h2>लेख नहीं मिला</h2>
-          <a href="blog.html">← सभी लेखों पर वापस जाएँ</a>
-        </div>
-      `;
+        /* =================================================
+           NORMAL BLOG PAGE
+        ================================================= */
 
-      detail.style.display = "block";
+        detail.style.display = "none";
+
+        box.style.display = "";
+
+        const hero =
+            document.querySelector(".blog-hero");
+
+        if (hero) {
+            hero.style.display = "";
+        }
+
+        const tools =
+            document.querySelector(".blog-tools");
+
+        if (tools) {
+            tools.style.display = "";
+        }
+
+        render();
+
     }
-
-  } else {
-
-    detail.style.display = "none";
-    render();
-
-  }
 
 });
