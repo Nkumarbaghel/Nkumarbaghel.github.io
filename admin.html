@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CG Neel Baghel — Admin Blog</title>
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">CG NEEL BAGHEL</div>
+      <h1>✍️ Blog Admin</h1>
+    </div>
+    <a href="blog.html" class="back">← Blog देखें</a>
+  </header>
+
+  <main class="wrap">
+    <section class="notice">
+      <strong>यह Editor GitHub Pages के लिए है।</strong>
+      लेख यहाँ बनाकर <b>posts.js डाउनलोड</b> करें, फिर GitHub में पुरानी
+      <code>posts.js</code> को नई file से replace करके Commit करें।
+      <br><small>नोट: GitHub Pages पर यह वास्तविक secure login नहीं है; यह publishing convenience editor है।</small>
+    </section>
+
+    <section class="grid">
+      <aside class="panel">
+        <div class="panel-head">
+          <h2>आपके लेख</h2>
+          <button id="newBtn" class="primary">＋ नया लेख</button>
+        </div>
+        <input id="listSearch" class="input" placeholder="लेख खोजें...">
+        <div id="postList" class="post-list"></div>
+      </aside>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2 id="formTitle">नया लेख</h2>
+          <div class="actions">
+            <button id="previewBtn" class="ghost">👁 Preview</button>
+            <button id="downloadBtn" class="primary">⬇ posts.js डाउनलोड</button>
+          </div>
+        </div>
+
+        <form id="postForm">
+          <input type="hidden" id="postId">
+          <label>शीर्षक
+            <input id="title" class="input" required placeholder="जैसे: छत्तीसगढ़ी संस्कृति और हमारी पहचान">
+          </label>
+
+          <div class="two">
+            <label>Category
+              <input id="category" class="input" required placeholder="जैसे: छत्तीसगढ़ी संस्कृति">
+            </label>
+            <label>तारीख
+              <input id="date" type="date" class="input" required>
+            </label>
+          </div>
+
+          <label>Cover image (optional)
+            <input id="image" class="input" placeholder="जैसे: profile.jpeg या images/blog1.jpg">
+          </label>
+
+          <label>छोटा परिचय / Excerpt
+            <textarea id="excerpt" class="input" rows="3" placeholder="लेख का छोटा परिचय..."></textarea>
+          </label>
+
+          <label>पूरा लेख
+            <textarea id="content" class="input editor" rows="14" required
+              placeholder="यहाँ लेख लिखें। सामान्य paragraph के लिए सिर्फ text लिखें; नया paragraph अलग लाइन से शुरू करें।"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="primary">💾 लेख सूची में सेव करें</button>
+            <button type="button" id="clearBtn" class="ghost">साफ करें</button>
+          </div>
+        </form>
+
+        <div id="preview" class="preview hidden"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="posts.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

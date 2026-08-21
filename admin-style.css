@@ -1,0 +1,29 @@
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#eee;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+.topbar{padding:22px 5%;border-bottom:1px solid #252525;display:flex;justify-content:space-between;align-items:center;background:#0d0d0d}
+.eyebrow{letter-spacing:5px;color:#ff1f2d;font-size:12px;font-weight:800}
+h1,h2{margin:4px 0}
+h1{font-size:28px}.back{color:#fff;text-decoration:none;border:1px solid #444;padding:10px 15px;border-radius:10px}
+.wrap{max-width:1250px;margin:30px auto;padding:0 18px}
+.notice{background:#16090b;border:1px solid #4d171d;border-radius:14px;padding:16px 18px;line-height:1.7;margin-bottom:20px}
+.notice code{color:#ff4b55}.notice small{color:#aaa}
+.grid{display:grid;grid-template-columns:360px 1fr;gap:20px}
+.panel{background:#111;border:1px solid #2d2d2d;border-radius:16px;padding:18px;box-shadow:0 12px 30px #0008}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}
+.input{width:100%;margin-top:7px;background:#0a0a0a;color:#eee;border:1px solid #383838;border-radius:10px;padding:12px 13px;font-size:15px;outline:none}
+.input:focus{border-color:#f22}
+label{display:block;font-weight:700;margin:15px 0;color:#ddd}
+textarea{resize:vertical;line-height:1.65}.editor{min-height:300px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+button{border:0;border-radius:10px;padding:11px 14px;font-weight:700;cursor:pointer}
+.primary{background:#ff1f2d;color:#fff}.ghost{background:#181818;color:#fff;border:1px solid #444}
+.actions,.form-actions{display:flex;gap:8px;flex-wrap:wrap}
+.post-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.post-item{background:#191919;border:1px solid #303030;border-radius:11px;padding:12px;cursor:pointer}
+.post-item:hover,.post-item.active{border-color:#f22}
+.post-item strong{display:block}.post-item span{display:block;color:#999;font-size:12px;margin-top:5px}
+.empty{color:#888;padding:20px;text-align:center}
+.preview{margin-top:25px;padding:22px;border-top:1px solid #333;line-height:1.8}
+.preview h2{font-size:30px}.preview .meta{color:#999}.preview p{margin:15px 0}
+.hidden{display:none}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.topbar{align-items:flex-start;gap:15px}.actions button{font-size:12px}}
