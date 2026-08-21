@@ -144,3 +144,28 @@ h1 span{color:var(--red)}
     height: 380px;
   }
 }
+/* Article / Blog Detail Image - Final Size */
+#detail img,
+article img,
+.article-image {
+    width: 360px !important;
+    max-width: 360px !important;
+    height: auto !important;
+    max-height: 280px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 20px auto !important;
+    border-radius: 12px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    #detail img,
+    article img,
+    .article-image {
+        width: 90% !important;
+        max-width: 360px !important;
+        height: auto !important;
+        max-height: 260px !important;
+    }
+}
