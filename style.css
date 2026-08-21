@@ -169,3 +169,347 @@ article img,
         max-height: 260px !important;
     }
 }
+/* =========================================================
+   BLOG PAGE NAVBAR COMPATIBILITY FIX
+   CG NEEL BAGHEL
+========================================================= */
+
+/* Blog Header */
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: rgba(7, 7, 7, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+
+/* Blog Navbar */
+.navbar {
+    width: min(1120px, 92%);
+    height: 72px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Blog Brand */
+.navbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.navbar .brand img {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 2px solid var(--red);
+
+    display: block;
+}
+
+.navbar .brand span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+/* Blog Navigation */
+#nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#nav a {
+    position: relative;
+
+    padding: 8px 0;
+
+    color: #ddd;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+#nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--red);
+
+    transition: 0.3s ease;
+}
+
+#nav a:hover {
+    color: #fff;
+}
+
+#nav a:hover::after {
+    width: 100%;
+}
+
+#nav a.active {
+    color: var(--red);
+}
+
+#nav a.active::after {
+    width: 100%;
+}
+
+/* Blog Menu Button */
+#menu {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: 0;
+
+    color: #fff;
+
+    font-size: 30px;
+
+    line-height: 42px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ADMIN PANEL BUTTON
+========================================================= */
+
+.admin-panel-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 22px;
+
+    padding: 12px 22px;
+
+    background: var(--red);
+
+    color: #fff !important;
+
+    border: 1px solid var(--red);
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 8px 25px rgba(255, 32, 40, 0.18);
+}
+
+.admin-panel-btn:hover {
+    background: transparent;
+
+    color: var(--red) !important;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(255, 32, 40, 0.25);
+}
+
+
+/* =========================================================
+   BLOG FOOTER
+========================================================= */
+
+.blog-page + footer {
+    border-top: 1px solid var(--line);
+
+    padding: 35px 20px;
+
+    background: #050505;
+
+    text-align: center;
+
+    color: #aaa;
+}
+
+.blog-page + footer p {
+    margin: 7px 0;
+}
+
+.blog-page + footer a {
+    display: inline-block;
+
+    margin: 0 8px;
+
+    color: #ddd;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.blog-page + footer a:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        width: 92%;
+        height: 68px;
+    }
+
+    .navbar .brand img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .navbar .brand span {
+        font-size: 15px;
+    }
+
+    /* Hamburger */
+    #menu {
+        display: block;
+    }
+
+    /* Mobile Menu */
+    #nav {
+        position: absolute;
+
+        top: 68px;
+
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 5%;
+
+        background: rgba(8, 8, 8, 0.98);
+
+        border-top: 1px solid var(--line);
+
+        border-bottom: 1px solid var(--line);
+
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    /* JavaScript opens this */
+    #nav.open,
+    #nav.show {
+        display: flex;
+    }
+
+    #nav a {
+        width: 100%;
+
+        padding: 14px 0;
+
+        border-bottom: 1px solid var(--line);
+
+        text-align: center;
+
+        font-size: 16px;
+    }
+
+    #nav a:last-child {
+        border-bottom: none;
+    }
+
+    #nav a::after {
+        display: none;
+    }
+
+    .admin-panel-btn {
+        padding: 11px 18px;
+
+        font-size: 14px;
+
+        margin-top: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        height: 64px;
+    }
+
+    .navbar .brand img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar .brand span {
+        font-size: 14px;
+    }
+
+    #menu {
+        font-size: 28px;
+    }
+
+    #nav {
+        top: 64px;
+    }
+
+    .admin-panel-btn {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+}
