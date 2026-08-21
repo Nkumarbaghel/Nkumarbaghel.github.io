@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector("#menu");
 
   menu?.addEventListener("click", () => {
-    nav.classList.toggle("open");
+    nav?.classList.toggle("open");
   });
 
   const box = document.querySelector("#posts");
   const detail = document.querySelector("#detail");
 
-  if (!box) return;
+  if (!box || typeof posts === "undefined") return;
 
   const search = document.querySelector("#search");
   const cat = document.querySelector("#cat");
@@ -31,26 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }[c]));
 
   // Categories
-  posts.forEach(p => {
-    cat.insertAdjacentHTML(
-      "beforeend",
-      `<option value="${esc(p.category)}">${esc(p.category)}</option>`
-    );
-  });
+  if (cat) {
+    cat.innerHTML = `<option value="all">सभी श्रेणियाँ</option>`;
 
-  // Blog card
+    posts.forEach(p => {
+      cat.insertAdjacentHTML(
+        "beforeend",
+        `<option value="${esc(p.category)}">${esc(p.category)}</option>`
+      );
+    });
+  }
+
+  // Blog Card — फोटो पूरी तरह हटाई गई है
   function card(p) {
-
-    const image = p.image
-      ? `<img src="${esc(p.image)}"
-              alt="${esc(p.title)}"
-              class="post-image">`
-      : "";
-
     return `
       <article class="card blog-card">
-
-        ${image}
 
         <div class="post-info">
 
@@ -72,31 +67,31 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // Blog list
+  // Blog List
   function render() {
 
-    const q = (search.value || "").toLowerCase();
-    const c = cat.value;
+    const q = search ? (search.value || "").toLowerCase().trim() : "";
+    const c = cat ? cat.value : "all";
+
+    const filtered = posts.filter(p =>
+      (c === "all" || p.category === c) &&
+      (
+        !q ||
+        (p.title + " " + p.excerpt + " " + p.content)
+          .toLowerCase()
+          .includes(q)
+      )
+    );
 
     box.innerHTML =
-      posts
-        .filter(
-          p =>
-            (c === "all" || p.category === c) &&
-            (!q ||
-              (p.title + p.excerpt)
-                .toLowerCase()
-                .includes(q))
-        )
-        .map(card)
-        .join("") ||
+      filtered.map(card).join("") ||
       "<div class='card'>कोई लेख नहीं मिला।</div>";
   }
 
-  search.addEventListener("input", render);
-  cat.addEventListener("change", render);
+  search?.addEventListener("input", render);
+  cat?.addEventListener("change", render);
 
-  // Open single article
+  // Single Article
   const id = new URLSearchParams(location.search).get("post");
 
   if (id) {
@@ -106,18 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (p) {
 
       box.style.display = "none";
-      document.querySelector(".tools").style.display = "none";
 
-      const image = p.image
-        ? `
-          <img
-            src="${esc(p.image)}"
-            alt="${esc(p.title)}"
-            class="article-image"
-          >
-        `
-        : "";
+      const tools = document.querySelector(".tools");
+      if (tools) tools.style.display = "none";
 
+      // Article — फोटो पूरी तरह हटाई गई है
       detail.innerHTML = `
         <a href="blog.html">← सभी लेख</a>
 
@@ -127,17 +115,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <h1>${esc(p.title)}</h1>
 
-        ${image}
-
         <div class="article">
           ${p.content}
         </div>
       `;
 
+      detail.style.display = "block";
+
     } else {
 
-      detail.style.display = "none";
+      detail.innerHTML = `
+        <div class="card">
+          <h2>लेख नहीं मिला</h2>
+          <a href="blog.html">← सभी लेखों पर वापस जाएँ</a>
+        </div>
+      `;
 
+      detail.style.display = "block";
     }
 
   } else {
