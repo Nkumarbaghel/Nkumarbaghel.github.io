@@ -1,20 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
-  // Mobile Menu
-  // =========================
-  const menu = document.querySelector("#menu");
   const nav = document.querySelector("#nav");
+  const menu = document.querySelector("#menu");
 
-  if (menu && nav) {
-    menu.addEventListener("click", () => {
-      nav.classList.toggle("open");
-    });
-  }
+  menu?.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
 
-  // =========================
-  // BLOG
-  // =========================
   const box = document.querySelector("#posts");
   const detail = document.querySelector("#detail");
 
@@ -23,186 +15,136 @@ document.addEventListener("DOMContentLoaded", () => {
   const search = document.querySelector("#search");
   const cat = document.querySelector("#cat");
 
-  // Posts from posts.js
-  const blogPosts = window.posts || [];
-
-  // =========================
-  // Escape HTML
-  // =========================
-  function esc(value) {
-    return String(value).replace(/[&<>"]/g, function (char) {
-      const map = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;"
-      };
-
-      return map[char];
+  const date = s =>
+    new Date(s + "T00:00:00").toLocaleDateString("hi-IN", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
     });
-  }
 
-  // =========================
-  // Date Format
-  // =========================
-  function formatDate(dateString) {
-    return new Date(dateString + "T00:00:00").toLocaleDateString(
-      "hi-IN",
-      {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      }
+  const esc = s =>
+    String(s).replace(/[&<>"]/g, c => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;"
+    }[c]));
+
+  // Categories
+  posts.forEach(p => {
+    cat.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${esc(p.category)}">${esc(p.category)}</option>`
     );
-  }
+  });
 
-  // =========================
-  // Category Options
-  // =========================
-  if (cat) {
-    const categories = [...new Set(
-      blogPosts.map(post => post.category)
-    )];
+  // Blog card
+  function card(p) {
 
-    categories.forEach(category => {
-      cat.insertAdjacentHTML(
-        "beforeend",
-        `<option value="${esc(category)}">${esc(category)}</option>`
-      );
-    });
-  }
+    const image = p.image
+      ? `<img src="${esc(p.image)}"
+              alt="${esc(p.title)}"
+              class="post-image">`
+      : "";
 
-  // =========================
-  // Blog Card
-  // =========================
-  function card(post) {
     return `
-      <article class="card">
-        <small>
-          ${esc(post.category)} • ${formatDate(post.date)}
-        </small>
+      <article class="card blog-card">
 
-        <h2>${esc(post.title)}</h2>
+        ${image}
 
-        <p>${esc(post.excerpt)}</p>
+        <div class="post-info">
 
-        <a href="blog.html?post=${encodeURIComponent(post.id)}">
-          पूरा लेख पढ़ें →
-        </a>
+          <small>
+            ${esc(p.category)} • ${date(p.date)}
+          </small>
+
+          <h2>${esc(p.title)}</h2>
+
+          <p>${esc(p.excerpt)}</p>
+
+          <a href="blog.html?post=${encodeURIComponent(p.id)}">
+            पूरा लेख पढ़ें →
+          </a>
+
+        </div>
+
       </article>
     `;
   }
 
-  // =========================
-  // Render Posts
-  // =========================
+  // Blog list
   function render() {
 
-    const query = search
-      ? (search.value || "").toLowerCase().trim()
-      : "";
+    const q = (search.value || "").toLowerCase();
+    const c = cat.value;
 
-    const category = cat
-      ? cat.value
-      : "all";
-
-    const filtered = blogPosts.filter(post => {
-
-      const matchesCategory =
-        category === "all" ||
-        post.category === category;
-
-      const text =
-        `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
-
-      const matchesSearch =
-        !query || text.includes(query);
-
-      return matchesCategory && matchesSearch;
-    });
-
-    if (filtered.length === 0) {
-      box.innerHTML = `
-        <div class="card">
-          <h3>कोई लेख नहीं मिला।</h3>
-          <p>कृपया दूसरा शब्द या श्रेणी चुनकर देखें।</p>
-        </div>
-      `;
-      return;
-    }
-
-    box.innerHTML = filtered.map(card).join("");
+    box.innerHTML =
+      posts
+        .filter(
+          p =>
+            (c === "all" || p.category === c) &&
+            (!q ||
+              (p.title + p.excerpt)
+                .toLowerCase()
+                .includes(q))
+        )
+        .map(card)
+        .join("") ||
+      "<div class='card'>कोई लेख नहीं मिला।</div>";
   }
 
-  // =========================
-  // Search
-  // =========================
-  if (search) {
-    search.addEventListener("input", render);
-  }
+  search.addEventListener("input", render);
+  cat.addEventListener("change", render);
 
-  // =========================
-  // Category Filter
-  // =========================
-  if (cat) {
-    cat.addEventListener("change", render);
-  }
+  // Open single article
+  const id = new URLSearchParams(location.search).get("post");
 
-  // =========================
-  // Open Single Blog Post
-  // =========================
-  const params = new URLSearchParams(window.location.search);
-  const postId = params.get("post");
+  if (id) {
 
-  if (postId) {
+    const p = posts.find(x => x.id === id);
 
-    const post = blogPosts.find(
-      item => item.id === postId
-    );
-
-    if (post) {
+    if (p) {
 
       box.style.display = "none";
+      document.querySelector(".tools").style.display = "none";
 
-      const tools = document.querySelector(".tools");
-      if (tools) {
-        tools.style.display = "none";
-      }
+      const image = p.image
+        ? `
+          <img
+            src="${esc(p.image)}"
+            alt="${esc(p.title)}"
+            class="article-image"
+          >
+        `
+        : "";
 
-      if (detail) {
-        detail.style.display = "block";
+      detail.innerHTML = `
+        <a href="blog.html">← सभी लेख</a>
 
-        detail.innerHTML = `
-          <a href="blog.html">← सभी लेख</a>
+        <small>
+          ${esc(p.category)} • ${date(p.date)}
+        </small>
 
-          <small>
-            ${esc(post.category)} • ${formatDate(post.date)}
-          </small>
+        <h1>${esc(p.title)}</h1>
 
-          <h1>${esc(post.title)}</h1>
+        ${image}
 
-          <div class="article">
-            ${post.content}
-          </div>
-        `;
-      }
+        <div class="article">
+          ${p.content}
+        </div>
+      `;
 
     } else {
 
-      if (detail) {
-        detail.style.display = "none";
-      }
+      detail.style.display = "none";
 
-      render();
     }
 
   } else {
 
-    if (detail) {
-      detail.style.display = "none";
-    }
-
+    detail.style.display = "none";
     render();
+
   }
 
 });
