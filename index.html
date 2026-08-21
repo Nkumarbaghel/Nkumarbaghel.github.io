@@ -7,6 +7,7 @@
 <title>CG Neel Baghel | Official Website</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -94,17 +95,19 @@ nav a:hover{
 
 .hero{
     min-height:100vh;
-    padding:120px 20px 70px;
+    padding:95px 20px 55px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
 
     background:
     radial-gradient(
-        circle at 50% 35%,
-        rgba(100,0,0,.16),
-        transparent 45%
+        circle at 50% 42%,
+        rgba(100,0,0,.14),
+        transparent 42%
     ),
     linear-gradient(
         135deg,
@@ -114,26 +117,40 @@ nav a:hover{
     );
 }
 
+.hero-content{
+    max-width:850px;
+    transform:translateY(-10px);
+}
+
+
 /* Home Profile Photo */
 
 .hero img{
-    width:115px;
-    height:115px;
+    width:105px;
+    height:105px;
+
     object-fit:cover;
     object-position:center;
+
     border-radius:50%;
+
     border:3px solid #e60000;
-    margin-bottom:22px;
-   box-shadow:
-    0 0 18px rgba(255,0,0,.18);
+
+    margin-bottom:17px;
+
+    box-shadow:
+    0 0 20px rgba(255,0,0,.16);
 }
+
 
 /* Home Heading */
 
 .hero h1{
     font-size:clamp(38px,6vw,68px);
-    line-height:1.2;
-    margin-bottom:15px;
+    line-height:1.15;
+
+    margin-bottom:10px;
+
     font-weight:800;
 }
 
@@ -141,33 +158,55 @@ nav a:hover{
     color:#e60000;
 }
 
+
+/* Home Description */
+
 .hero p{
     color:#ccc;
-    font-size:19px;
+
+    font-size:18px;
+
     max-width:700px;
-    margin:0 auto 28px;
+
+    margin:0 auto 22px;
 }
 
-/* Buttons */
+
+/* =========================
+   BUTTONS
+   ========================= */
 
 .btn{
     display:inline-block;
-    padding:12px 25px;
+
+    padding:11px 24px;
+
     border-radius:30px;
+
     background:#e60000;
+
     color:#fff;
+
     text-decoration:none;
+
     font-weight:bold;
-    margin:6px;
+
+    margin:5px;
+
     transition:.3s;
+
     border:1px solid #e60000;
 }
 
 .btn:hover{
     background:#ff3333;
+
     border-color:#ff3333;
+
     transform:translateY(-3px);
-    box-shadow:0 8px 25px rgba(230,0,0,.25);
+
+    box-shadow:
+    0 8px 20px rgba(230,0,0,.20);
 }
 
 
@@ -177,13 +216,17 @@ nav a:hover{
 
 section{
     max-width:1100px;
+
     margin:auto;
+
     padding:90px 20px;
 }
 
 .section-title{
     text-align:center;
+
     font-size:38px;
+
     margin-bottom:45px;
 }
 
@@ -198,23 +241,35 @@ section{
 
 .about{
     display:grid;
+
     grid-template-columns:300px 1fr;
+
     gap:50px;
+
     align-items:center;
 }
 
-/* छोटा और balanced About Photo */
+
+/* About Photo */
 
 .about > img{
     width:260px;
     height:360px;
+
     object-fit:cover;
+
     object-position:center;
+
     display:block;
+
     margin:auto;
+
     border-radius:18px;
+
     border:2px solid #333;
-    box-shadow:0 10px 35px rgba(0,0,0,.45);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.45);
 }
 
 .about-text{
@@ -223,11 +278,13 @@ section{
 
 .about-text h3{
     font-size:30px;
+
     margin-bottom:15px;
 }
 
 .about-text p{
     color:#ccc;
+
     margin-bottom:12px;
 }
 
@@ -238,26 +295,36 @@ section{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:25px;
 }
 
 .card{
     background:#111;
+
     border:1px solid #292929;
+
     border-radius:18px;
+
     padding:30px;
+
     text-align:center;
+
     transition:.3s;
 }
 
 .card:hover{
     transform:translateY(-8px);
+
     border-color:#e60000;
 }
 
 .card h3{
     color:#ff3333;
+
     margin-bottom:12px;
 }
 
@@ -276,17 +343,25 @@ section{
 
 .social a{
     display:inline-block;
+
     margin:8px;
+
     padding:12px 22px;
+
     border:1px solid #444;
+
     border-radius:25px;
+
     color:#fff;
+
     text-decoration:none;
+
     transition:.3s;
 }
 
 .social a:hover{
     border-color:#e60000;
+
     background:#e60000;
 }
 
@@ -297,16 +372,23 @@ section{
 
 .contact-box{
     max-width:700px;
+
     margin:auto;
+
     background:#111;
+
     border:1px solid #292929;
+
     border-radius:20px;
+
     padding:35px;
+
     text-align:center;
 }
 
 .contact-box p{
     color:#ccc;
+
     margin:10px;
 }
 
@@ -317,15 +399,21 @@ section{
 
 footer{
     background:#090909;
+
     border-top:1px solid #292929;
+
     text-align:center;
+
     padding:30px 20px;
+
     color:#888;
 }
 
 footer a{
     color:#ddd;
+
     text-decoration:none;
+
     margin:0 8px;
 }
 
@@ -342,13 +430,21 @@ footer a{
 
     nav{
         position:absolute;
+
         top:65px;
+
         left:0;
+
         width:100%;
+
         background:#090909;
+
         display:none;
+
         flex-direction:column;
+
         gap:0;
+
         border-bottom:1px solid #333;
     }
 
@@ -358,6 +454,7 @@ footer a{
 
     nav a{
         padding:15px 25px;
+
         border-bottom:1px solid #222;
     }
 
@@ -365,37 +462,58 @@ footer a{
         display:block;
     }
 
-    /* Home */
+
+    /* HOME MOBILE */
 
     .hero{
-        padding:105px 18px 60px;
+        min-height:100vh;
+
+        padding:
+        90px 18px 50px;
+    }
+
+    .hero-content{
+        transform:translateY(-5px);
     }
 
     .hero img{
-        width:100px;
-        height:100px;
-        margin-bottom:18px;
+        width:90px;
+
+        height:90px;
+
+        margin-bottom:15px;
     }
 
     .hero h1{
-        font-size:42px;
+        font-size:40px;
+
+        line-height:1.15;
+
+        margin-bottom:10px;
     }
 
     .hero p{
-        font-size:17px;
+        font-size:16px;
+
+        margin-bottom:20px;
     }
 
-    /* About */
+
+    /* ABOUT MOBILE */
 
     .about{
         grid-template-columns:1fr;
+
         text-align:center;
+
         gap:30px;
     }
 
     .about > img{
         width:220px;
+
         height:310px;
+
         margin:auto;
     }
 
@@ -407,7 +525,8 @@ footer a{
         font-size:27px;
     }
 
-    /* Services */
+
+    /* SERVICES MOBILE */
 
     .cards{
         grid-template-columns:1fr;
@@ -422,21 +541,35 @@ footer a{
 
 @media(max-width:400px){
 
+    .hero{
+        padding:
+        85px 15px 45px;
+    }
+
+    .hero img{
+        width:82px;
+
+        height:82px;
+    }
+
     .hero h1{
-        font-size:35px;
+        font-size:34px;
     }
 
     .hero p{
-        font-size:16px;
+        font-size:15px;
     }
 
     .btn{
-        padding:11px 20px;
+        padding:
+        10px 19px;
     }
 
 }
+
 </style>
 </head>
+
 
 <body>
 
@@ -449,54 +582,70 @@ footer a{
 
 <div class="navbar">
 
-<a href="#home"
-   class="brand"
-   style="text-decoration:none;color:white;">
+<a
+href="#home"
+class="brand"
+style="text-decoration:none;color:white;"
+>
 
-<img src="logo.jpeg"
-     alt="CG Neel Baghel Logo">
+<img
+src="logo.jpeg"
+alt="CG Neel Baghel Logo"
+>
 
 <span>CG Neel Baghel</span>
 
 </a>
 
 
-<button class="menu-btn"
-        onclick="toggleMenu()">
-
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+>
 ☰
-
 </button>
 
 
 <nav id="nav">
 
-<a href="#home"
-   onclick="closeMenu()">
+<a
+href="#home"
+onclick="closeMenu()"
+>
 Home
 </a>
 
-<a href="#about"
-   onclick="closeMenu()">
+<a
+href="#about"
+onclick="closeMenu()"
+>
 About
 </a>
 
-<a href="#services"
-   onclick="closeMenu()">
+<a
+href="#services"
+onclick="closeMenu()"
+>
 Services
 </a>
 
-<a href="#gallery"
-   onclick="closeMenu()">
+<a
+href="#gallery"
+onclick="closeMenu()"
+>
 Gallery
 </a>
 
-<a href="blog.html">
+<a
+href="blog.html"
+>
 Blog
 </a>
 
-<a href="#contact"
-   onclick="closeMenu()">
+<a
+href="#contact"
+onclick="closeMenu()"
+>
 Contact
 </a>
 
@@ -507,39 +656,55 @@ Contact
 </header>
 
 
+
 <!-- =========================
      HOME
      ========================= -->
 
-<section class="hero"
-         id="home">
+<section
+class="hero"
+id="home"
+>
 
 <div class="hero-content">
 
-<img src="profile.jpeg"
-     alt="Neel Kumar Baghel">
+
+<img
+src="profile.jpeg"
+alt="Neel Kumar Baghel"
+>
+
 
 <h1>
 CG <span>Neel Baghel</span>
 </h1>
 
+
 <p>
 छत्तीसगढ़ी संस्कृति, रचनात्मक कार्य और मेरी डिजिटल दुनिया में आपका स्वागत है।
 </p>
 
-<a href="#about"
-   class="btn">
+
+<a
+href="#about"
+class="btn"
+>
 मेरे बारे में
 </a>
 
-<a href="blog.html"
-   class="btn">
+
+<a
+href="blog.html"
+class="btn"
+>
 मेरे Blogs पढ़ें
 </a>
+
 
 </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -552,16 +717,23 @@ CG <span>Neel Baghel</span>
 About <span>Me</span>
 </h2>
 
+
 <div class="about">
 
-<img src="profile.jpeg"
-     alt="Neel Kumar Baghel">
+
+<img
+src="profile.jpeg"
+alt="Neel Kumar Baghel"
+>
+
 
 <div class="about-text">
+
 
 <h3>
 नीलकुमार बघेल
 </h3>
+
 
 <p>
 मेरा नाम <strong>नीलकुमार बघेल</strong> है।
@@ -569,10 +741,12 @@ About <span>Me</span>
 <strong>श्री श्याम लाल बघेल</strong> है।
 </p>
 
+
 <p>
 मैं ग्राम जिया, पोस्ट जिया, तहसील बेमेतरा,
 जिला बेमेतरा, छत्तीसगढ़ का रहने वाला हूँ।
 </p>
+
 
 <p>
 मैंने <strong>BA सेकंड ईयर तक</strong> पढ़ाई की है।
@@ -580,11 +754,13 @@ About <span>Me</span>
 छत्तीसगढ़ी संस्कृति से जुड़े विषयों में रुचि है।
 </p>
 
+
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -597,7 +773,9 @@ About <span>Me</span>
 My <span>Services</span>
 </h2>
 
+
 <div class="cards">
+
 
 <div class="card">
 
@@ -611,6 +789,7 @@ Digital Content
 </p>
 
 </div>
+
 
 
 <div class="card">
@@ -627,6 +806,7 @@ Creative Work
 </div>
 
 
+
 <div class="card">
 
 <h3>
@@ -640,9 +820,11 @@ Chhattisgarhi Culture
 
 </div>
 
+
 </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -655,7 +837,9 @@ Chhattisgarhi Culture
 My <span>Gallery</span>
 </h2>
 
+
 <div class="cards">
+
 
 <div class="card">
 
@@ -667,16 +851,17 @@ My <span>Gallery</span>
 मेरी तस्वीरें और फोटो गैलरी देखने के लिए नीचे क्लिक करें।
 </p>
 
+
 <a
 href="https://photos.google.com/?authuser=0"
 target="_blank"
-class="btn">
-
+class="btn"
+>
 Open Gallery
-
 </a>
 
 </div>
+
 
 
 <div class="card">
@@ -689,20 +874,22 @@ Open Gallery
 मेरे YouTube चैनल पर वीडियो देखने के लिए क्लिक करें।
 </p>
 
+
 <a
 href="https://www.youtube.com/@cg.neelbaghelofficial"
 target="_blank"
-class="btn">
-
+class="btn"
+>
 YouTube
-
 </a>
 
 </div>
 
+
 </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -715,6 +902,7 @@ YouTube
 My <span>Blogs</span>
 </h2>
 
+
 <div class="card">
 
 <h3>
@@ -726,16 +914,18 @@ My <span>Blogs</span>
 मेरे अनुभवों से जुड़े लेख यहाँ पढ़ें।
 </p>
 
-<a href="blog.html"
-   class="btn">
 
+<a
+href="blog.html"
+class="btn"
+>
 सभी Blogs देखें
-
 </a>
 
 </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -748,16 +938,19 @@ My <span>Blogs</span>
 Contact <span>Me</span>
 </h2>
 
+
 <div class="contact-box">
 
 <h3>
 नीलकुमार बघेल
 </h3>
 
+
 <p>
 📞 WhatsApp / Mobile:
 <strong>8889643345</strong>
 </p>
+
 
 <p>
 📧 Email:
@@ -767,29 +960,37 @@ Contact <span>Me</span>
 
 <div class="social">
 
+
 <a
 href="https://www.facebook.com/share/1GFaE1AY8N/"
-target="_blank">
+target="_blank"
+>
 Facebook
 </a>
 
+
 <a
 href="https://www.instagram.com/cg.neelbaghelofficial_/"
-target="_blank">
+target="_blank"
+>
 Instagram
 </a>
 
+
 <a
 href="https://www.youtube.com/@cg.neelbaghelofficial"
-target="_blank">
+target="_blank"
+>
 YouTube
 </a>
+
 
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -801,6 +1002,7 @@ YouTube
 <p>
 © 2026 CG Neel Baghel. All Rights Reserved.
 </p>
+
 
 <p>
 
@@ -823,6 +1025,7 @@ Contact
 </p>
 
 </footer>
+
 
 
 <!-- =========================
@@ -851,6 +1054,7 @@ function closeMenu(){
 }
 
 </script>
+
 
 </body>
 </html>
