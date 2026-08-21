@@ -5,6 +5,7 @@ window.posts = [
     title: "मेरी आधिकारिक वेबसाइट की शुरुआत",
     date: "2026-08-20",
     category: "व्यक्तिगत",
+    image: "profile.jpeg",
 
     excerpt: "CG Neel Baghel की आधिकारिक वेबसाइट और इस वेबसाइट को बनाने के उद्देश्य के बारे में।",
 
