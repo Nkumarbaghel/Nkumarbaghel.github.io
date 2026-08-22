@@ -1,87 +1,43 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CG Neel Baghel — Admin Blog</title>
-  <link rel="stylesheet" href="admin-style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CG Neel Baghel — Live Admin</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#08090b;color:#f5f5f5;font-family:system-ui,-apple-system,Segoe UI,sans-serif}a{color:inherit}.top{padding:22px 5%;border-bottom:1px solid #24262b;background:#0d0e11;display:flex;justify-content:space-between;align-items:center}.top h1{margin:4px 0;font-size:25px}.ey{color:#ff3840;font-size:12px;font-weight:800;letter-spacing:2px}.back{padding:10px 14px;border:1px solid #333;border-radius:10px;text-decoration:none}.wrap{width:min(1100px,92%);margin:28px auto}.panel{background:#111317;border:1px solid #262930;border-radius:18px;padding:22px;margin-bottom:18px}.notice{border:1px solid #513438;background:#1a1012;padding:16px;border-radius:14px;color:#ddd}.notice b{color:#ff646b}.grid{display:grid;grid-template-columns:300px 1fr;gap:18px}.head{display:flex;justify-content:space-between;align-items:center;gap:12px}.head h2{margin:0 0 16px}.input,textarea{width:100%;background:#0a0b0d;border:1px solid #30333a;color:#fff;border-radius:10px;padding:12px;margin-top:7px;outline:none}.input:focus,textarea:focus{border-color:#e50914}label{display:block;margin:14px 0;font-weight:700;font-size:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:800;cursor:pointer}.primary{background:#e50914;color:white}.ghost{background:#1b1d22;color:#fff;border:1px solid #353840}.danger{background:#351317;color:#ff6c72;border:1px solid #6a2b30}.post-list{margin-top:12px;display:grid;gap:8px}.post-item{padding:12px;border:1px solid #292c32;border-radius:11px;cursor:pointer;background:#0d0f12}.post-item:hover,.post-item.active{border-color:#e50914;background:#171013}.post-item strong,.post-item span{display:block}.post-item span{font-size:12px;color:#999;margin-top:4px}.actions{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none!important}.login{max-width:560px;margin:60px auto}.status{margin-top:12px;color:#aaa}.ok{color:#55df89}.err{color:#ff6b73}.small{font-size:12px;color:#92959c;line-height:1.6}.token{font-family:monospace}.form-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.preview{margin-top:20px;padding:20px;border:1px solid #30333a;border-radius:14px;background:#0b0c0e}.preview img{max-width:100%;border-radius:12px}@media(max-width:800px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.top{padding:18px 4%}.top h1{font-size:20px}.actions{margin-top:10px}}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div>
-      <div class="eyebrow">CG NEEL BAGHEL</div>
-      <h1>✍️ Blog Admin</h1>
-    </div>
-    <a href="blog.html" class="back">← Blog देखें</a>
-  </header>
+<header class="top"><div><div class="ey">CG NEEL BAGHEL</div><h1>🔐 Live Blog Admin</h1></div><a class="back" href="blog.html">← Blog</a></header>
+<main class="wrap">
+<section id="loginPanel" class="panel login">
+<h2>GitHub Admin Login</h2>
+<p>यह panel सीधे आपकी GitHub repository में Blog publish/update करेगा।</p>
+<label>GitHub Fine-grained Token
+<input id="token" class="input token" type="password" autocomplete="off" placeholder="github_pat_...">
+</label>
+<button id="loginBtn" class="btn primary">🔓 Login & Connect</button>
+<p class="small">Token browser में save नहीं किया जाता। Page बंद/refresh होने पर दोबारा token देना होगा। केवल <b>Nkumarbaghel/cgneelbaghel</b> repository के Contents Read/Write permission वाला fine-grained token इस्तेमाल करें।</p>
+<p><a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">GitHub Token बनाने का पेज →</a></p>
+<div id="loginStatus" class="status"></div>
+</section>
 
-  <main class="wrap">
-    <section class="notice">
-      <strong>यह Editor GitHub Pages के लिए है।</strong>
-      लेख यहाँ बनाकर <b>posts.js डाउनलोड</b> करें, फिर GitHub में पुरानी
-      <code>posts.js</code> को नई file से replace करके Commit करें।
-      <br><small>नोट: GitHub Pages पर यह वास्तविक secure login नहीं है; यह publishing convenience editor है।</small>
-    </section>
-
-    <section class="grid">
-      <aside class="panel">
-        <div class="panel-head">
-          <h2>आपके लेख</h2>
-          <button id="newBtn" class="primary">＋ नया लेख</button>
-        </div>
-        <input id="listSearch" class="input" placeholder="लेख खोजें...">
-        <div id="postList" class="post-list"></div>
-      </aside>
-
-      <section class="panel">
-        <div class="panel-head">
-          <h2 id="formTitle">नया लेख</h2>
-          <div class="actions">
-            <button id="previewBtn" class="ghost">👁 Preview</button>
-            <button id="downloadBtn" class="primary">⬇ posts.js डाउनलोड</button>
-          </div>
-        </div>
-
-        <form id="postForm">
-          <input type="hidden" id="postId">
-          <label>शीर्षक
-            <input id="title" class="input" required placeholder="जैसे: छत्तीसगढ़ी संस्कृति और हमारी पहचान">
-          </label>
-
-          <div class="two">
-            <label>Category
-              <input id="category" class="input" required placeholder="जैसे: छत्तीसगढ़ी संस्कृति">
-            </label>
-            <label>तारीख
-              <input id="date" type="date" class="input" required>
-            </label>
-          </div>
-
-          <label>Cover image (optional)
-            <input id="image" class="input" placeholder="जैसे: profile.jpeg या images/blog1.jpg">
-          </label>
-
-          <label>छोटा परिचय / Excerpt
-            <textarea id="excerpt" class="input" rows="3" placeholder="लेख का छोटा परिचय..."></textarea>
-          </label>
-
-          <label>पूरा लेख
-            <textarea id="content" class="input editor" rows="14" required
-              placeholder="यहाँ लेख लिखें। सामान्य paragraph के लिए सिर्फ text लिखें; नया paragraph अलग लाइन से शुरू करें।"></textarea>
-          </label>
-
-          <div class="form-actions">
-            <button type="submit" class="primary">💾 लेख सूची में सेव करें</button>
-            <button type="button" id="clearBtn" class="ghost">साफ करें</button>
-          </div>
-        </form>
-
-        <div id="preview" class="preview hidden"></div>
-      </section>
-    </section>
-  </main>
-
-  <script src="posts.js"></script>
-  <script src="admin.js"></script>
-</body>
-</html>
+<section id="app" class="hidden">
+<div class="notice"><b>Live Publishing ON</b> — अब Save/Publish करने पर <code>posts.js</code> सीधे GitHub में update होगा और वेबसाइट पर नया लेख publish होगा।</div>
+<div class="grid" style="margin-top:18px">
+<aside class="panel"><div class="head"><h2>आपके लेख</h2><button id="newBtn" class="btn primary">＋ नया</button></div><input id="listSearch" class="input" placeholder="लेख खोजें..."><div id="postList" class="post-list"></div></aside>
+<section class="panel"><div class="head"><h2 id="formTitle">नया लेख</h2><div class="actions"><button id="previewBtn" class="btn ghost">👁 Preview</button><button id="publishBtn" class="btn primary">🚀 Publish</button></div></div>
+<form id="postForm">
+<input type="hidden" id="postId">
+<label>शीर्षक<input id="title" class="input" required placeholder="लेख का शीर्षक"></label>
+<div class="two"><label>Category<input id="category" class="input" required placeholder="जैसे: छत्तीसगढ़ी संस्कृति"></label><label>तारीख<input id="date" type="date" class="input" required></label></div>
+<label>Cover image<input id="image" class="input" placeholder="profile.jpeg या images/blog1.jpg"></label>
+<label>छोटा परिचय / Excerpt<textarea id="excerpt" class="input" rows="3"></textarea></label>
+<label>पूरा लेख<textarea id="content" class="input" rows="14" required placeholder="लेख यहाँ लिखें..."></textarea></label>
+<div class="form-actions"><button type="submit" class="btn ghost">💾 सूची में सेव</button><button type="button" id="deleteBtn" class="btn danger">🗑 Delete</button><button type="button" id="clearBtn" class="btn ghost">साफ करें</button></div>
+</form><div id="preview" class="preview hidden"></div><div id="status" class="status"></div>
+</section></div></section>
+</section>
+</main>
+<script src="admin.js"></script>
+</body></html>
