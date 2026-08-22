@@ -10,11 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const detail = document.querySelector("#detail");
   if (!box || typeof posts === "undefined") return;
 
-  // Prevent the same article from appearing more than once if the data file
-  // contains duplicate entries with the same id/title/date.
+  // Remove duplicate articles even when the same post was saved with
+  // different IDs. Title + date is treated as the canonical identity.
+  const normalize = value => String(value ?? "")
+    .toLowerCase()
+    .replace(/[“”\"'‘’]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
   const uniquePosts = Array.from(new Map(
     posts.map(p => [
-      `${String(p.id || "")}|${String(p.title || "")}|${String(p.date || "")}`,
+      `${normalize(p.title)}|${String(p.date || "").trim()}`,
       p
     ])
   ).values());
