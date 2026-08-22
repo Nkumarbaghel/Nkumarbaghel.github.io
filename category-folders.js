@@ -7,9 +7,19 @@ document.addEventListener("DOMContentLoaded",()=>{
   const classify=(p,key)=>{const t=norm(`${p.title||""} ${p.category||""} ${p.excerpt||""}`);if(key==="chhattisgarh")return /छत्तीसगढ़|chhattisgarh/.test(t)&&!/डिजिटल बदलाव|digital/.test(t);if(key==="digital")return /डिजिटल|digital|technology|तकनीक/.test(t)&&!/छत्तीसगढ़/.test(t);if(key==="news")return /news|समाचार|खबर/.test(t);if(key==="career")return /career|job|jobs|नौकरी|resume|रिज्यूमे/.test(t);if(key==="education")return /education|शिक्षा|पढ़ाई|परीक्षा/.test(t);if(key==="business")return /business|finance|बिजनेस|व्यापार|वित्त/.test(t);if(key==="ai")return /\bai\b|artificial intelligence|chatgpt|एआई/.test(t);if(key==="internet")return /internet|इंटरनेट|social media|सोशल मीडिया|facebook|instagram|youtube/.test(t);if(key==="culture")return /culture|संस्कृति|लोककला|लोकजीवन/.test(t);if(key==="thoughts")return /विचार|thought/.test(t);return false};
   const esc=s=>String(s||"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
   const date=s=>{const d=new Date((s||"")+"T00:00:00");return isNaN(d)?"":d.toLocaleDateString("hi-IN",{day:"numeric",month:"long",year:"numeric"})};
-  const hideOutsideCards=()=>{const p=document.querySelector("#posts"),t=document.querySelector(".blog-tools");if(p)p.style.setProperty("display","none","important");if(t)t.style.setProperty("display","none","important")};
+
+  // Hide the original article list and filters permanently on the category landing page.
+  // script.js calls render() later, so CSS !important is used as the final authority.
+  const hideOutsideCards=()=>{
+    const p=document.querySelector("#posts"),t=document.querySelector(".blog-tools");
+    if(p)p.style.setProperty("display","none","important");
+    if(t)t.style.setProperty("display","none","important");
+  };
   hideOutsideCards();
-  setTimeout(hideOutsideCards,0);setTimeout(hideOutsideCards,100);setTimeout(hideOutsideCards,500);
+  const observer=new MutationObserver(hideOutsideCards);
+  if(document.body)observer.observe(document.body,{childList:true,subtree:true});
+  setTimeout(hideOutsideCards,0);setTimeout(hideOutsideCards,100);setTimeout(hideOutsideCards,500);setTimeout(hideOutsideCards,1500);
+
   const section=document.createElement("section");section.id="categoryFolders";section.className="category-folders";
   section.innerHTML=`<div class="category-folders-head"><span>📂 BLOG CATEGORIES</span><h2>जिस विषय में रुचि हो, वही चुनें</h2><p>फोल्डर पर टैप करें — उसी विषय के ब्लॉग यहीं खुलेंगे।</p></div><div class="category-folder-grid">${categories.map(([i,n,d,k])=>`<button type="button" class="category-folder" data-key="${k}"><span class="folder-icon">${i}</span><strong>${n}</strong><small>${d}</small><span class="folder-open">फोल्डर खोलें →</span></button>`).join("")}</div>`;
   hero.insertAdjacentElement("afterend",section);
