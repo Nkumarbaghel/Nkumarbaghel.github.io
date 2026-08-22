@@ -41,6 +41,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Clear stale Pages deployments
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          ids=$(gh api "repos/${GITHUB_REPOSITORY}/pages/deployments?per_page=100" --jq '.[] | select(.status == "in_progress") | .id' 2>/dev/null)
+          for id in $ids; do
+            echo "Cancelling stale Pages deployment: $id"
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/deployments/${id}/cancel" >/dev/null 2>&1 || true
+          done
+          set -e
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
