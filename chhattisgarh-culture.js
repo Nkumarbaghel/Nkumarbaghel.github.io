@@ -1,77 +1,65 @@
-// Chhattisgarh Culture feature article
-// Media policy: only CC0/Public Domain media and explicitly attributed CC BY-SA media.
+// Chhattisgarh culture + festivals feature articles
+// Media policy: only verified CC0/Public Domain or explicitly attributed Creative Commons media.
 window.posts = window.posts || [];
 window.posts.push({
-  id: "छत्तीसगढ़-जहाँ-संस्कृति-दिखाई-नहीं-देती-जी-जाती-है",
-  title: "छत्तीसगढ़: जहाँ संस्कृति दिखाई नहीं देती, जी जाती है",
-  date: "2026-08-23",
-  category: "छत्तीसगढ़ | संस्कृति और समाज",
-  image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg",
-  excerpt: "छत्तीसगढ़ की संस्कृति को केवल लोकनृत्य और त्योहारों से नहीं समझा जा सकता। यह मिट्टी, भाषा, जंगल, भोजन, लोककला और सामुदायिक जीवन में आज भी साँस लेती हुई एक जीवित कहानी है।",
-  content: `
-  <p><strong>“छत्तीसगढ़ को समझना है तो उसके शहरों से नहीं, उसके गाँवों की सुबह से शुरुआत कीजिए।”</strong></p>
-  <p>सुबह की पहली किरण जब किसी गाँव के आँगन पर पड़ती है, चूल्हे से उठता धुआँ हवा में घुलता है, दूर कहीं मांदर की आवाज सुनाई देती है और कोई बुजुर्ग अपनी बोली में हालचाल पूछता है—वहीं से छत्तीसगढ़ की संस्कृति शुरू होती है।</p>
-  <p>छत्तीसगढ़ की संस्कृति केवल नृत्य, गीत, त्योहार, पहनावा या पकवानों का नाम नहीं है। यह <strong>जीने का एक तरीका</strong> है।</p>
+ id:"छत्तीसगढ़-जहाँ-संस्कृति-दिखाई-नहीं-देती-जी-जाती-है",
+ title:"छत्तीसगढ़: जहाँ संस्कृति दिखाई नहीं देती, जी जाती है",
+ date:"2026-08-23",
+ category:"छत्तीसगढ़ | संस्कृति और समाज",
+ image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg",
+ excerpt:"छत्तीसगढ़ की संस्कृति केवल लोकनृत्य और त्योहारों तक सीमित नहीं है। यह मिट्टी, भाषा, जंगल, भोजन, लोककला और सामुदायिक जीवन में आज भी साँस लेती हुई एक जीवित कहानी है।",
+ content:`
+ <p><strong>“छत्तीसगढ़ को समझना है तो उसके शहरों से नहीं, उसके गाँवों की सुबह से शुरुआत कीजिए।”</strong></p>
+ <p>छत्तीसगढ़ की संस्कृति केवल नृत्य, गीत, त्योहार, पहनावा या पकवानों का नाम नहीं है। यह <strong>जीने का एक तरीका</strong> है। यहाँ जंगल केवल जंगल नहीं, नदी केवल पानी नहीं और मिट्टी केवल मिट्टी नहीं—इनके साथ पीढ़ियों का रिश्ता है।</p>
+ <h2>जब गाँव का आँगन बन जाता है रंगमंच</h2>
+ <p>नाचा, पंथी, राऊत नाचा, सुआ और पंडवानी जैसी लोकपरंपराएँ छत्तीसगढ़ के सांस्कृतिक जीवन की मजबूत पहचान हैं। इनके भीतर लोकजीवन, हास्य, भक्ति, सामाजिक संदेश और पीढ़ियों की स्मृति सुरक्षित है। <a href="https://durg.gov.in/en/culture-heritage/" target="_blank" rel="noopener">स्रोत: दुर्ग जिला प्रशासन</a></p>
+ <figure><a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Raut_Nacha.jpg" alt="राऊत नाचा" loading="lazy" style="width:100%;border-radius:18px;display:block"></a><figcaption>राऊत नाचा — Pankaj Oudhia, CC BY-SA 3.0. <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption></figure>
+ <h2>त्योहारों में प्रकृति और समाज</h2>
+ <p>हरेली में हरियाली और खेती, पोला में पशुधन, तीजा में मइके का अपनापन, भोजली में सखीभाव और देवारी में सामुदायिक उत्सव दिखाई देता है। बस्तर दशहरा तो अपनी अलग परंपरा के कारण पूरे भारत में विशिष्ट है।</p>
+ <figure><a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" alt="बस्तर दशहरा" loading="lazy" style="width:100%;border-radius:18px;display:block"></a><figcaption>बस्तर दशहरा — CC0/Public Domain Dedication. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption></figure>
+ <h2>छत्तीसगढ़ी भाषा—सिर्फ बोली नहीं, भावना है</h2>
+ <p>“का करत हस?”, “कहाँ जावत हस?”, “बइठ न, चाय पी ले।” इन छोटे-छोटे वाक्यों में अपनापन छिपा है। भाषा अपने साथ हास्य, रिश्ते, लोककथाएँ और जीवन का नजरिया लेकर चलती है।</p>
+ <h2>आधुनिकता आए, लेकिन पहचान साथ रहे</h2>
+ <p>मोबाइल और इंटरनेट ने स्थानीय कलाकारों और कहानियों को नई दुनिया तक पहुँचाने का रास्ता खोला है। जरूरी है कि विकास के साथ भाषा, लोकगीत, भोजन, परंपरा और स्थानीय स्मृति भी आगे बढ़े।</p>
+ <div style="padding:22px;margin-top:28px;background:rgba(255,255,255,.05);border-left:4px solid #ff2027;border-radius:12px"><strong>“छत्तीसगढ़ की संस्कृति कोई पुरानी चीज नहीं है, यह आज भी हमारे बीच साँस लेती हुई एक जीवित कहानी है।”</strong><br><br>जय जोहार।<br>जय छत्तीसगढ़।</div>
+ <p style="margin-top:28px;font-size:13px;color:#aaa"><strong>संदर्भ:</strong> <a href="https://durg.gov.in/en/culture-heritage/" target="_blank" rel="noopener">दुर्ग जिला प्रशासन</a> · <a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">Incredible India</a> · <a href="https://commons.wikimedia.org/wiki/Category:Festivals_in_Chhattisgarh" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+ `
+});
 
-  <h2>छत्तीसगढ़ की सबसे बड़ी पहचान—उसकी सादगी</h2>
-  <p>यहाँ किसी के घर जाना केवल मुलाकात नहीं, अपनापन है। किसी के साथ खाना बाँटना केवल भोजन नहीं, संबंध है। त्योहार केवल छुट्टी का दिन नहीं, बल्कि पूरे समुदाय को एक साथ जोड़ने का अवसर है।</p>
-  <p>छत्तीसगढ़ के सरकारी सांस्कृतिक स्रोतों में पंथी, राऊत नाचा, सुआ और पंडवानी जैसी लोक परंपराओं का उल्लेख मिलता है। <a href="https://durg.gov.in/en/culture-heritage/" target="_blank" rel="noopener">स्रोत: दुर्ग जिला प्रशासन — Culture & Heritage</a></p>
-
-  <figure>
-    <a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha.jpg" target="_blank" rel="noopener">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Raut_Nacha.jpg" alt="छत्तीसगढ़ का राऊत नाचा" loading="lazy" style="width:100%;border-radius:18px;display:block;">
-    </a>
-    <figcaption>राऊत नाचा — Pankaj Oudhia. CC BY-SA 3.0. <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption>
-  </figure>
-
-  <h2>जब गाँव का आँगन बन जाता है रंगमंच</h2>
-  <p>छत्तीसगढ़ के लोकजीवन की खूबसूरती यह है कि यहाँ कला और रोजमर्रा की जिंदगी के बीच कोई बड़ी दीवार नहीं है। नाचा लोकजीवन, हास्य और सामाजिक अभिव्यक्ति का माध्यम रहा है। पंथी में आध्यात्मिकता और सामाजिक संदेश दिखाई देता है, जबकि राऊत नाचा सामुदायिक उत्सव और परंपरा को जीवंत करता है।</p>
-  <p>इन कलाओं को केवल मंच पर देखने की चीज समझना अधूरा होगा। इनके भीतर पीढ़ियों की स्मृति और समाज की अपनी आवाज सुरक्षित रहती है।</p>
-
-  <figure>
-    <a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" alt="बस्तर दशहरा" loading="lazy" style="width:100%;border-radius:18px;display:block;">
-    </a>
-    <figcaption>बस्तर दशहरा — CC0 / Public Domain Dedication. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption>
-  </figure>
-
-  <h2>यहाँ त्योहार मौसम के साथ साँस लेते हैं</h2>
-  <p>हरेली में हरियाली और कृषि जीवन की खुशी दिखाई देती है। पोला में खेती में साथ देने वाले पशुओं के प्रति सम्मान दिखाई देता है। वहीं बस्तर दशहरा अपनी स्थानीय आस्था, परंपराओं और सामुदायिक सहभागिता के कारण अलग पहचान रखता है।</p>
-  <p><a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">स्रोत: Incredible India — Chhattisgarh</a></p>
-
-  <h2>छत्तीसगढ़ की रसोई में भी संस्कृति बोलती है</h2>
-  <p>अगर किसी प्रदेश की संस्कृति को स्वाद के जरिए समझना हो, तो उसकी रसोई में जाइए। चावल और स्थानीय अनाजों पर आधारित भोजन, फरा, चीला, मुठिया, अंगाकर रोटी, चुसैला और बोरे-बासी जैसे व्यंजन स्थानीय जीवनशैली की झलक देते हैं।</p>
-  <p>विशेष रूप से बोरे-बासी को देखें। साधारण-सा भोजन, लेकिन उसके पीछे गर्मी, खेत में काम करने वाला इंसान, स्थानीय भोजन और पीढ़ियों से चली आ रही समझ की कहानी है।</p>
-  <p><a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">स्रोत: Incredible India — Chhattisgarh</a></p>
-
-  <figure>
-    <a href="https://commons.wikimedia.org/wiki/File:Mama_Bhanja_Temple,_Barsur.jpg" target="_blank" rel="noopener">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mama_Bhanja_Temple,_Barsur.jpg" alt="बस्तर क्षेत्र का ऐतिहासिक मंदिर" loading="lazy" style="width:100%;border-radius:18px;display:block;">
-    </a>
-    <figcaption>मामा-भांजा मंदिर, बारसूर — CC0 / Public Domain Dedication. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Mama_Bhanja_Temple,_Barsur.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption>
-  </figure>
-
-  <h2>जंगल और संस्कृति का रिश्ता</h2>
-  <p>छत्तीसगढ़ की संस्कृति को जंगल से अलग करके देखना मुश्किल है। विशेषकर आदिवासी जीवन में जंगल केवल संसाधन नहीं, बल्कि भोजन, कला, हस्तशिल्प और परंपराओं से जुड़ा जीवन-संसार है।</p>
-  <p>लकड़ी में जंगल।<br>धातु में लोकजीवन।<br>गीतों में नदी।<br>नृत्य में उत्सव।<br>और कहानियों में पुरखों की स्मृति।</p>
-
-  <h2>छत्तीसगढ़ी भाषा—सिर्फ बोली नहीं, भावना है</h2>
-  <p>“का करत हस?”<br>“कहाँ जावत हस?”<br>“बइठ न, चाय पी ले।”</p>
-  <p>इन छोटे-छोटे वाक्यों में जितना अपनापन छिपा है, उसे शब्दकोश शायद कभी नहीं समझा सकता। भाषा अपने साथ हास्य, रिश्ते, लोककथाएँ, कहावतें और जीवन का नजरिया लेकर चलती है।</p>
-
-  <h2>आधुनिकता आए, लेकिन पहचान साथ रहे</h2>
-  <p>आज मोबाइल और इंटरनेट ने छत्तीसगढ़ के कलाकारों और स्थानीय कहानियों को नई दुनिया तक पहुँचाने का रास्ता खोला है। बदलाव जरूरी है, लेकिन उसके साथ अपनी भाषा, लोकगीत, परंपरा और स्थानीय स्मृति को बचाए रखना भी उतना ही जरूरी है।</p>
-  <p>संस्कृति को बचाने का मतलब केवल पुराने कपड़े पहनना या साल में एक बार लोकनृत्य करना नहीं है। संस्कृति तब बचेगी जब बच्चे बुजुर्गों की कहानियाँ सुनेंगे, लोकगीत नई पीढ़ी गाएगी और स्थानीय कलाकारों को सम्मान मिलेगा।</p>
-
-  <h2>असली छत्तीसगढ़ कहाँ है?</h2>
-  <p>शायद किसी बड़े मंच पर नहीं। शायद किसी पर्यटन विज्ञापन में भी नहीं। असली छत्तीसगढ़ उस किसान के हाथ में है जो सुबह खेत की ओर जाता है। उस माँ के हाथ में है जो पारंपरिक भोजन बनाती है। उस कलाकार की आवाज में है जो बिना बड़े मंच के गाँव में गीत गाता है। और उस बुजुर्ग की स्मृति में है जिसे अपने गाँव की हर परंपरा का अर्थ पता है।</p>
-  <p><strong>छत्तीसगढ़ की संस्कृति की सबसे बड़ी खूबसूरती यही है कि यह हमें अपनी जड़ों से शर्मिंदा होना नहीं, उन पर गर्व करना सिखाती है।</strong></p>
-
-  <div style="padding:22px;margin-top:28px;background:rgba(255,255,255,.05);border-left:4px solid #ff2027;border-radius:12px;">
-    <strong>“छत्तीसगढ़ की संस्कृति कोई पुरानी चीज नहीं है,<br>यह आज भी हमारे बीच साँस लेती हुई एक जीवित कहानी है।”</strong><br><br>
-    जय जोहार।<br>जय छत्तीसगढ़।
-  </div>
-
-  <p style="margin-top:28px;font-size:13px;color:#aaa;"><strong>संदर्भ:</strong> <a href="https://durg.gov.in/en/culture-heritage/" target="_blank" rel="noopener">दुर्ग जिला प्रशासन</a> · <a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">Incredible India</a> · <a href="https://commons.wikimedia.org/wiki/Category:Culture_of_Chhattisgarh" target="_blank" rel="noopener">Wikimedia Commons — Culture of Chhattisgarh</a></p>
-  `
+window.posts.push({
+ id:"chhattisgarh-ke-teej-tihar",
+ title:"छत्तीसगढ़ के तीज-तिहार: हमर माटी, हमर परंपरा अउ हमर पहचान",
+ date:"2026-08-23",
+ category:"छत्तीसगढ़ | संस्कृति और त्योहार",
+ image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Hareli%20Festival.jpg",
+ excerpt:"छत्तीसगढ़ के तीज-तिहार केवल पूजा-पाठ के दिन नइ हें। ये खेती, प्रकृति, परिवार, गांव, लोकगीत, नाचा अउ पीढ़ियों से चले आथे लोकविश्वास के जीवंत कहानी हें।",
+ content:`
+ <p><strong>“छत्तीसगढ़ म तिहार मनाय नइ जाथे, तिहार ल जिया जाथे।”</strong></p>
+ <p>छत्तीसगढ़ के गांव-गांव म साल भर तीज-तिहार के रंग बिखरे रहिथे। कभू खेत-खार म हरियाली के खुशी, कभू बहिनी-बेटी के मइके आना, कभू नवा धान के सुगंध, कभू बैल के सींग म सजे रंग अउ कभू मांदर के थाप म पूरा गांव झूम उठथे। ए तिहार मनखे ल पूजा के संग एक-दूसर के सुख-दुख म साथ खड़े रहना सिखाथें।</p>
+ <p>एक पारंपरिक सूची म हरेली, भोजली, पोला, राखी, तीजा, नेवरात, दशहरा, देवारी, नवाखाना, छेरछेरा अउ फागुन के उल्लेख मिलथे। अलग-अलग अंचल म स्थानीय पर्व के नाम, तारीख अउ रीति म अंतर घलो मिलथे। <a href="https://ignca.gov.in/coilnet/kabir032.htm" target="_blank" rel="noopener">स्रोत: IGNCA — छत्तीसगढ़ के तीज एवं त्यौहार</a></p>
+ <figure><a href="https://commons.wikimedia.org/wiki/File:Hareli_Festival.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hareli%20Festival.jpg" alt="हरेली तिहार" loading="lazy" style="width:100%;border-radius:18px;display:block"></a><figcaption>हरेली तिहार — Pankaj Oudhia, CC BY-SA 3.0. <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Hareli_Festival.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption></figure>
+ <h2>🌿 1. हरेली तिहार — हरियाली अउ खेती के परब</h2><p>हरेली सावन के हरियाली संग मनाय जाने वाला खेती-किसानी के खास तिहार हे। किसान हल, नांगर, कुदारी, हंसिया अउ खेती के औजार के पूजा करथें। गाय-बइला के देखभाल करथें अउ अच्छी फसल के कामना करथें। कई अंचल म नीम या भेलवा के डारा-पाना लगाय के परंपरा घलो मिलथे। हरेली के संग <strong>गेड़ी</strong> के खेल लइका मन के खास आकर्षण रहिथे। <a href="https://raipur.gov.in/en/culture/" target="_blank" rel="noopener">स्रोत: रायपुर जिला प्रशासन</a></p>
+ <h2>🌾 2. अक्ती — शुभ शुरुआत के दिन</h2><p>अक्ती यानी अक्षय तृतीया ल शुभ शुरुआत के दिन माने जाथे। खेती-किसानी अउ नवा काम के संग एकर लोकमहत्व जुड़ा हे। छत्तीसगढ़ शासन के जनसंपर्क सामग्री म अक्ती के साथ नवाखानी, पोला, भोजली, गौरा-गौरी, मातर अउ होली जैसे लोकपर्व के उल्लेख मिलथे। <a href="https://jansampark.cg.gov.in/Janman/JAN2023/janman.pdf" target="_blank" rel="noopener">स्रोत: छत्तीसगढ़ जनसंपर्क</a></p>
+ <h2>🌱 3. भोजली — बहिनीचारा अउ गीत के तिहार</h2><p>भोजली म बीज बोके ओकर सेवा करे, हरियर अंकुर निकलते देखे अउ भोजली गीत गाते हुए सामूहिक आयोजन करे की परंपरा मिलथे। बाद म परंपरा अनुसार विसर्जन होथे। ए तिहार प्रकृति, सखीभाव अउ गांव के मेलजोल के सुंदर प्रतीक हे।</p>
+ <h2>🐂 4. पोला/पोरा — बइला अउ किसान के सम्मान</h2><p>पोला खेती म बइला के योगदान के प्रति आभार जताय वाला तिहार हे। बइला मन के नहलाय-धुलाय, सजाय अउ पूजा करे के परंपरा कई अंचल म मिलथे। लइका मन माटी के नंदिया-बइला बनाके खेलथें। <a href="https://commons.wikimedia.org/wiki/File:Pola_Festival_-_Farmers_with_thier_bulls_Celebrating_Pola_Festival.jpg" target="_blank" rel="noopener">चित्र स्रोत व लाइसेंस</a></p>
+ <figure><a href="https://commons.wikimedia.org/wiki/File:Pola_Festival_-_Farmers_with_thier_bulls_Celebrating_Pola_Festival.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Pola%20Festival%20-%20Farmers%20with%20thier%20bulls%20Celebrating%20Pola%20Festival.jpg" alt="पोला तिहार" loading="lazy" style="width:100%;border-radius:18px;display:block"></a><figcaption>पोला तिहार — Wikimedia Commons. <a href="https://commons.wikimedia.org/wiki/File:Pola_Festival_-_Farmers_with_thier_bulls_Celebrating_Pola_Festival.jpg" target="_blank" rel="noopener">लाइसेंस/मूल स्रोत</a></figcaption></figure>
+ <h2>🌸 5. तीजा — मइके, बहिनी अउ मया के तिहार</h2><p>तीजा महिला मन के भावनात्मक तिहार हे। बहिनी-बेटी के मइके आना, परिवार संग मिलना, व्रत-पूजा अउ गौरी-शंकर आराधना एकर प्रमुख पक्ष हें। ये मइके-ससुराल के रिश्ता अउ बहिनी मन के स्नेह के पर्व घलो हे। <a href="https://raipur.gov.in/en/culture/" target="_blank" rel="noopener">स्रोत: रायपुर जिला प्रशासन</a></p>
+ <h2>👫 6. राखी — भाई-बहिनी के स्नेह</h2><p>राखी म बहिनी भाई के कलाई म राखी बांधथे अउ भाई अपन स्नेह, सम्मान अउ साथ के भाव जताथे। परिवार के मिलना, मिठाई बांटना अउ बुजुर्ग मन के आशीर्वाद लेना ए दिन के सुंदर हिस्सा हें।</p>
+ <h2>🌾 7. नवाखाई/नवाखाना — नवा अन्न के पहिली अरपन</h2><p>नवा धान घर म आथे त कई समुदाय म पहिली ओकर एक हिस्सा कुलदेवी-कुलदेवता या परिवार के आराध्य ल अर्पित करे के परंपरा रहिथे। ओकर बाद नवा चावल उपयोग म लाय जाथे। ए किसान बर फसल, धरती अउ मेहनत के प्रति आभार के पर्व हे। <a href="https://chhattisgarh.nic.in/en/holiday/navakhai/" target="_blank" rel="noopener">स्रोत: छत्तीसगढ़ शासन</a></p>
+ <h2>🌕 8. छेरछेरा पुन्नी — बांट के खाय के परंपरा</h2><p>पौष पूर्णिमा के आसपास मनाय जाने वाला छेरछेरा म गांव के समूह घर-घर जाके कहिथें—<strong>“छेरछेरा! कोठी के धान ल हेरहेरा!”</strong> अन्न बांटना, सहयोग अउ सामूहिक खुशी ए पर्व के मूल भावना हें। <a href="https://jansampark.cg.gov.in/Janman/JAN2023/janman.pdf" target="_blank" rel="noopener">स्रोत: छत्तीसगढ़ जनसंपर्क</a></p>
+ <h2>🌺 9. कर्मा — गीत, नाचा अउ प्रकृति के लोकपर्व</h2><p>कर्मा कई आदिवासी अउ ग्रामीण समुदाय के महत्वपूर्ण लोकपर्व हे। कर्मा देव की पूजा, सामूहिक गीत, मांदर अउ नृत्य के माध्यम से पूरा गांव उत्सव म जुड़थे। अलग समुदाय म कथा अउ रीति अलग हो सकथे।</p>
+ <h2>🪔 10. देवारी/दीपावली — दिया, गौरा-गौरी अउ गांव के उजियारा</h2><p>छत्तीसगढ़ी देवारी म कई अंचल म गौरा-गौरी पूजा, माटी के प्रतिमा, गीत अउ सामुदायिक मिलन प्रमुख हें। घर-दुआर साफ करना, दिया जलाना, पकवान बनाना अउ परिवार संग खुशी मनाना आम परंपरा हे।</p>
+ <h2>🐄 11. गोवर्धन पूजा अउ मातर — पशुधन अउ गांव</h2><p>देवारी के आसपास कई गांव म गोवर्धन पूजा अउ पशुधन से जुड़े लोकअनुष्ठान होथें। कुछ अंचल म देवारी के बाद मातर के आयोजन म लोकगीत, नाचा अउ सामूहिक मिलन के रंग देखे बर मिलथे।</p>
+ <h2>🌙 12. नेवरात/नवरात्र — जसगीत अउ देवी आराधना</h2><p>नवरात्र म देवी मंदिर मन म ज्योति, पूजा, जसगीत, जागरण अउ लोकभक्ति के आयोजन होथे। छत्तीसगढ़ी जसगीत सरल भाषा अउ सामूहिक गायन के कारण अलग लोकपहचान रखथे।</p>
+ <h2>🏹 13. बस्तर दशहरा — 75 दिन के अनोखा पर्व</h2><p>बस्तर दशहरा सामान्य रावण-दहन वाला दशहरा नइ हे। बस्तर जिला प्रशासन के अनुसार एकर संबंध स्थानीय देवी परंपरा से हे और पर्व लगभग <strong>75 दिन</strong> तक चलथे। हरियाली अमावस्या के आसपास <strong>पाट जात्रा</strong> से शुरुआत, काछनगादी, जोगी बिठाई, रथ परंपरा अउ मुरिया दरबार जैसे चरण एकर हिस्सा हें। <a href="https://bastar.gov.in/en/tourism/places-of-interest/" target="_blank" rel="noopener">स्रोत: बस्तर जिला प्रशासन</a> · <a href="https://utsav.gov.in/view-event/bastar-dussehra-bastar-heritage-trail" target="_blank" rel="noopener">Ministry of Tourism — Utsav</a></p>
+ <figure><a href="https://commons.wikimedia.org/wiki/File:Bastar_Dusshera_Unexplored_Bastar.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bastar%20Dusshera%20Unexplored%20Bastar.jpg" alt="बस्तर दशहरा" loading="lazy" style="width:100%;border-radius:18px;display:block"></a><figcaption>बस्तर दशहरा — Sushil.skk, CC BY-SA 4.0. <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Bastar_Dusshera_Unexplored_Bastar.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption></figure>
+ <h2>🎯 14. गोंचा तिहार — रथ अउ बस्तर के लोकजीवन</h2><p>गोंचा बस्तर के जगदलपुर अंचल का विशेष लोकपर्व हे। रथ परंपरा, जगन्नाथ से जुड़ी श्रद्धा अउ स्थानीय लोकरीति एकर पहचान हें। बस्तर जिला प्रशासन गोंचा अउ दशहरा के रथ परंपरा के इतिहास म राजा पुरुषोत्तम देव की जगन्नाथपुरी यात्रा का उल्लेख करथे। <a href="https://bastar.gov.in/%E0%A4%AA%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%9F%E0%A4%A8/%E0%A4%B0%E0%A5%81%E0%A4%9A%E0%A4%BF-%E0%A4%95%E0%A5%87-%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%E0%A4%A8/" target="_blank" rel="noopener">स्रोत: बस्तर जिला प्रशासन</a></p>
+ <h2>🔥 15. मड़ई — देव, गांव अउ हाट-बाजार के मिलन</h2><p>मड़ई कई अंचल म देवी-देवता, गांव अउ आसपास के समुदाय के मिलन के अवसर हे। देव-डोली, पूजा, लोकनृत्य, हाट-बाजार अउ पारंपरिक सामान ए आयोजन के रंग हें। बस्तर मड़ई ल प्रशासन सांस्कृतिक सहभागिता अउ परंपरा के उत्सव के रूप म प्रस्तुत करता है। <a href="https://jansampark.cg.gov.in/dprnewsportal/NewsPopup.aspx?param=RM4qdaR%2BScA%3D&type=TQwAi5bC7eg%3D" target="_blank" rel="noopener">स्रोत: छत्तीसगढ़ जनसंपर्क</a></p>
+ <h2>🌈 16. फागुन/होली — रंग, फाग गीत अउ मिलन</h2><p>फागुन म गांव रंग अउ गीत ले भर जाथे। फाग गीत, रंग, हंसी-मजाक अउ सामूहिक मिलन के परंपरा छत्तीसगढ़ी होली ल अपन लोकस्वरूप देथे। ए तिहार पुराना मनमुटाव भुलाके मिल-जुलके खुशी बांटे के संदेश देथे। <a href="https://ignca.gov.in/coilnet/kabir032.htm" target="_blank" rel="noopener">स्रोत: IGNCA</a></p>
+ <h2>🌳 17. सरहुल अउ अन्य स्थानीय आदिवासी पर्व</h2><p>छत्तीसगढ़ बहुत विविध प्रदेश हे। अलग जनजातीय अउ ग्रामीण समुदाय अपन स्थानीय देवता, फसल, ऋतु अउ प्रकृति के हिसाब से अलग पर्व मनाथें। कुछ समुदाय म सरहुल धरती, साल वृक्ष अउ प्रकृति आराधना से जुड़ा पर्व हे। <a href="https://manendragarh-chirmiri-bharatpur.cg.gov.in/%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF-%E0%A4%94%E0%A4%B0-%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A4%BE%E0%A4%B8%E0%A4%A4/" target="_blank" rel="noopener">स्रोत: जिला प्रशासन</a></p>
+ <h2>❤️ तिहार मनाय के असली मतलब</h2><p>हमर तिहार मनखे ल प्रकृति ले जोड़थे। हरेली म हरियाली, पोला म बइला, नवाखाई म नवा अन्न, छेरछेरा म बांट के खाय के भावना, तीजा म मइके के मया, भोजली म सखीभाव अउ बस्तर दशहरा म सामुदायिक आस्था—हर तिहार के भीतर अपन कहानी हे।</p>
+ <p><strong>काबर कि छत्तीसगढ़ के तिहार कैलेंडर म लिखे तारीख नइ हें—ये हमर पुरखा मन के छोड़े हुए वो याद हें, जेन ला हर पीढ़ी अपन तरीका ले फेर जीयत हे।</strong></p>
+ <div style="padding:24px;margin-top:28px;background:rgba(255,255,255,.05);border-left:4px solid #ff2027;border-radius:14px"><strong>“हमर माटी के खुशबू, हमर बोली के मिठास अउ हमर तिहार के रंग—यही तो हमर छत्तीसगढ़ के असली पहचान हे।”</strong><br><br>जय जोहार।<br>जय छत्तीसगढ़।</div>
+ <p style="margin-top:28px;font-size:13px;color:#aaa"><strong>संदर्भ:</strong> <a href="https://ignca.gov.in/coilnet/kabir032.htm" target="_blank" rel="noopener">IGNCA</a> · <a href="https://raipur.gov.in/en/culture/" target="_blank" rel="noopener">रायपुर जिला प्रशासन</a> · <a href="https://bastar.gov.in/en/tourism/places-of-interest/" target="_blank" rel="noopener">बस्तर जिला प्रशासन</a> · <a href="https://utsav.gov.in/view-event/bastar-dussehra-bastar-heritage-trail" target="_blank" rel="noopener">Ministry of Tourism — Utsav</a> · <a href="https://jansampark.cg.gov.in/Janman/JAN2023/janman.pdf" target="_blank" rel="noopener">छत्तीसगढ़ जनसंपर्क</a></p>
+ `
 });
