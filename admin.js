@@ -1,126 +1,23 @@
 (() => {
-  const $ = id => document.getElementById(id);
-  let posts = Array.isArray(window.posts) ? window.posts.map(p => ({...p})) : [];
-  let editingIndex = -1;
-
-  function today(){
-    return new Date().toISOString().slice(0,10);
-  }
-  function slugify(text){
-    return text.toLowerCase().trim()
-      .replace(/[^a-z0-9\u0900-\u097f\s-]/g,'')
-      .replace(/\s+/g,'-').replace(/-+/g,'-')
-      .slice(0,60) || 'new-post';
-  }
-  function escapeHtml(s){
-    return String(s ?? '').replace(/[&<>"']/g, c => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
-    }[c]));
-  }
-  function renderList(){
-    const q = $('listSearch').value.toLowerCase();
-    const box = $('postList');
-    const filtered = posts.map((p,i)=>({p,i})).filter(({p}) =>
-      (p.title+' '+p.category).toLowerCase().includes(q)
-    );
-    box.innerHTML = filtered.length ? filtered.map(({p,i}) => `
-      <div class="post-item ${i===editingIndex?'active':''}" data-index="${i}">
-        <strong>${escapeHtml(p.title)}</strong>
-        <span>${escapeHtml(p.category || '')} • ${escapeHtml(p.date || '')}</span>
-      </div>`).join('') : '<div class="empty">कोई लेख नहीं मिला</div>';
-    box.querySelectorAll('.post-item').forEach(el => el.onclick = () => loadPost(+el.dataset.index));
-  }
-  function clearForm(){
-    editingIndex = -1;
-    $('formTitle').textContent = 'नया लेख';
-    $('postForm').reset();
-    $('date').value = today();
-    $('postId').value = '';
-    $('preview').classList.add('hidden');
-    renderList();
-  }
-  function loadPost(i){
-    const p = posts[i];
-    editingIndex = i;
-    $('formTitle').textContent = 'लेख संपादित करें';
-    $('postId').value = p.id || '';
-    $('title').value = p.title || '';
-    $('category').value = p.category || '';
-    $('date').value = p.date || today();
-    $('image').value = p.image || '';
-    $('excerpt').value = p.excerpt || '';
-    $('content').value = htmlToText(p.content || '');
-    $('preview').classList.add('hidden');
-    renderList();
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function htmlToText(html){
-    const div=document.createElement('div'); div.innerHTML=html;
-    return div.innerText.replace(/\n{3,}/g,'\n\n').trim();
-  }
-  function textToHtml(text){
-    return text.split(/\n\s*\n/).map(x => `<p>${escapeHtml(x).replace(/\n/g,'<br>')}</p>`).join('\n    ');
-  }
-  function collect(){
-    const title=$('title').value.trim();
-    return {
-      id: $('postId').value.trim() || slugify(title),
-      title,
-      date: $('date').value || today(),
-      category: $('category').value.trim(),
-      image: $('image').value.trim(),
-      excerpt: $('excerpt').value.trim(),
-      content: textToHtml($('content').value.trim())
-    };
-  }
-  function saveForm(e){
-    e.preventDefault();
-    const p=collect();
-    if(!p.title || !p.category || !p.content) return;
-    if(editingIndex>=0) posts[editingIndex]=p; else posts.unshift(p);
-    alert('लेख सेव हो गया। अब "posts.js डाउनलोड" करके GitHub में upload करें।');
-    renderList();
-  }
-  function jsString(value){
-    return JSON.stringify(String(value ?? ''));
-  }
-  function generateJS(){
-    const body = posts.map(p => `{
-    id: ${jsString(p.id)},
-    title: ${jsString(p.title)},
-    date: ${jsString(p.date)},
-    category: ${jsString(p.category)},
-    image: ${jsString(p.image)},
-    excerpt: ${jsString(p.excerpt)},
-    content: ${jsString(p.content)}
-}`).join(',\n\n');
-    return `window.posts = [\n\n${body}\n\n];\n`;
-  }
-  function download(){
-    const blob=new Blob([generateJS()],{type:'application/javascript;charset=utf-8'});
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download='posts.js';
-    a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  }
-  function preview(){
-    const p=collect();
-    $('preview').innerHTML = `<h2>${escapeHtml(p.title)}</h2>
-      <div class="meta">${escapeHtml(p.category)} • ${escapeHtml(p.date)}</div>
-      <p><strong>${escapeHtml(p.excerpt)}</strong></p>
-      <div>${p.content}</div>`;
-    $('preview').classList.remove('hidden');
-    $('preview').scrollIntoView({behavior:'smooth'});
-  }
-
-  $('postForm').addEventListener('submit',saveForm);
-  $('downloadBtn').onclick=download;
-  $('previewBtn').onclick=preview;
-  $('newBtn').onclick=clearForm;
-  $('clearBtn').onclick=clearForm;
-  $('listSearch').oninput=renderList;
-
-  $('date').value=today();
-  renderList();
+const REPO='Nkumarbaghel/cgneelbaghel', PATH='posts.js', BRANCH='main';
+const $=id=>document.getElementById(id); let token='', posts=[], editingIndex=-1, fileSha='';
+function today(){return new Date().toISOString().slice(0,10)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function slug(t){return t.toLowerCase().trim().replace(/[^a-z0-9\u0900-\u097f\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60)||'new-post'}
+function htmlToText(h){const d=document.createElement('div');d.innerHTML=h||'';return d.innerText.replace(/\n{3,}/g,'\n\n').trim()}
+function textToHtml(t){return t.split(/\n\s*\n/).filter(Boolean).map(x=>`<p>${esc(x).replace(/\n/g,'<br>')}</p>`).join('\n')}
+function collect(){const title=$('title').value.trim();return{id:$('postId').value.trim()||slug(title),title,date:$('date').value||today(),category:$('category').value.trim(),image:$('image').value.trim(),excerpt:$('excerpt').value.trim(),content:textToHtml($('content').value.trim())}}
+function status(msg,ok=false){$('status').textContent=msg;$('status').className='status '+(ok?'ok':'err')}
+function renderList(){const q=$('listSearch').value.toLowerCase();const f=posts.map((p,i)=>({p,i})).filter(x=>(x.p.title+' '+(x.p.category||'')).toLowerCase().includes(q));$('postList').innerHTML=f.length?f.map(x=>`<div class="post-item ${x.i===editingIndex?'active':''}" data-i="${x.i}"><strong>${esc(x.p.title)}</strong><span>${esc(x.p.category||'')} • ${esc(x.p.date||'')}</span></div>`).join(''):'<div class="small">कोई लेख नहीं मिला</div>';$('postList').querySelectorAll('.post-item').forEach(e=>e.onclick=()=>loadPost(+e.dataset.i))}
+function clearForm(){editingIndex=-1;$('formTitle').textContent='नया लेख';$('postForm').reset();$('date').value=today();$('postId').value='';$('preview').classList.add('hidden');$('deleteBtn').disabled=true;renderList()}
+function loadPost(i){const p=posts[i];editingIndex=i;$('formTitle').textContent='लेख संपादित करें';$('postId').value=p.id||'';$('title').value=p.title||'';$('category').value=p.category||'';$('date').value=p.date||today();$('image').value=p.image||'';$('excerpt').value=p.excerpt||'';$('content').value=htmlToText(p.content||'');$('deleteBtn').disabled=false;$('preview').classList.add('hidden');renderList();window.scrollTo({top:0,behavior:'smooth'})}
+async function gh(path,opts={}){const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path+'?ref='+BRANCH,{...opts,headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{})}});const data=await r.json();if(!r.ok)throw new Error(data.message||('GitHub error '+r.status));return data}
+async function connect(){token=$('token').value.trim();if(!token){$('loginStatus').textContent='Token डालें।';$('loginStatus').className='status err';return} $('loginBtn').disabled=true;$('loginStatus').textContent='Connecting...';try{const me=await fetch('https://api.github.com/user',{headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}});if(!me.ok)throw new Error('Token invalid या permission नहीं है।');await loadPosts();$('loginPanel').classList.add('hidden');$('app').classList.remove('hidden');clearForm()}catch(e){token='';$('loginStatus').textContent=e.message;$('loginStatus').className='status err'}finally{$('loginBtn').disabled=false}}
+async function loadPosts(){const d=await gh(PATH);fileSha=d.sha;const raw=decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))));const fn=new Function(raw+'\nreturn window.posts;');const old=window.posts;window.posts=undefined;const result=fn();window.posts=old;posts=Array.isArray(result)?result.map(p=>({...p})):[];renderList()}
+function generateJS(){return 'window.posts = '+JSON.stringify(posts,null,2)+';\n'}
+function b64(s){return btoa(unescape(encodeURIComponent(s)))}
+async function publish(){const p=collect();if(!p.title||!p.category||!p.content){status('शीर्षक, category और लेख जरूरी है।');return}if(editingIndex>=0)posts[editingIndex]=p;else posts.unshift(p);$('publishBtn').disabled=true;status('GitHub पर publish हो रहा है...',true);try{const d=await gh(PATH,{method:'PUT',body:JSON.stringify({message:(editingIndex>=0?'Update blog: ':'Publish blog: ')+p.title,content:b64(generateJS()),sha:fileSha,branch:BRANCH})});fileSha=d.content.sha;renderList();status('✅ Publish सफल! GitHub Pages थोड़ी देर में नया लेख दिखाएगा।',true)}catch(e){status('❌ Publish failed: '+e.message)}finally{$('publishBtn').disabled=false}}
+async function del(){if(editingIndex<0)return;if(!confirm('क्या यह लेख delete करना है?'))return;const title=posts[editingIndex].title;posts.splice(editingIndex,1);$('deleteBtn').disabled=true;try{const d=await gh(PATH,{method:'PUT',body:JSON.stringify({message:'Delete blog: '+title,content:b64(generateJS()),sha:fileSha,branch:BRANCH})});fileSha=d.content.sha;clearForm();status('✅ लेख delete हो गया और GitHub update हो गया।',true)}catch(e){status('❌ Delete failed: '+e.message);await loadPosts()}}
+function preview(){const p=collect();$('preview').innerHTML=`<h2>${esc(p.title)}</h2><p class="small">${esc(p.category)} • ${esc(p.date)}</p>${p.image?`<img src="${esc(p.image)}" alt="">`:''}<p><b>${esc(p.excerpt)}</b></p><div>${p.content}</div>`;$('preview').classList.remove('hidden')}
+$('loginBtn').onclick=connect;$('token').addEventListener('keydown',e=>{if(e.key==='Enter')connect()});$('postForm').onsubmit=e=>{e.preventDefault();const p=collect();if(editingIndex>=0)posts[editingIndex]=p;else posts.unshift(p);renderList();status('लेख editor में सेव है। Publish दबाकर GitHub पर भेजें।',true)};$('publishBtn').onclick=publish;$('deleteBtn').onclick=del;$('previewBtn').onclick=preview;$('newBtn').onclick=clearForm;$('clearBtn').onclick=clearForm;$('listSearch').oninput=renderList;$('date').value=today();$('deleteBtn').disabled=true;
 })();
