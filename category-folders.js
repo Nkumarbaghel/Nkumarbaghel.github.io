@@ -1,1 +1,90 @@
-document.addEventListener("DOMContentLoaded",()=>{const hero=document.querySelector(".blog-hero");if(!hero||typeof posts==="undefined"||document.querySelector("#categoryFolders"))return;const categories=[["💻","Digital / Technology","Digital, मोबाइल, इंटरनेट और तकनीक","digital"],["📰","News / समाचार","खबरें और समाचार विश्लेषण","news"],["👨‍💻","Career / Jobs","नौकरी, Resume और Career","career"],["🌾","छत्तीसगढ़ | संस्कृति और त्योहार","छत्तीसगढ़ के तीज-त्योहार और संस्कृति","chhattisgarh"],["📚","Education / शिक्षा","पढ़ाई और ज्ञान","education"],["💼","Business / Finance","बिजनेस और वित्त","business"],["🤖","AI / Artificial Intelligence","AI और ChatGPT","ai"],["🌐","Internet / Social Media","वेबसाइट और सोशल मीडिया","internet"],["🎭","Culture / संस्कृति","कला, लोकजीवन और संस्कृति","culture"],["📝","मेरे विचार","विशेष लेख और व्यक्तिगत विचार","thoughts"]];const norm=v=>String(v||"").toLowerCase();const classify=(p,key)=>{const t=norm(`${p.title||""} ${p.category||""} ${p.excerpt||""}`);if(key==="chhattisgarh")return /छत्तीसगढ़|chhattisgarh/.test(t)&&!/डिजिटल बदलाव|digital/.test(t);if(key==="digital")return /डिजिटल|digital|technology|तकनीक|इंटरनेट|internet/.test(t);if(key==="news")return /news|समाचार|खबर/.test(t);if(key==="career")return /career|job|jobs|नौकरी|resume|रिज्यूमे/.test(t);if(key==="education")return /education|शिक्षा|पढ़ाई|परीक्षा/.test(t);if(key==="business")return /business|finance|बिजनेस|व्यापार|वित्त/.test(t);if(key==="ai")return /\bai\b|artificial intelligence|chatgpt|एआई/.test(t);if(key==="internet")return /internet|इंटरनेट|social media|सोशल मीडिया|facebook|instagram|youtube/.test(t);if(key==="culture")return /culture|संस्कृति|लोककला|लोकजीवन/.test(t);if(key==="thoughts")return /विचार|thought/.test(t);return false};const esc=s=>String(s||"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));const date=s=>{const d=new Date((s||"")+"T00:00:00");return isNaN(d)?"":d.toLocaleDateString("hi-IN",{day:"numeric",month:"long",year:"numeric"})};const section=document.createElement("section");section.id="categoryFolders";section.className="category-folders";section.innerHTML=`<div class="category-folders-head"><span>📂 BLOG CATEGORIES</span><h2>जिस विषय में रुचि हो, वही चुनें</h2><p>किसी फोल्डर पर टैप करें — उसी विषय के ब्लॉग एक अलग पैनल में खुलेंगे।</p></div><div class="category-folder-grid">${categories.map(([i,n,d,k])=>`<button type="button" class="category-folder" data-key="${k}"><span class="folder-icon">${i}</span><strong>${n}</strong><small>${d}</small><span class="folder-open">फोल्डर खोलें →</span></button>`).join("")}</div>`;hero.insertAdjacentElement("afterend",section);const style=document.createElement("style");style.textContent=`.category-folders{width:min(1100px,92%);margin:0 auto 32px;padding:26px 0 4px}.category-folders-head{text-align:center;margin-bottom:20px}.category-folders-head>span{font-size:12px;font-weight:800;letter-spacing:2px;color:#ff2027}.category-folders-head h2{margin:7px 0 5px;font-size:28px;color:#fff}.category-folders-head p{margin:0;color:#999;font-size:14px}.category-folder-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.category-folder{min-height:155px;text-align:left;padding:17px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:linear-gradient(145deg,#151515,#0d0d0d);color:#fff;cursor:pointer;display:flex;flex-direction:column;transition:.25s}.category-folder:hover{transform:translateY(-4px);border-color:#ff2027}.folder-icon{font-size:29px;margin-bottom:10px}.category-folder strong{font-size:14px;line-height:1.35}.category-folder small{color:#999;line-height:1.45;margin-top:6px;font-size:11px}.folder-open{margin-top:auto;padding-top:12px;color:#ff6066;font-size:12px;font-weight:700}.folder-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:18px}.folder-modal-box{width:min(850px,96vw);max-height:88vh;overflow:auto;background:#111;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:22px}.folder-modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.folder-modal-head h3{margin:0;color:#fff;font-size:23px}.folder-close{border:1px solid rgba(255,255,255,.18);background:#1a1a1a;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}.folder-posts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.folder-post{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#171717;padding:15px}.folder-post small{color:#999}.folder-post h4{margin:8px 0;color:#fff;line-height:1.45}.folder-post p{color:#aaa;font-size:13px;line-height:1.6;margin:0 0 12px}.folder-post a{color:#ff6066;text-decoration:none;font-weight:700}@media(max-width:900px){.category-folder-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.category-folder-grid{grid-template-columns:repeat(2,1fr)}.category-folders-head h2{font-size:23px}.folder-posts{grid-template-columns:1fr}}@media(max-width:380px){.category-folder-grid{grid-template-columns:1fr}}`;document.head.appendChild(style);function openFolder(key,name){const m=posts.filter(p=>classify(p,key)).sort((a,b)=>String(b.date).localeCompare(String(a.date)));const modal=document.createElement("div");modal.className="folder-modal";modal.innerHTML=`<div class="folder-modal-box"><div class="folder-modal-head"><h3>📂 ${esc(name)} <span style="color:#999;font-size:13px;font-weight:400">(${m.length} लेख)</span></h3><button class="folder-close" type="button">✕</button></div><div class="folder-posts">${m.length?m.map(p=>`<article class="folder-post"><small>${esc(p.category||"सामान्य")} • ${date(p.date)}</small><h4>${esc(p.title)}</h4><p>${esc(p.excerpt||"")}</p><a href="blog.html?post=${encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></article>`).join(""):`<p style="color:#aaa">इस फोल्डर में अभी कोई लेख उपलब्ध नहीं है।</p>`}</div></div>`;document.body.appendChild(modal);const close=()=>modal.remove();modal.querySelector(".folder-close").onclick=close;modal.onclick=e=>{if(e.target===modal)close()}}section.querySelectorAll(".category-folder").forEach(b=>b.onclick=()=>{const x=categories.find(a=>a[3]===b.dataset.key);if(x)openFolder(x[3],x[1])})});
+// Blog category folders: articles stay hidden until a folder is tapped.
+document.addEventListener("DOMContentLoaded",()=>{
+  const hero=document.querySelector(".blog-hero");
+  if(!hero||typeof posts==="undefined"||document.querySelector("#categoryFolders"))return;
+
+  const categories=[
+    ["💻","Digital / Technology","Digital, मोबाइल, इंटरनेट और तकनीक","digital"],
+    ["📰","News / समाचार","खबरें और समाचार विश्लेषण","news"],
+    ["👨‍💻","Career / Jobs","नौकरी, Resume और Career","career"],
+    ["🌾","छत्तीसगढ़ | संस्कृति और त्योहार","छत्तीसगढ़ के तीज-त्योहार और संस्कृति","chhattisgarh"],
+    ["📚","Education / शिक्षा","पढ़ाई और ज्ञान","education"],
+    ["💼","Business / Finance","बिजनेस और वित्त","business"],
+    ["🤖","AI / Artificial Intelligence","AI और ChatGPT","ai"],
+    ["🌐","Internet / Social Media","वेबसाइट और सोशल मीडिया","internet"],
+    ["🎭","Culture / संस्कृति","कला, लोकजीवन और संस्कृति","culture"],
+    ["📝","मेरे विचार","विशेष लेख और व्यक्तिगत विचार","thoughts"]
+  ];
+
+  const norm=v=>String(v||"").toLowerCase();
+  const classify=(p,key)=>{
+    const t=norm(`${p.title||""} ${p.category||""} ${p.excerpt||""}`);
+    if(key==="chhattisgarh") return /छत्तीसगढ़|chhattisgarh/.test(t)&&!/डिजिटल बदलाव|digital/.test(t);
+    if(key==="digital") return /डिजिटल|digital|technology|तकनीक/.test(t)&&!/छत्तीसगढ़/.test(t);
+    if(key==="news") return /news|समाचार|खबर/.test(t);
+    if(key==="career") return /career|job|jobs|नौकरी|resume|रिज्यूमे/.test(t);
+    if(key==="education") return /education|शिक्षा|पढ़ाई|परीक्षा/.test(t);
+    if(key==="business") return /business|finance|बिजनेस|व्यापार|वित्त/.test(t);
+    if(key==="ai") return /\bai\b|artificial intelligence|chatgpt|एआई/.test(t);
+    if(key==="internet") return /internet|इंटरनेट|social media|सोशल मीडिया|facebook|instagram|youtube/.test(t);
+    if(key==="culture") return /culture|संस्कृति|लोककला|लोकजीवन/.test(t);
+    if(key==="thoughts") return /विचार|thought/.test(t);
+    return false;
+  };
+  const esc=s=>String(s||"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  const date=s=>{const d=new Date((s||"")+"T00:00:00");return isNaN(d)?"":d.toLocaleDateString("hi-IN",{day:"numeric",month:"long",year:"numeric"})};
+
+  // IMPORTANT: Keep the normal article cards/search area hidden on the category landing view.
+  // Articles are shown only inside the selected folder modal.
+  const postsBox=document.querySelector("#posts");
+  const tools=document.querySelector(".blog-tools");
+  if(postsBox) postsBox.style.display="none";
+  if(tools) tools.style.display="none";
+
+  const section=document.createElement("section");
+  section.id="categoryFolders";
+  section.className="category-folders";
+  section.innerHTML=`<div class="category-folders-head"><span>📂 BLOG CATEGORIES</span><h2>जिस विषय में रुचि हो, वही चुनें</h2><p>फोल्डर पर टैप करें — उसी विषय के ब्लॉग यहीं खुलेंगे।</p></div><div class="category-folder-grid">${categories.map(([i,n,d,k])=>`<button type="button" class="category-folder" data-key="${k}"><span class="folder-icon">${i}</span><strong>${n}</strong><small>${d}</small><span class="folder-open">फोल्डर खोलें →</span></button>`).join("")}</div>`;
+  hero.insertAdjacentElement("afterend",section);
+
+  const style=document.createElement("style");
+  style.textContent=`
+    .category-folders{width:min(1100px,92%);margin:0 auto 32px;padding:26px 0 4px}
+    .category-folders-head{text-align:center;margin-bottom:20px}
+    .category-folders-head>span{font-size:12px;font-weight:800;letter-spacing:2px;color:#ff2027}
+    .category-folders-head h2{margin:7px 0 5px;font-size:28px;color:#fff}
+    .category-folders-head p{margin:0;color:#999;font-size:14px}
+    .category-folder-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .category-folder{min-height:155px;text-align:left;padding:17px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:linear-gradient(145deg,#151515,#0d0d0d);color:#fff;cursor:pointer;display:flex;flex-direction:column;transition:.25s}
+    .category-folder:hover{transform:translateY(-4px);border-color:#ff2027;box-shadow:0 12px 30px rgba(255,32,39,.12)}
+    .folder-icon{font-size:29px;margin-bottom:10px}.category-folder strong{font-size:14px;line-height:1.35}.category-folder small{color:#999;line-height:1.45;margin-top:6px;font-size:11px}.folder-open{margin-top:auto;padding-top:12px;color:#ff6066;font-size:12px;font-weight:700}
+    .folder-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.80);display:flex;align-items:center;justify-content:center;padding:18px}
+    .folder-modal-box{width:min(850px,96vw);max-height:88vh;overflow:auto;background:#111;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:22px}
+    .folder-modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.folder-modal-head h3{margin:0;color:#fff;font-size:23px}
+    .folder-close{border:1px solid rgba(255,255,255,.18);background:#1a1a1a;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+    .folder-posts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.folder-post{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#171717;padding:15px}
+    .folder-post small{color:#999}.folder-post h4{margin:8px 0;color:#fff;line-height:1.45}.folder-post p{color:#aaa;font-size:13px;line-height:1.6;margin:0 0 12px}.folder-post a{color:#ff6066;text-decoration:none;font-weight:700}
+    @media(max-width:900px){.category-folder-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:600px){.category-folder-grid{grid-template-columns:repeat(2,1fr)}.category-folders-head h2{font-size:23px}.folder-posts{grid-template-columns:1fr}}
+    @media(max-width:380px){.category-folder-grid{grid-template-columns:1fr}}
+  `;
+  document.head.appendChild(style);
+
+  function openFolder(key,name){
+    const unique=new Map();
+    posts.filter(p=>classify(p,key)).forEach(p=>unique.set(`${norm(p.title)}|${p.date||""}`,p));
+    const matches=Array.from(unique.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    const modal=document.createElement("div");
+    modal.className="folder-modal";
+    modal.innerHTML=`<div class="folder-modal-box"><div class="folder-modal-head"><h3>📂 ${esc(name)} <span style="color:#999;font-size:13px;font-weight:400">(${matches.length} लेख)</span></h3><button class="folder-close" type="button">✕</button></div><div class="folder-posts">${matches.length?matches.map(p=>`<article class="folder-post"><small>${esc(p.category||"सामान्य")} • ${date(p.date)}</small><h4>${esc(p.title)}</h4><p>${esc(p.excerpt||"")}</p><a href="blog.html?post=${encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></article>`).join(""):`<p style="color:#aaa">इस फोल्डर में अभी कोई लेख उपलब्ध नहीं है।</p>`}</div></div>`;
+    document.body.appendChild(modal);
+    const close=()=>modal.remove();
+    modal.querySelector(".folder-close").onclick=close;
+    modal.onclick=e=>{if(e.target===modal)close()};
+  }
+
+  section.querySelectorAll(".category-folder").forEach(b=>b.onclick=()=>{
+    const x=categories.find(a=>a[3]===b.dataset.key);
+    if(x) openFolder(x[3],x[1]);
+  });
+});
