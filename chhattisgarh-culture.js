@@ -1,12 +1,12 @@
 // Chhattisgarh Culture feature article
-// Added as a separate data file so the existing blog posts remain untouched.
+// Media policy: only CC0/Public Domain media and explicitly attributed CC BY-SA media.
 window.posts = window.posts || [];
 window.posts.push({
   id: "छत्तीसगढ़-जहाँ-संस्कृति-दिखाई-नहीं-देती-जी-जाती-है",
   title: "छत्तीसगढ़: जहाँ संस्कृति दिखाई नहीं देती, जी जाती है",
   date: "2026-08-23",
   category: "छत्तीसगढ़ | संस्कृति और समाज",
-  image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Raut_Nacha.jpg",
+  image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg",
   excerpt: "छत्तीसगढ़ की संस्कृति को केवल लोकनृत्य और त्योहारों से नहीं समझा जा सकता। यह मिट्टी, भाषा, जंगल, भोजन, लोककला और सामुदायिक जीवन में आज भी साँस लेती हुई एक जीवित कहानी है।",
   content: `
   <p><strong>“छत्तीसगढ़ को समझना है तो उसके शहरों से नहीं, उसके गाँवों की सुबह से शुरुआत कीजिए।”</strong></p>
@@ -21,7 +21,7 @@ window.posts.push({
     <a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha.jpg" target="_blank" rel="noopener">
       <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Raut_Nacha.jpg" alt="छत्तीसगढ़ का राऊत नाचा" loading="lazy" style="width:100%;border-radius:18px;display:block;">
     </a>
-    <figcaption>राऊत नाचा — तस्वीर पर क्लिक करके मूल स्रोत देखें। स्रोत: Wikimedia Commons, Pankaj Oudhia, CC BY-SA 3.0.</figcaption>
+    <figcaption>राऊत नाचा — Pankaj Oudhia. CC BY-SA 3.0. <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption>
   </figure>
 
   <h2>जब गाँव का आँगन बन जाता है रंगमंच</h2>
@@ -29,27 +29,27 @@ window.posts.push({
   <p>इन कलाओं को केवल मंच पर देखने की चीज समझना अधूरा होगा। इनके भीतर पीढ़ियों की स्मृति और समाज की अपनी आवाज सुरक्षित रहती है।</p>
 
   <figure>
-    <a href="https://commons.wikimedia.org/wiki/File:Raut_Nacha_-_A_folk_dance_of_Chhattisgarh_performed_on_the_occasion_of_Madai_festival.jpg" target="_blank" rel="noopener">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Raut_Nacha_-_A_folk_dance_of_Chhattisgarh_performed_on_the_occasion_of_Madai_festival.jpg" alt="मड़ई अवसर पर राऊत नाचा" loading="lazy" style="width:100%;border-radius:18px;display:block;">
+    <a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" alt="बस्तर दशहरा" loading="lazy" style="width:100%;border-radius:18px;display:block;">
     </a>
-    <figcaption>मड़ई उत्सव के अवसर पर राऊत नाचा — तस्वीर पर क्लिक करके स्रोत देखें। स्रोत: Wikimedia Commons, Atulsirmour, CC BY-SA 4.0.</figcaption>
+    <figcaption>बस्तर दशहरा — CC0 / Public Domain Dedication. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption>
   </figure>
 
   <h2>यहाँ त्योहार मौसम के साथ साँस लेते हैं</h2>
   <p>हरेली में हरियाली और कृषि जीवन की खुशी दिखाई देती है। पोला में खेती में साथ देने वाले पशुओं के प्रति सम्मान दिखाई देता है। वहीं बस्तर दशहरा अपनी स्थानीय आस्था, परंपराओं और सामुदायिक सहभागिता के कारण अलग पहचान रखता है।</p>
   <p><a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">स्रोत: Incredible India — Chhattisgarh</a></p>
 
-  <figure>
-    <a href="https://commons.wikimedia.org/wiki/File:Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" target="_blank" rel="noopener">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Famous_Dussehra_Bastar_Jagdalpur_Chhattisgarh.jpg" alt="बस्तर दशहरा" loading="lazy" style="width:100%;border-radius:18px;display:block;">
-    </a>
-    <figcaption>बस्तर दशहरा — तस्वीर पर क्लिक करके मूल स्रोत देखें। स्रोत: Wikimedia Commons, Mohit Kumar Montu, CC0.</figcaption>
-  </figure>
-
   <h2>छत्तीसगढ़ की रसोई में भी संस्कृति बोलती है</h2>
   <p>अगर किसी प्रदेश की संस्कृति को स्वाद के जरिए समझना हो, तो उसकी रसोई में जाइए। चावल और स्थानीय अनाजों पर आधारित भोजन, फरा, चीला, मुठिया, अंगाकर रोटी, चुसैला और बोरे-बासी जैसे व्यंजन स्थानीय जीवनशैली की झलक देते हैं।</p>
   <p>विशेष रूप से बोरे-बासी को देखें। साधारण-सा भोजन, लेकिन उसके पीछे गर्मी, खेत में काम करने वाला इंसान, स्थानीय भोजन और पीढ़ियों से चली आ रही समझ की कहानी है।</p>
   <p><a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">स्रोत: Incredible India — Chhattisgarh</a></p>
+
+  <figure>
+    <a href="https://commons.wikimedia.org/wiki/File:Mama_Bhanja_Temple,_Barsur.jpg" target="_blank" rel="noopener">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mama_Bhanja_Temple,_Barsur.jpg" alt="बस्तर क्षेत्र का ऐतिहासिक मंदिर" loading="lazy" style="width:100%;border-radius:18px;display:block;">
+    </a>
+    <figcaption>मामा-भांजा मंदिर, बारसूर — CC0 / Public Domain Dedication. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">लाइसेंस</a> · <a href="https://commons.wikimedia.org/wiki/File:Mama_Bhanja_Temple,_Barsur.jpg" target="_blank" rel="noopener">मूल स्रोत</a></figcaption>
+  </figure>
 
   <h2>जंगल और संस्कृति का रिश्ता</h2>
   <p>छत्तीसगढ़ की संस्कृति को जंगल से अलग करके देखना मुश्किल है। विशेषकर आदिवासी जीवन में जंगल केवल संसाधन नहीं, बल्कि भोजन, कला, हस्तशिल्प और परंपराओं से जुड़ा जीवन-संसार है।</p>
@@ -72,6 +72,6 @@ window.posts.push({
     जय जोहार।<br>जय छत्तीसगढ़।
   </div>
 
-  <p style="margin-top:28px;font-size:13px;color:#aaa;"><strong>संदर्भ:</strong> <a href="https://durg.gov.in/en/culture-heritage/" target="_blank" rel="noopener">दुर्ग जिला प्रशासन</a> · <a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">Incredible India</a> · <a href="https://commons.wikimedia.org/wiki/Category:Festivals_in_Chhattisgarh" target="_blank" rel="noopener">Wikimedia Commons — Chhattisgarh Festivals</a></p>
+  <p style="margin-top:28px;font-size:13px;color:#aaa;"><strong>संदर्भ:</strong> <a href="https://durg.gov.in/en/culture-heritage/" target="_blank" rel="noopener">दुर्ग जिला प्रशासन</a> · <a href="https://www.incredibleindia.gov.in/en/chhattisgarh" target="_blank" rel="noopener">Incredible India</a> · <a href="https://commons.wikimedia.org/wiki/Category:Culture_of_Chhattisgarh" target="_blank" rel="noopener">Wikimedia Commons — Culture of Chhattisgarh</a></p>
   `
 });
