@@ -1,38 +1,59 @@
-// Blog category folders: compact, equal-size folders; articles open only after a folder is tapped.
+// Blog categories: icon-only, click an icon to open its articles.
 document.addEventListener("DOMContentLoaded",()=>{
   const hero=document.querySelector(".blog-hero");
   if(!hero||typeof posts==="undefined"||document.querySelector("#categoryFolders"))return;
 
-  const style=document.createElement("style");style.id="category-folder-styles";style.textContent=`
-    .category-folders{width:min(980px,92%);margin:32px auto 58px;box-sizing:border-box}
-    .category-folders-head{margin:0 0 16px}.category-folders-head span{display:inline-block;color:#ff2027;font-size:12px;font-weight:800;letter-spacing:.5px}
-    .category-folder-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
-    .category-folder{position:relative;width:100%;height:104px;min-height:104px;padding:20px 12px 10px;border:1px solid rgba(255,255,255,.09);border-radius:8px 12px 12px 12px;background:linear-gradient(145deg,#242424,#101010);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;transition:transform .18s,box-shadow .18s,border-color .18s;box-shadow:0 6px 16px rgba(0,0,0,.25);overflow:visible}
-    .category-folder::before{content:"";position:absolute;left:0;top:-9px;width:58px;height:18px;border-radius:7px 7px 0 0;background:#ff2027}
-    .category-folder::after{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:#ff2027;border-radius:2px}
-    .category-folder:hover{transform:translateY(-3px);border-color:rgba(255,32,39,.55);box-shadow:0 10px 22px rgba(0,0,0,.34)}
-    .category-folder:focus-visible{outline:2px solid #ff2027;outline-offset:3px}
-    .category-folder>span{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;gap:6px}
-    .category-folder .folder-icon{font-size:25px;line-height:1;margin:0}
-    .category-folder strong{display:block;font-size:13px;line-height:1.25;color:#fff;font-weight:700;white-space:normal}
-    .folder-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+  const style=document.createElement("style");
+  style.id="category-icon-styles";
+  style.textContent=`
+    .category-folders{width:min(1100px,94%);margin:34px auto 54px;box-sizing:border-box}
+    .category-folders-head{margin:0 0 24px;text-align:left}
+    .category-folders-head span{display:inline-flex;align-items:center;gap:8px;color:#ff2027;font-size:13px;font-weight:800;letter-spacing:.5px}
+    .category-folder-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 24px;align-items:start}
+    .category-folder{appearance:none;position:relative;width:100%;min-width:0;height:auto;padding:0;border:0;background:transparent;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;box-sizing:border-box;transition:transform .18s,filter .18s}
+    .category-folder:hover{transform:translateY(-5px);filter:brightness(1.12)}
+    .category-folder:focus-visible{outline:2px solid #ff2027;outline-offset:8px;border-radius:12px}
+    .category-folder>span{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;width:100%;height:auto;gap:10px}
+    .category-folder .folder-icon{width:82px;height:82px;display:flex;align-items:center;justify-content:center;font-size:48px;line-height:1;border-radius:22px;background:linear-gradient(145deg,rgba(255,32,39,.10),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.07);box-shadow:0 8px 22px rgba(0,0,0,.22);transition:border-color .18s,box-shadow .18s,transform .18s}
+    .category-folder:hover .folder-icon{border-color:rgba(255,32,39,.55);box-shadow:0 12px 28px rgba(255,32,39,.12)}
+    .category-folder strong{display:block;max-width:150px;font-size:13px;line-height:1.3;color:#fff;font-weight:700;white-space:normal}
+    .folder-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
     .folder-modal-box{width:min(900px,100%);max-height:90vh;overflow:auto;background:#101010;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.55);padding:20px;box-sizing:border-box}
-    .folder-modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:13px}.folder-modal-head h3{margin:0;color:#fff;font-size:19px}.folder-close{border:1px solid rgba(255,255,255,.15);background:#181818;color:#fff;width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:17px}.folder-close:hover{border-color:#ff2027;color:#ff5a5f}
+    .folder-modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:13px}
+    .folder-modal-head h3{margin:0;color:#fff;font-size:19px}.folder-close{border:1px solid rgba(255,255,255,.15);background:#181818;color:#fff;width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:17px}.folder-close:hover{border-color:#ff2027;color:#ff5a5f}
     .folder-posts{display:grid;gap:10px}.folder-post{padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:#151515}.folder-post small{color:#999;font-size:11px}.folder-post h4{margin:6px 0;color:#fff;font-size:16px;line-height:1.4}.folder-post p{margin:0 0 9px;color:#aaa;font-size:12px;line-height:1.6}.folder-post a{color:#ff5a5f;text-decoration:none;font-weight:800;font-size:12px}.folder-post a:hover{text-decoration:underline}
-    @media(max-width:900px){.category-folder-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.category-folder{height:100px;min-height:100px}}
-    @media(max-width:560px){.category-folders{width:92%;margin-top:25px}.category-folder-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.category-folder{height:92px;min-height:92px;padding:18px 7px 8px}.category-folder::before{width:52px;height:16px;top:-8px}.category-folder .folder-icon{font-size:22px}.category-folder strong{font-size:11px;line-height:1.2}.folder-modal{padding:10px}.folder-modal-box{padding:15px;border-radius:15px}}
-  `;document.head.appendChild(style);
+    @media(max-width:900px){.category-folder-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px}.category-folder .folder-icon{width:74px;height:74px;font-size:42px}}
+    @media(max-width:560px){.category-folders{width:92%;margin-top:25px}.category-folder-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 10px}.category-folder .folder-icon{width:64px;height:64px;font-size:34px;border-radius:18px}.category-folder strong{font-size:11px;line-height:1.2}.folder-modal{padding:10px}.folder-modal-box{padding:15px;border-radius:15px}}
+  `;
+  document.head.appendChild(style);
 
   const categories=[["💻","Digital / Technology","digital"],["📰","News / समाचार","news"],["👨‍💻","Career / Jobs","career"],["🌾","छत्तीसगढ़ | संस्कृति और त्योहार","chhattisgarh"],["📚","Education / शिक्षा","education"],["💼","Business / Finance","business"],["🤖","AI / Artificial Intelligence","ai"],["🌐","Internet / Social Media","internet"],["🎭","Culture / संस्कृति","culture"],["📝","मेरे विचार","thoughts"]];
   const norm=v=>String(v||"").toLowerCase();
   const classify=(p,key)=>{const t=norm(`${p.title||""} ${p.category||""} ${p.excerpt||""}`);if(key==="chhattisgarh")return /छत्तीसगढ़|chhattisgarh/.test(t)&&!/डिजिटल बदलाव|digital/.test(t);if(key==="digital")return /डिजिटल|digital|technology|तकनीक/.test(t)&&!/छत्तीसगढ़/.test(t);if(key==="news")return /news|समाचार|खबर/.test(t);if(key==="career")return /career|job|jobs|नौकरी|resume|रिज्यूमे/.test(t);if(key==="education")return /education|शिक्षा|पढ़ाई|परीक्षा/.test(t);if(key==="business")return /business|finance|बिजनेस|व्यापार|वित्त/.test(t);if(key==="ai")return /\bai\b|artificial intelligence|chatgpt|एआई/.test(t);if(key==="internet")return /internet|इंटरनेट|social media|सोशल मीडिया|facebook|instagram|youtube/.test(t);if(key==="culture")return /culture|संस्कृति|लोककला|लोकजीवन/.test(t);if(key==="thoughts")return /विचार|thought/.test(t);return false};
   const esc=s=>String(s||"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
   const date=s=>{const d=new Date((s||"")+"T00:00:00");return isNaN(d)?"":d.toLocaleDateString("hi-IN",{day:"numeric",month:"long",year:"numeric"})};
-  const hideOutsideCards=()=>{const p=document.querySelector("#posts"),t=document.querySelector(".blog-tools");if(p)p.style.setProperty("display","none","important");if(t)t.style.setProperty("display","none","important")};hideOutsideCards();
+
+  const hideOutsideCards=()=>{const p=document.querySelector("#posts"),t=document.querySelector(".blog-tools");if(p)p.style.setProperty("display","none","important");if(t)t.style.setProperty("display","none","important")};
+  hideOutsideCards();
   const observer=new MutationObserver(hideOutsideCards);if(document.body)observer.observe(document.body,{childList:true,subtree:true});
-  const section=document.createElement("section");section.id="categoryFolders";section.className="category-folders";
-  section.innerHTML=`<div class="category-folders-head"><span>📂 BLOG CATEGORIES</span></div><div class="category-folder-grid">${categories.map(([i,n,k])=>`<button type="button" class="category-folder" data-key="${k}"><span><span class="folder-icon">${i}</span><strong>${n}</strong></span></button>`).join("")}</div>`;
+
+  const section=document.createElement("section");
+  section.id="categoryFolders";
+  section.className="category-folders";
+  section.innerHTML=`<div class="category-folders-head"><span>▦ &nbsp;BLOG CATEGORIES</span></div><div class="category-folder-grid">${categories.map(([i,n,k])=>`<button type="button" class="category-folder" data-key="${k}" aria-label="${n} के लेख खोलें"><span><span class="folder-icon">${i}</span><strong>${n}</strong></span></button>`).join("")}</div>`;
   hero.insertAdjacentElement("afterend",section);
-  function openFolder(key,name){const unique=new Map();posts.filter(p=>classify(p,key)).forEach(p=>unique.set(`${norm(p.title)}|${p.date||""}`,p));const matches=Array.from(unique.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date)));const modal=document.createElement("div");modal.className="folder-modal";modal.innerHTML=`<div class="folder-modal-box"><div class="folder-modal-head"><h3>📂 ${esc(name)} <span style="color:#999;font-size:12px;font-weight:400">(${matches.length} लेख)</span></h3><button class="folder-close" type="button">✕</button></div><div class="folder-posts">${matches.length?matches.map(p=>`<article class="folder-post"><small>${esc(p.category||"सामान्य")} • ${date(p.date)}</small><h4>${esc(p.title)}</h4><p>${esc(p.excerpt||"")}</p><a href="blog.html?post=${encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></article>`).join(""):`<p style="color:#aaa">इस फोल्डर में अभी कोई लेख उपलब्ध नहीं है।</p>`}</div></div>`;document.body.appendChild(modal);const close=()=>modal.remove();modal.querySelector(".folder-close").onclick=close;modal.onclick=e=>{if(e.target===modal)close()}}
+
+  function openFolder(key,name){
+    const unique=new Map();
+    posts.filter(p=>classify(p,key)).forEach(p=>unique.set(`${norm(p.title)}|${p.date||""}`,p));
+    const matches=Array.from(unique.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    const modal=document.createElement("div");
+    modal.className="folder-modal";
+    modal.innerHTML=`<div class="folder-modal-box"><div class="folder-modal-head"><h3>${esc(name)} <span style="color:#999;font-size:12px;font-weight:400">(${matches.length} लेख)</span></h3><button class="folder-close" type="button" aria-label="बंद करें">✕</button></div><div class="folder-posts">${matches.length?matches.map(p=>`<article class="folder-post"><small>${esc(p.category||"सामान्य")} • ${date(p.date)}</small><h4>${esc(p.title)}</h4><p>${esc(p.excerpt||"")}</p><a href="blog.html?post=${encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></article>`).join(""):`<p style="color:#aaa">इस category में अभी कोई लेख उपलब्ध नहीं है।</p>`}</div></div>`;
+    document.body.appendChild(modal);
+    const close=()=>modal.remove();
+    modal.querySelector(".folder-close").onclick=close;
+    modal.onclick=e=>{if(e.target===modal)close()};
+  }
   section.querySelectorAll(".category-folder").forEach(b=>b.onclick=()=>{const x=categories.find(a=>a[2]===b.dataset.key);if(x)openFolder(x[2],x[1])});
 });
