@@ -1,29 +1,29 @@
-// Blog categories: icon-only, click an icon to open its articles.
+// Blog categories: icon-only. Legacy folder/card styles are intentionally bypassed.
 document.addEventListener("DOMContentLoaded",()=>{
   const hero=document.querySelector(".blog-hero");
   if(!hero||typeof posts==="undefined"||document.querySelector("#categoryFolders"))return;
 
   const style=document.createElement("style");
-  style.id="category-icon-styles";
+  style.id="category-icon-styles-v2";
   style.textContent=`
-    .category-folders{width:min(1100px,94%);margin:34px auto 54px;box-sizing:border-box}
-    .category-folders-head{margin:0 0 24px;text-align:left}
-    .category-folders-head span{display:inline-flex;align-items:center;gap:8px;color:#ff2027;font-size:13px;font-weight:800;letter-spacing:.5px}
-    .category-folder-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 24px;align-items:start}
-    .category-folder{appearance:none;position:relative;width:100%;min-width:0;height:auto;padding:0;border:0;background:transparent;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;box-sizing:border-box;transition:transform .18s,filter .18s}
-    .category-folder:hover{transform:translateY(-5px);filter:brightness(1.12)}
-    .category-folder:focus-visible{outline:2px solid #ff2027;outline-offset:8px;border-radius:12px}
-    .category-folder>span{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;width:100%;height:auto;gap:10px}
-    .category-folder .folder-icon{width:82px;height:82px;display:flex;align-items:center;justify-content:center;font-size:48px;line-height:1;border-radius:22px;background:linear-gradient(145deg,rgba(255,32,39,.10),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.07);box-shadow:0 8px 22px rgba(0,0,0,.22);transition:border-color .18s,box-shadow .18s,transform .18s}
-    .category-folder:hover .folder-icon{border-color:rgba(255,32,39,.55);box-shadow:0 12px 28px rgba(255,32,39,.12)}
-    .category-folder strong{display:block;max-width:150px;font-size:13px;line-height:1.3;color:#fff;font-weight:700;white-space:normal}
+    #categoryFolders.category-icon-section{width:min(1100px,94%);margin:34px auto 54px;box-sizing:border-box}
+    #categoryFolders .category-folders-head{margin:0 0 26px;text-align:left}
+    #categoryFolders .category-folders-head span{display:inline-flex;align-items:center;gap:8px;color:#ff2027;font-size:13px;font-weight:800;letter-spacing:.5px}
+    #categoryFolders .category-icon-grid{display:grid;grid-template-columns:repeat(5,minmax(90px,1fr));gap:30px 34px;align-items:start;justify-items:center}
+    #categoryFolders .category-icon-item{appearance:none!important;position:relative!important;width:100%!important;min-width:0!important;height:auto!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important;color:#fff!important;cursor:pointer;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;text-align:center!important;box-sizing:border-box!important;transition:transform .18s,filter .18s!important}
+    #categoryFolders .category-icon-item::before,#categoryFolders .category-icon-item::after{content:none!important;display:none!important}
+    #categoryFolders .category-icon-item:hover{transform:translateY(-5px)!important;filter:brightness(1.12)!important}
+    #categoryFolders .category-icon-item:focus-visible{outline:2px solid #ff2027!important;outline-offset:8px!important;border-radius:12px!important}
+    #categoryFolders .category-icon-item .category-icon-symbol{display:flex!important;align-items:center!important;justify-content:center!important;width:78px!important;height:78px!important;padding:0!important;margin:0 0 9px!important;border:0!important;border-radius:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important;font-size:48px!important;line-height:1!important}
+    #categoryFolders .category-icon-item strong{display:block!important;width:100%!important;max-width:150px!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;color:#fff!important;font-size:13px!important;line-height:1.3!important;font-weight:700!important;white-space:normal!important;text-shadow:0 1px 8px rgba(0,0,0,.4)!important}
+    #categoryFolders .category-icon-item span{border:0!important;background:transparent!important;box-shadow:none!important}
     .folder-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
     .folder-modal-box{width:min(900px,100%);max-height:90vh;overflow:auto;background:#101010;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.55);padding:20px;box-sizing:border-box}
     .folder-modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:13px}
     .folder-modal-head h3{margin:0;color:#fff;font-size:19px}.folder-close{border:1px solid rgba(255,255,255,.15);background:#181818;color:#fff;width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:17px}.folder-close:hover{border-color:#ff2027;color:#ff5a5f}
     .folder-posts{display:grid;gap:10px}.folder-post{padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:#151515}.folder-post small{color:#999;font-size:11px}.folder-post h4{margin:6px 0;color:#fff;font-size:16px;line-height:1.4}.folder-post p{margin:0 0 9px;color:#aaa;font-size:12px;line-height:1.6}.folder-post a{color:#ff5a5f;text-decoration:none;font-weight:800;font-size:12px}.folder-post a:hover{text-decoration:underline}
-    @media(max-width:900px){.category-folder-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px}.category-folder .folder-icon{width:74px;height:74px;font-size:42px}}
-    @media(max-width:560px){.category-folders{width:92%;margin-top:25px}.category-folder-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 10px}.category-folder .folder-icon{width:64px;height:64px;font-size:34px;border-radius:18px}.category-folder strong{font-size:11px;line-height:1.2}.folder-modal{padding:10px}.folder-modal-box{padding:15px;border-radius:15px}}
+    @media(max-width:900px){#categoryFolders .category-icon-grid{grid-template-columns:repeat(4,minmax(80px,1fr));gap:26px 18px}#categoryFolders .category-icon-item .category-icon-symbol{width:70px!important;height:70px!important;font-size:42px!important}}
+    @media(max-width:560px){#categoryFolders.category-icon-section{width:92%;margin-top:25px}#categoryFolders .category-icon-grid{grid-template-columns:repeat(3,minmax(70px,1fr));gap:24px 10px}#categoryFolders .category-icon-item .category-icon-symbol{width:60px!important;height:60px!important;font-size:34px!important}#categoryFolders .category-icon-item strong{font-size:11px!important;line-height:1.2!important}.folder-modal{padding:10px}.folder-modal-box{padding:15px;border-radius:15px}}
   `;
   document.head.appendChild(style);
 
@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   const section=document.createElement("section");
   section.id="categoryFolders";
-  section.className="category-folders";
-  section.innerHTML=`<div class="category-folders-head"><span>▦ &nbsp;BLOG CATEGORIES</span></div><div class="category-folder-grid">${categories.map(([i,n,k])=>`<button type="button" class="category-folder" data-key="${k}" aria-label="${n} के लेख खोलें"><span><span class="folder-icon">${i}</span><strong>${n}</strong></span></button>`).join("")}</div>`;
+  section.className="category-icon-section";
+  section.innerHTML=`<div class="category-folders-head"><span>▦ &nbsp;BLOG CATEGORIES</span></div><div class="category-icon-grid">${categories.map(([i,n,k])=>`<button type="button" class="category-icon-item" data-key="${k}" aria-label="${n} के लेख खोलें"><span class="category-icon-symbol" aria-hidden="true">${i}</span><strong>${n}</strong></button>`).join("")}</div>`;
   hero.insertAdjacentElement("afterend",section);
 
   function openFolder(key,name){
@@ -55,5 +55,5 @@ document.addEventListener("DOMContentLoaded",()=>{
     modal.querySelector(".folder-close").onclick=close;
     modal.onclick=e=>{if(e.target===modal)close()};
   }
-  section.querySelectorAll(".category-folder").forEach(b=>b.onclick=()=>{const x=categories.find(a=>a[2]===b.dataset.key);if(x)openFolder(x[2],x[1])});
+  section.querySelectorAll(".category-icon-item").forEach(b=>b.onclick=()=>{const x=categories.find(a=>a[2]===b.dataset.key);if(x)openFolder(x[2],x[1])});
 });
