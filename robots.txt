@@ -6,4 +6,4 @@ Disallow: /about-editor.html
 Disallow: /shorts-admin.html
 Disallow: /shorts-upload.html
 
-Sitemap: https://nkumarbaghel.github.io/cgneelbaghel/sitemap.xml
+Sitemap: https://nkumarbaghel.github.io/sitemap.xml
