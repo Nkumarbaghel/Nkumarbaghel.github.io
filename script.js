@@ -97,6 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const id = new URLSearchParams(location.search).get("post");
+
+  // SEO for individual article URLs (?post=...).
+  const setMeta = (name, content, attr = "name") => {
+    if (!content) return;
+    let el = document.head.querySelector(`meta[${attr}="${name}"]`);
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute(attr, name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  };
+  const setLink = (rel, href) => {
+    let el = document.head.querySelector(`link[rel="${rel}"]`);
+    if (!el) {
+      el = document.createElement("link");
+      el.setAttribute("rel", rel);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("href", href);
+  };
   if (id) {
     const p = uniquePosts.find(x => String(x.id) === String(id));
     box.style.display = "none";
@@ -105,6 +126,44 @@ document.addEventListener("DOMContentLoaded", () => {
     detail.style.display = "block";
 
     if (p) {
+      const canonicalUrl = new URL("blog.html?post=" + encodeURIComponent(p.id), location.href).href;
+      const cleanDescription = String(p.excerpt || p.title || "CG Neel Baghel Blog")
+        .replace(/<[^>]*>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 160);
+
+      document.title = p.title + " | CG Neel Baghel";
+      setMeta("description", cleanDescription);
+      setMeta("robots", "index, follow, max-image-preview:large");
+      setMeta("og:title", p.title + " | CG Neel Baghel", "property");
+      setMeta("og:description", cleanDescription, "property");
+      setMeta("og:type", "article", "property");
+      setMeta("og:url", canonicalUrl, "property");
+      setMeta("twitter:card", "summary_large_image");
+      setMeta("twitter:title", p.title + " | CG Neel Baghel");
+      setMeta("twitter:description", cleanDescription);
+      setLink("canonical", canonicalUrl);
+
+      const oldSchema = document.getElementById("articleStructuredData");
+      if (oldSchema) oldSchema.remove();
+      const schema = document.createElement("script");
+      schema.type = "application/ld+json";
+      schema.id = "articleStructuredData";
+      schema.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": p.title,
+        "description": cleanDescription,
+        "datePublished": p.date,
+        "dateModified": p.date,
+        "author": { "@type": "Person", "name": "Neel Kumar Baghel" },
+        "publisher": { "@type": "Person", "name": "Neel Kumar Baghel" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
+        "inLanguage": "hi-IN"
+      });
+      document.head.appendChild(schema);
+
       const viewsKey = "cgneel-views-" + p.id;
       const views = Number(localStorage.getItem(viewsKey) || 0) + 1;
       localStorage.setItem(viewsKey, String(views));
