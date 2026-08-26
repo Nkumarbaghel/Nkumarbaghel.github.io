@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector("#nav");
   const menu = document.querySelector("#menu");
+  if (nav && !nav.querySelector('a[href="other.html"]')) {
+    nav.insertAdjacentHTML("beforeend", '<a href="other.html">अन्य</a>');
+  }
   if (menu && nav) {
     menu.onclick = () => nav.classList.toggle("open");
     nav.querySelectorAll("a").forEach(a => a.onclick = () => nav.classList.remove("open"));
@@ -10,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const detail = document.querySelector("#detail");
   if (!box || typeof posts === "undefined") return;
 
-  // Remove duplicate articles even when the same post was saved with
-  // different IDs. Title + date is treated as the canonical identity.
   const normalize = value => String(value ?? "")
     .toLowerCase()
     .replace(/[“”\"'‘’]/g, "")
@@ -98,13 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const id = new URLSearchParams(location.search).get("post");
 
-  // SEO for individual article URLs (?post=...).
   const setMeta = (name, content, attr = "name") => {
     if (!content) return;
     let el = document.head.querySelector(`meta[${attr}="${name}"]`);
     if (!el) {
       el = document.createElement("meta");
-      el.setAttribute(attr, name);
+      el.setAttribute("${attr}", name);
       document.head.appendChild(el);
     }
     el.setAttribute("content", content);
