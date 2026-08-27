@@ -1,0 +1,35 @@
+name: Fix SEO canonical URLs
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix-canonical-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Normalize site URLs
+        shell: bash
+        run: |
+          OLD='https://nkumarbaghel.github.io/cgneelbaghel'
+          NEW='https://nkumarbaghel.github.io'
+          find . -type f -name '*.html' -print0 | xargs -0 sed -i "s#${OLD}#${NEW}#g"
+
+      - name: Commit fixes
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html' ':!node_modules'
+          if git diff --cached --quiet; then
+            echo 'No SEO URL changes needed.'
+            exit 0
+          fi
+          git commit -m 'SEO: normalize canonical URLs [skip ci]'
+          git push
