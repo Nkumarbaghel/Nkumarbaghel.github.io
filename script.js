@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function card(p) {
-    return `<article class="card blog-card"><div class="post-info"><small>${esc(p.category || "सामान्य")} • ${date(p.date)}</small><div class="post-meta-row"><span class="meta-pill">⏱️ ${readTime(p)} मिनट पढ़ने का समय</span><span class="meta-pill">📖 लेख</span></div><h2>${esc(p.title)}</h2><p>${esc(p.excerpt || "")}</p><a href="blog.html?post=${encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></div></article>`;
+    return `<article class="card blog-card"><div class="post-info"><small>${esc(p.category || "सामान्य")} • ${date(p.date)}</small><div class="post-meta-row"><span class="meta-pill">⏱️ ${readTime(p)} मिनट पढ़ने का समय</span><span class="meta-pill">📖 लेख</span></div><h2>${esc(p.title)}</h2><p>${esc(p.excerpt || "")}</p><a href="${p.id === "जब-छत्तीसगढ़-गाँव-से-इंटरनेट-तक-पहुँचा-हमारी-मिट्टी-की-नई-कह" ? "blog-chhattisgarh-gaon-se-internet-tak.html" : "blog.html?post=" + encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></div></article>`;
   }
 
   function render() {
