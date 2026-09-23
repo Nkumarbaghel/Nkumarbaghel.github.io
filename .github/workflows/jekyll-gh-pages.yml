@@ -29,9 +29,6 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Ensure Google Search Console verification file is published
-        run: |
-          cp googlef5e05e8f506ff9ed.html ./_site/googlef5e05e8f506ff9ed.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
 
