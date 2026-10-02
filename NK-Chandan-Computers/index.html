@@ -542,9 +542,31 @@ let msg="नमस्ते NK & Chandan Computers, मुझे यह पू�
 window.open("https://wa.me/"+WA+"?text="+msg,"_blank");
 }
 
+function renderProducts(){
+if(active==="mobile"){renderPhoneCatalog();return;}
+if(pcCatalog[active]){
+renderHardwareCatalog(active);
+return;
+}
+let c=categories.find(x=>x.id===active);
+if(active==="all"){
+document.getElementById("catalogTitle").textContent="⭐ Featured Catalog";
+document.getElementById("catalogSub").textContent="सभी categories के शुरुआती products — किसी product पर tap करके Details और WhatsApp enquiry करें।";
+filters.innerHTML="";
+let list=products;
+grid.innerHTML=list.length?list.map((p,i)=>productCard(p,i)).join(""):'<div class="note">अभी catalog में products उपलब्ध नहीं हैं।</div>';
+return;
+}
+document.getElementById("catalogTitle").textContent=(c?c.icon+" ":"")+" "+(c?c.name:"Product Catalog");
+document.getElementById("catalogSub").textContent=c?c.desc+" • Sub-category चुनकर matching products देखें।":"Products";
+renderFilters(c);
+let list=products.filter(p=>p[0]===active);
+grid.innerHTML=list.length?list.map((p,i)=>productCard(p,i)).join(""):'<div class="note">इस category के detailed products अभी catalog में नहीं मिले। Exact model/part number भेजने पर इसे जोड़ा जा सकता है।</div>';
+}
+
 function renderFilters(c){
 if(!c){filters.innerHTML="";return}
-filters.innerHTML=c.subs.map(s=>'<button class="filter" onclick="subSearch(\''+s.replace(/'/g,"\\'")+'\')">'+s+'</button>').join("");
+filters.innerHTML=c.subs.map(s=>'<button class="filter" onclick="subSearch(&quot;'+s.replace(/"/g,"&quot;")+'&quot;)">'+s+'</button>').join("");
 }
 function subSearch(s){
 document.getElementById("q").value=s;
