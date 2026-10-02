@@ -15,7 +15,7 @@
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:.18s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #173b6618}.badge{position:absolute;top:9px;left:9px;background:#e8f7ee;color:var(--green);font-size:9px;font-weight:900;padding:4px 6px;border-radius:3px;z-index:2}.visual{height:175px;background:linear-gradient(135deg,#edf6f7,#e2ebf1);display:grid;place-items:center}.device{width:116px;height:140px;background:#151515;border:6px solid #555;border-radius:15px;box-shadow:0 8px 18px #0003;position:relative}.device:before{content:"";position:absolute;inset:8px;background:linear-gradient(135deg,#283744,#060708);border-radius:8px}.device:after{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:26px;height:6px;border-radius:6px;background:#333}.iconVisual{font-size:55px;filter:drop-shadow(0 6px 8px #0002)}.info{padding:11px}.info h3{margin:5px 0;font-size:14px;color:var(--nav)}.meta{font-size:10px;color:var(--mut);line-height:1.45}.price{font-size:15px;font-weight:1000;margin-top:7px}.stock{color:var(--green);font-size:10px;font-weight:800;margin-top:3px}.btns{display:flex;gap:7px;margin-top:9px}.btns button{flex:1;border-radius:5px;padding:8px;border:1px solid var(--teal);background:#fff;color:var(--teal);font-weight:900;font-size:10px;cursor:pointer}.btns button:last-child{border:0;background:var(--orange);color:#172b3d}
 .note{background:#fff;border:1px solid var(--line);padding:13px;border-radius:8px;font-size:11px;color:var(--mut);line-height:1.6}.contact{background:#fff;border:1px solid var(--line);padding:22px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:15px}.wa{background:#20b85a;color:#fff;padding:12px 18px;border-radius:6px;font-weight:900;white-space:nowrap}footer{background:var(--nav2);color:#b9c9d6;margin-top:30px;padding:25px 0;font-size:11px}
 dialog{width:min(960px,calc(100% - 16px));border:0;border-radius:13px;padding:0;box-shadow:0 30px 100px #00142670}dialog::backdrop{background:#061526aa}.mh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:900;color:var(--nav)}.x{border:0;border-radius:50%;width:35px;height:35px;font-size:22px;cursor:pointer}.md{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;padding:22px}.large{min-height:350px;background:#edf6f7;border-radius:10px;display:grid;place-items:center}.large .device{width:180px;height:260px}.detailVisual{font-size:92px}.facts{display:grid;gap:7px;margin:13px 0}.fact{background:#f5f7f9;padding:9px;border-radius:6px;font-size:12px}.fact b{color:var(--nav)}.modalBtn{display:inline-block;background:var(--orange);padding:11px 17px;border-radius:5px;font-weight:900}
-@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.depts{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.top span{display:none}.nav{flex-wrap:wrap}.brand{font-size:15px}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(2,1fr);gap:8px}.visual{height:150px}.device{width:92px;height:115px}.info{padding:9px}.info h3{font-size:12px}.depts{grid-template-columns:repeat(2,1fr);gap:8px}.dept{padding:11px}.heroIn{padding:22px}.md{grid-template-columns:1fr}.large{min-height:250px}.contact{flex-direction:column;align-items:flex-start}.wa{width:100%;text-align:center}}
+.phoneVariant{font-size:10px;color:var(--mut)}\n@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.depts{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.top span{display:none}.nav{flex-wrap:wrap}.brand{font-size:15px}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(2,1fr);gap:8px}.visual{height:150px}.device{width:92px;height:115px}.info{padding:9px}.info h3{font-size:12px}.depts{grid-template-columns:repeat(2,1fr);gap:8px}.dept{padding:11px}.heroIn{padding:22px}.md{grid-template-columns:1fr}.large{min-height:250px}.contact{flex-direction:column;align-items:flex-start}.wa{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -29,7 +29,7 @@ dialog{width:min(960px,calc(100% - 16px));border:0;border-radius:13px;padding:0;
 <main class="wrap" id="home">
 <section class="hero"><div class="heroIn"><div>
 <h1>आपकी पूरी Electronics Shopping जगह</h1>
-<p>Mobile से लेकर Laptop, Computer Parts, LCD/Monitor, Accessories, Storage, Networking और Printer तक—हर category को अलग catalog में देखें। Product चुनें, details देखें और price/stock WhatsApp पर confirm करें।</p>
+<p>Mobile में हर model के RAM/Storage variants और full specifications देखें। साथ में Laptop, Computer Parts, LCD/Monitor, Accessories, Storage, Networking और Printer के catalogs भी उपलब्ध हैं। Price और Stock को mobile catalog से हटा दिया गया है।</p>
 <span class="pill">Category → Sub-category → Product → Details → Price पूछें</span>
 </div></div></section>
 
@@ -71,10 +71,7 @@ const categories=[
 ];
 
 const products=[
-["mobile","📱","Samsung Galaxy A15 4G","Samsung","Phone • 6.5 inch • model-wise","Model catalog preview"],
-["mobile","📱","Redmi Note 13 4G","Redmi","Phone • 6.67 inch • model-wise","Model catalog preview"],
-["mobile","📱","Realme C53","Realme","Phone • 6.74 inch • model-wise","Model catalog preview"],
-["mobile","📱","Vivo Y27","Vivo","Phone • model-wise","Model catalog preview"],
+...phoneModels.map(p=>["mobile","📱",p.brand+" "+p.model,p.brand,"RAM: "+p.ram+" • Storage: "+p.storage.join(" / ")+" • Display: "+p.display+" inch","Full specifications"]),
 ["mobileparts","▣","Samsung Galaxy A15 Display / Touch","Samsung","Display • 6.5 inch • compatible/original as stocked","Actual stock confirm"],
 ["mobileparts","🔋","Mobile Battery — Model-wise","Multi-brand","Battery • exact model required","Compatibility confirm"],
 ["mobileparts","🔌","Mobile Charging Flex — Model-wise","Multi-brand","Charging port • exact model required","Compatibility confirm"],
@@ -121,6 +118,45 @@ const products=[
 ["power","🔌","Extension Board","Multi-brand","Power accessory","Price/stock पूछें"]
 ];
 
+const phoneModels=[
+{id:"s-a04",brand:"Samsung",model:"Galaxy A04",display:"6.5",resolution:"720×1600",technology:"PLS LCD",ram:"4GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"5MP",network:"4G",colors:"Black, Green, Copper"},
+{id:"s-a05",brand:"Samsung",model:"Galaxy A05",display:"6.7",resolution:"720×1600",technology:"PLS LCD",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"8MP",network:"4G",colors:"Black, Silver, Light Green"},
+{id:"s-a14",brand:"Samsung",model:"Galaxy A14 4G",display:"6.6",resolution:"1080×2408",technology:"PLS LCD",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + 5MP + 2MP",front:"13MP",network:"4G",colors:"Black, Green, Silver"},
+{id:"s-a15",brand:"Samsung",model:"Galaxy A15 5G",display:"6.5",resolution:"1080×2340",technology:"Super AMOLED",ram:"6GB / 8GB",storage:["128GB","256GB"],battery:"5000mAh",rear:"50MP + 5MP + 2MP",front:"13MP",network:"5G",colors:"Blue Black, Light Blue, Yellow"},
+{id:"s-a24",brand:"Samsung",model:"Galaxy A24",display:"6.5",resolution:"1080×2340",technology:"Super AMOLED",ram:"6GB / 8GB",storage:["128GB"],battery:"5000mAh",rear:"50MP OIS + 5MP + 2MP",front:"13MP",network:"4G",colors:"Black, Green, Silver"},
+{id:"s-m14",brand:"Samsung",model:"Galaxy M14 5G",display:"6.6",resolution:"1080×2408",technology:"PLS LCD",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"6000mAh",rear:"50MP + 2MP + 2MP",front:"13MP",network:"5G",colors:"Blue, Dark Blue, Silver"},
+{id:"r-10a",brand:"Redmi",model:"10A",display:"6.53",resolution:"1600×720",technology:"IPS LCD",ram:"3GB / 4GB",storage:["32GB","64GB","128GB"],battery:"5000mAh",rear:"13MP + 2MP",front:"5MP",network:"4G",colors:"Graphite Grey, Chrome Silver, Sky Blue"},
+{id:"r-12c",brand:"Redmi",model:"12C",display:"6.71",resolution:"1650×720",technology:"LCD",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + depth",front:"5MP",network:"4G",colors:"Graphite Grey, Ocean Blue, Mint Green"},
+{id:"r-13c",brand:"Redmi",model:"13C",display:"6.74",resolution:"1600×720",technology:"LCD",ram:"4GB / 6GB / 8GB",storage:["128GB","256GB"],battery:"5000mAh",rear:"50MP + 2MP macro + depth",front:"8MP",network:"4G",colors:"Midnight Black, Navy Blue, Glacier White"},
+{id:"r-n11",brand:"Redmi",model:"Note 11",display:"6.43",resolution:"2400×1080",technology:"AMOLED",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + 8MP + 2MP + 2MP",front:"13MP",network:"4G",colors:"Graphite Gray, Twilight Blue, Star Blue"},
+{id:"r-n12",brand:"Redmi",model:"Note 12",display:"6.67",resolution:"2400×1080",technology:"AMOLED",ram:"4GB / 6GB / 8GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"48MP + 8MP + 2MP",front:"13MP",network:"5G/4G variant",colors:"Ice Blue, Lunar Black, Sunrise Gold"},
+{id:"r-n13",brand:"Redmi",model:"Note 13 5G",display:"6.67",resolution:"2400×1080",technology:"AMOLED 120Hz",ram:"6GB / 8GB / 12GB",storage:["128GB","256GB"],battery:"5000mAh",rear:"108MP + 8MP + 2MP",front:"16MP",network:"5G",colors:"Graphite Black, Arctic White, Ocean Teal"},
+{id:"rm-c11",brand:"Realme",model:"C11",display:"6.5",resolution:"1600×720",technology:"LCD",ram:"2GB / 3GB / 4GB",storage:["32GB","64GB"],battery:"5000mAh",rear:"13MP + 2MP",front:"5MP",network:"4G",colors:"Rich Green, Rich Grey"},
+{id:"rm-c21y",brand:"Realme",model:"C21Y",display:"6.5",resolution:"1600×720",technology:"LCD",ram:"3GB / 4GB",storage:["32GB","64GB"],battery:"5000mAh",rear:"13MP + 2MP + 2MP",front:"5MP",network:"4G",colors:"Cross Blue, Cross Black"},
+{id:"rm-c25",brand:"Realme",model:"C25",display:"6.5",resolution:"1600×720",technology:"LCD",ram:"4GB",storage:["64GB","128GB"],battery:"6000mAh",rear:"48MP + 2MP + 2MP",front:"8MP",network:"4G",colors:"Watery Blue, Watery Grey"},
+{id:"rm-c33",brand:"Realme",model:"C33",display:"6.5",resolution:"1600×720",technology:"LCD",ram:"3GB / 4GB",storage:["32GB","64GB","128GB"],battery:"5000mAh",rear:"50MP + depth",front:"5MP",network:"4G",colors:"Sandy Gold, Aqua Blue, Night Sea"},
+{id:"rm-c53",brand:"Realme",model:"C53",display:"6.74",resolution:"1600×720",technology:"LCD 90Hz",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"108MP",front:"8MP",network:"4G",colors:"Champion Gold, Mighty Black"},
+{id:"rm-n50a",brand:"Realme",model:"Narzo 50A",display:"6.5",resolution:"1600×720",technology:"LCD",ram:"4GB",storage:["64GB","128GB"],battery:"6000mAh",rear:"50MP + macro + B&W",front:"8MP",network:"4G",colors:"Oxygen Green, Oxygen Blue"},
+{id:"v-y16",brand:"Vivo",model:"Y16",display:"6.51",resolution:"1600×720",technology:"LCD",ram:"3GB / 4GB",storage:["32GB","64GB","128GB"],battery:"5000mAh",rear:"13MP + 2MP",front:"5MP",network:"4G",colors:"Drizzling Gold, Stellar Black"},
+{id:"v-y17",brand:"Vivo",model:"Y17",display:"6.35",resolution:"1544×720",technology:"LCD",ram:"4GB",storage:["128GB"],battery:"5000mAh",rear:"13MP + 8MP + 2MP",front:"20MP",network:"4G",colors:"Mineral Blue, Mystic Purple"},
+{id:"v-y21",brand:"Vivo",model:"Y21",display:"6.51",resolution:"1600×720",technology:"LCD",ram:"4GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"13MP + 2MP",front:"8MP",network:"4G",colors:"Diamond Glow, Midnight Blue"},
+{id:"v-y22",brand:"Vivo",model:"Y22",display:"6.55",resolution:"1612×720",technology:"LCD",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"8MP",network:"4G",colors:"Starlit Blue, Metaverse Green"},
+{id:"v-y27",brand:"Vivo",model:"Y27 4G",display:"6.64",resolution:"2388×1080",technology:"LCD 120Hz",ram:"6GB / 8GB",storage:["128GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"8MP",network:"4G",colors:"Burgundy Black, Garden Green"},
+{id:"v-y36",brand:"Vivo",model:"Y36",display:"6.64",resolution:"2388×1080",technology:"LCD 90Hz",ram:"8GB",storage:["128GB","256GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"16MP",network:"4G",colors:"Glitter Aqua, Meteor Black"},
+{id:"o-a16",brand:"OPPO",model:"A16",display:"6.52",resolution:"1600×720",technology:"LCD",ram:"3GB / 4GB",storage:["32GB","64GB","128GB"],battery:"5000mAh",rear:"13MP + 2MP + 2MP",front:"8MP",network:"4G",colors:"Pearl Blue, Crystal Black, Space Silver"},
+{id:"o-a17",brand:"OPPO",model:"A17",display:"6.56",resolution:"1612×720",technology:"LCD",ram:"4GB",storage:["64GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"5MP",network:"4G",colors:"Midnight Black, Lake Blue, Sunlight Orange"},
+{id:"o-a18",brand:"OPPO",model:"A18",display:"6.56",resolution:"1612×720",technology:"LCD 90Hz",ram:"4GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"8MP + 2MP",front:"5MP",network:"4G",colors:"Glowing Black, Glowing Blue"},
+{id:"o-a38",brand:"OPPO",model:"A38",display:"6.56",resolution:"1612×720",technology:"LCD 90Hz",ram:"4GB / 6GB",storage:["128GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"5MP",network:"4G",colors:"Glowing Black, Glowing Gold"},
+{id:"o-a57",brand:"OPPO",model:"A57",display:"6.56",resolution:"1612×720",technology:"LCD",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"13MP + 2MP",front:"8MP",network:"4G",colors:"Glowing Black, Glowing Green"},
+{id:"o-a58",brand:"OPPO",model:"A58",display:"6.72",resolution:"2400×1080",technology:"LCD 60Hz",ram:"6GB / 8GB",storage:["128GB","256GB"],battery:"5000mAh",rear:"50MP + 2MP",front:"8MP",network:"4G",colors:"Glowing Black, Dazzling Green"},
+{id:"m-g32",brand:"Motorola",model:"Moto G32",display:"6.5",resolution:"2400×1080",technology:"IPS LCD 90Hz",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5000mAh",rear:"50MP + 8MP + 2MP",front:"16MP",network:"4G",colors:"Atlantic Green, Metallic Rose, Mineral Gray"},
+{id:"m-g52",brand:"Motorola",model:"Moto G52",display:"6.6",resolution:"2400×1080",technology:"pOLED 90Hz",ram:"6GB / 8GB",storage:["128GB"],battery:"5000mAh",rear:"50MP + 8MP + 2MP",front:"16MP",network:"4G",colors:"Charcoal Grey, Metallic White, Sage Green"},
+{id:"m-g54",brand:"Motorola",model:"Moto G54 5G",display:"6.5",resolution:"2400×1080",technology:"LCD 120Hz",ram:"8GB / 12GB",storage:["128GB","256GB"],battery:"6000mAh",rear:"50MP OIS + 8MP",front:"16MP",network:"5G",colors:"Pearl Blue, Midnight Blue, Green"},
+{id:"m-g62",brand:"Motorola",model:"Moto G62 5G",display:"6.5",resolution:"2400×1080",technology:"LCD 120Hz",ram:"6GB",storage:["128GB"],battery:"5000mAh",rear:"50MP + 8MP + 2MP",front:"16MP",network:"5G",colors:"Midnight Gray, Frosted Blue"},
+{id:"n-c21p",brand:"Nokia",model:"C21 Plus",display:"6.52",resolution:"1600×720",technology:"LCD",ram:"2GB / 3GB / 4GB",storage:["32GB","64GB"],battery:"4000mAh / 5050mAh variant",rear:"13MP + 2MP",front:"5MP",network:"4G",colors:"Dark Cyan, Warm Grey"},
+{id:"n-g21",brand:"Nokia",model:"G21",display:"6.5",resolution:"1600×720",technology:"LCD 90Hz",ram:"4GB / 6GB",storage:["64GB","128GB"],battery:"5050mAh",rear:"50MP + 2MP + 2MP",front:"8MP",network:"4G",colors:"Nordic Blue, Dusk"}
+];
+
 const displayModels=[
 ["Samsung","Galaxy A04","6.5"],["Samsung","Galaxy A05","6.7"],["Samsung","Galaxy A14 4G","6.6"],["Samsung","Galaxy A15 4G","6.5"],["Samsung","Galaxy A24","6.5"],["Samsung","Galaxy M14 5G","6.6"],
 ["Redmi","10A","6.53"],["Redmi","12C","6.71"],["Redmi","13C","6.74"],["Redmi","Note 11","6.43"],["Redmi","Note 12","6.67"],["Redmi","Note 13 4G","6.67"],
@@ -140,6 +176,34 @@ function renderDepartments(){
 deptGrid.innerHTML=categories.map(c=>'<article class="dept" onclick="selectCat(\''+c.id+'\')"><div class="deptIcon">'+c.icon+'</div><h3>'+c.name+'</h3><p>'+c.desc+'</p><div class="chips">'+c.subs.slice(0,7).map(s=>'<span class="chip">'+s+'</span>').join("")+'</div></article>').join("");
 document.getElementById("count").textContent=categories.length+" categories";
 }
+function phoneByProduct(p){return p[0]==="mobile"?phoneModels.find(x=>(x.brand+" "+x.model)===p[2]):null}
+function phoneCard(p,i){
+const m=phoneByProduct(p);
+if(!m)return productCard(p,i);
+return '<article class="card" onclick="openPhone('+phoneModels.indexOf(m)+')"><span class="badge">'+m.brand+'</span><div class="visual"><div class="device"></div></div><div class="info"><h3>'+m.brand+' '+m.model+'</h3><div class="meta">Display: '+m.display+'" • '+m.technology+' • '+m.resolution+'</div><div class="meta">RAM: '+m.ram+' • Storage: '+m.storage.join(" / ")+'</div><div class="meta">Battery: '+m.battery+' • '+m.network+'</div><div class="btns"><button onclick="event.stopPropagation();openPhone('+phoneModels.indexOf(m)+')">पूरी Details</button><button onclick="event.stopPropagation();askPhone('+phoneModels.indexOf(m)+')">पूछें</button></div></div></article>';
+}
+function renderPhoneCatalog(){
+let q=(document.getElementById("q").value||"").toLowerCase().trim();
+let list=phoneModels.filter(m=>!q||(m.brand+" "+m.model+" "+m.ram+" "+m.storage.join(" ")+" "+m.display).toLowerCase().includes(q));
+grid.innerHTML=list.map(m=>phoneCard(["mobile","📱",m.brand+" "+m.model,m.brand,"",""],products.findIndex(p=>p[2]===m.brand+" "+m.model))).join("");
+document.getElementById("catalogTitle").textContent="📱 Mobile Phones — Model & Variant Catalog";
+document.getElementById("catalogSub").textContent="हर listed model के RAM, Storage, Display size और मुख्य specifications देखें। Price और Stock जानबूझकर नहीं दिखाए गए हैं।";
+filters.innerHTML='<button class="filter active">All Brands</button>'+[...new Set(phoneModels.map(m=>m.brand))].map(b=>'<button class="filter" onclick="filterPhoneBrand(\\''+b+'\\')">'+b+'</button>').join("");
+}
+function filterPhoneBrand(b){
+let list=phoneModels.filter(m=>m.brand===b);
+grid.innerHTML=list.map(m=>phoneCard(["mobile","📱",m.brand+" "+m.model,m.brand,"",""],products.findIndex(p=>p[2]===m.brand+" "+m.model))).join("");
+}
+function openPhone(i){
+let m=phoneModels[i];
+detail.innerHTML='<div class="large"><div class="device"></div></div><div><span class="badge">'+m.brand+'</span><h2>'+m.brand+' '+m.model+'</h2><p>Model-wise phone information — price और stock intentionally नहीं दिखाए गए हैं।</p><div class="facts"><div class="fact"><b>Display:</b> '+m.display+' inch · '+m.technology+'</div><div class="fact"><b>Resolution:</b> '+m.resolution+'</div><div class="fact"><b>RAM:</b> '+m.ram+'</div><div class="fact"><b>Storage options:</b> '+m.storage.join(" / ")+'</div><div class="fact"><b>Battery:</b> '+m.battery+'</div><div class="fact"><b>Rear camera:</b> '+m.rear+'</div><div class="fact"><b>Front camera:</b> '+m.front+'</div><div class="fact"><b>Network:</b> '+m.network+'</div><div class="fact"><b>Colours:</b> '+m.colors+'</div></div><a class="modalBtn" target="_blank" href="https://wa.me/'+WA+'?text='+encodeURIComponent("नमस्ते NK & Chandan Computers, मुझे "+m.brand+" "+m.model+" के बारे में जानकारी चाहिए। RAM/Storage variant और exact model confirm करना है।")+'">इस Model के बारे में पूछें ↗</a></div>';
+dlg.showModal();
+}
+function askPhone(i){
+let m=phoneModels[i];
+window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("नमस्ते NK & Chandan Computers, मुझे "+m.brand+" "+m.model+" चाहिए। RAM/Storage variant: "+m.ram+" / "+m.storage.join(", ")+"। कृपया exact variant confirm करें।"),"_blank");
+}
+
 function visualFor(p){
 if(p[0]==="mobile"||p[0]==="mobileparts"||p[0]==="laptop"||p[0]==="laptopparts"||p[0]==="monitor") return '<div class="device"></div>';
 return '<div class="iconVisual">'+p[1]+'</div>';
@@ -148,6 +212,7 @@ function productCard(p,i){
 return '<article class="card" onclick="openProduct('+i+')"><span class="badge">'+(categories.find(c=>c.id===p[0])?.name||p[0])+'</span><div class="visual">'+visualFor(p)+'</div><div class="info"><h3>'+p[2]+'</h3><div class="meta">'+p[3]+' • '+p[4]+'</div><div class="price">Price: पूछें</div><div class="stock">● '+p[5]+'</div><div class="btns"><button onclick="event.stopPropagation();openProduct('+i+')">Details</button><button onclick="event.stopPropagation();askProduct('+i+')">Price पूछें</button></div></div></article>';
 }
 function renderProducts(){
+if(active==="mobile"){renderPhoneCatalog();return;}
 let list=active==="all"?products:products.filter(p=>p[0]===active);
 let q=(document.getElementById("q").value||"").toLowerCase().trim();
 if(q) list=list.filter(p=>p.join(" ").toLowerCase().includes(q));
@@ -176,8 +241,10 @@ renderProducts();
 document.getElementById("catalog").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function doSearch(){
-active="all";
-renderProducts();
+let q=(document.getElementById("q").value||"").toLowerCase().trim();
+if(q && phoneModels.some(m=>(m.brand+" "+m.model+" "+m.ram+" "+m.storage.join(" ")).toLowerCase().includes(q))){
+active="mobile";renderPhoneCatalog();
+}else{active="all";renderProducts();}
 document.getElementById("catalog").scrollIntoView({behavior:"smooth",block:"start"});
 return false;
 }
