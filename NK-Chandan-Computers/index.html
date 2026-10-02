@@ -204,7 +204,7 @@ pcparts:[
 ["GPU","NVIDIA GeForce RTX 4070 Ti SUPER 16GB","PCIe x16","16GB GDDR6X","1440p/4K","Ray Tracing","Multi-brand cards"],
 ["GPU","NVIDIA GeForce RTX 4080 SUPER 16GB","PCIe x16","16GB GDDR6X","4K","Ray Tracing","Multi-brand cards"],
 ["GPU","NVIDIA GeForce RTX 4090 24GB","PCIe x16","24GB GDDR6X","4K","Ray Tracing","Multi-brand cards"],
-["NVIDIA","NVIDIA GeForce RTX 5060 8GB","PCIe x16","8GB","1080p/1440p","Blackwell","Multi-brand cards"],
+["GPU","NVIDIA GeForce RTX 5060 8GB","PCIe x16","8GB","1080p/1440p","Blackwell","Multi-brand cards"],
 ["GPU","NVIDIA GeForce RTX 5060 Ti 8GB/16GB","PCIe x16","8/16GB","1440p","Blackwell","Multi-brand cards"],
 ["GPU","NVIDIA GeForce RTX 5070 12GB","PCIe x16","12GB","1440p","Blackwell","Multi-brand cards"],
 ["GPU","NVIDIA GeForce RTX 5070 Ti 16GB","PCIe x16","16GB","1440p/4K","Blackwell","Multi-brand cards"],
@@ -500,6 +500,11 @@ filters.innerHTML=c.subs.map(s=>'<button class="filter" onclick="subSearch(\''+s
 }
 function subSearch(s){
 document.getElementById("q").value=s;
+if(pcCatalog[active]){
+let list=(pcCatalog[active]||[]).filter(p=>p.join(" ").toLowerCase().includes(s.toLowerCase()));
+grid.innerHTML=list.length?list.map((p,i)=>hardwareCard(active,p,i)).join(""):'<div class="note">इस sub-category के matching models अभी catalog में नहीं मिले। Exact model/part number भेजने पर इसे जोड़ा जा सकता है।</div>';
+return;
+}
 let list=products.filter(p=>p[0]===active && p.join(" ").toLowerCase().includes(s.toLowerCase()));
 grid.innerHTML=list.length?list.map(p=>productCard(p,products.indexOf(p))).join(""):'<div class="note">इस sub-category का starter product अभी catalog में नहीं जोड़ा गया है। Exact model/part और actual photo मिलने पर इसे inventory में जोड़ा जा सकता है।</div>';
 }
