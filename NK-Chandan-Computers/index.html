@@ -188,7 +188,7 @@ let list=phoneModels.filter(m=>!q||(m.brand+" "+m.model+" "+m.ram+" "+m.storage.
 grid.innerHTML=list.map(m=>phoneCard(["mobile","📱",m.brand+" "+m.model,m.brand,"",""],products.findIndex(p=>p[2]===m.brand+" "+m.model))).join("");
 document.getElementById("catalogTitle").textContent="📱 Mobile Phones — Model & Variant Catalog";
 document.getElementById("catalogSub").textContent="हर listed model के RAM, Storage, Display size और मुख्य specifications देखें। Price और Stock जानबूझकर नहीं दिखाए गए हैं।";
-filters.innerHTML='<button class="filter active">All Brands</button>'+[...new Set(phoneModels.map(m=>m.brand))].map(b=>'<button class="filter" onclick="filterPhoneBrand(\\''+b+'\\')">'+b+'</button>').join("");
+filters.innerHTML='<button class="filter active">All Brands</button>'+[...new Set(phoneModels.map(m=>m.brand))].map(b=>'<button class="filter" onclick="filterPhoneBrand(&quot;'+b+'&quot;)">'+b+'</button>').join("");
 }
 function filterPhoneBrand(b){
 let list=phoneModels.filter(m=>m.brand===b);
