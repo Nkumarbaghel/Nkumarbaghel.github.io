@@ -462,7 +462,7 @@ let c=categories.find(x=>x.id===cat);
 document.getElementById("catalogTitle").textContent=(c?c.icon+" ":"")+"Detailed Model Catalog";
 document.getElementById("catalogSub").textContent="Model-wise list • customer अपनी requirement के अनुसार model/variant चुन सकता है। Price और live stock यहाँ नहीं दिखाए गए हैं।";
 filters.innerHTML=(c?c.subs:[]).map(s=>'<button class="filter" onclick="subSearch(\\''+s.replace(/'/g,"\\\\'")+"\\')\">"+s+"</button>").join("");
-if(cat==="pcparts") renderBuilder();
+if(cat==="pcparts") renderBuilder(); else document.getElementById("pcBuilder")?.remove();
 }
 function hardwareCard(cat,p,i){
 let labels=cat==="pcparts"?"PC Part":cat==="laptopparts"?"Laptop Part":cat==="laptop"?"Laptop Model":cat==="monitor"?"Monitor":"Product";
