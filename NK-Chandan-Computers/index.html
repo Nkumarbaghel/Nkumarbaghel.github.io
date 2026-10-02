@@ -484,7 +484,7 @@ if(!wrap){wrap=document.createElement("div");wrap.id="pcBuilder";wrap.className=
 const pick=(cat)=>pcCatalog[cat]||[];
 const opts=(cat,label,types)=>'<option value="">'+label+'</option>'+pick(cat).map((x,i)=>types&&types.length&&!types.includes(x[0])?null:'<option value="'+i+'">'+x[1]+'</option>').filter(Boolean).join("");
 wrap.innerHTML='<div style="font-size:18px;font-weight:900;color:var(--nav)">🛠️ पूरा PC Configurator</div><p>Customer एक-एक component चुनकर अपना पूरा PC build कर सकता है। Motherboard चुनने के बाद compatible CPU और RAM को प्राथमिकता से दिखाया जाता है। Final compatibility, BIOS, dimensions, cooler mounting और PSU requirement को order से पहले confirm किया जाएगा।</p><div class="filters builderGrid">'+
-'<label>Motherboard<select id="buildBoard" onchange="updateBuilder()">'+opts("pcparts","Motherboard चुनें",["Motherboard"])+'</select></label>'+
+'<label>Motherboard<select id="buildBoard" onchange="refreshBuilderOptions();updateBuilder()">'+opts("pcparts","Motherboard चुनें",["Motherboard"])+'</select></label>'+
 '<label>CPU<select id="buildCpu" onchange="updateBuilder()">'+opts("pcparts","CPU चुनें",["CPU"])+'</select></label>'+
 '<label>RAM<select id="buildRam" onchange="updateBuilder()">'+opts("pcparts","RAM चुनें",["RAM"])+'</select></label>'+
 '<label>GPU<select id="buildGpu" onchange="updateBuilder()">'+opts("pcparts","Graphics Card चुनें",["GPU"])+'</select></label>'+
