@@ -495,6 +495,15 @@ wrap.innerHTML='<div style="font-size:18px;font-weight:900;color:var(--nav)">�
 '<label>CPU Cooler<select id="buildCooler" onchange="updateBuilder()">'+opts("pcparts","Cooler चुनें",["COOLER"])+'</select></label>'+
 '</div><div id="buildResult" class="builderResult">Components चुनते ही compatibility summary यहाँ दिखाई जाएगी।</div><div class="btns"><button onclick="sendBuildWhatsApp()">🟢 WhatsApp पर पूरा Build पूछें</button></div>';
 }
+function refreshBuilderOptions(){
+let b=selected("pcparts",document.getElementById("buildBoard")?.value);
+let cpu=document.getElementById("buildCpu"),ram=document.getElementById("buildRam");
+if(!cpu||!ram)return;
+let cpus=pcCatalog.pcparts.map((x,i)=>({x,i})).filter(o=>o.x[0]==="CPU"&&(!b||o.x[2]===b[2]));
+let rams=pcCatalog.pcparts.map((x,i)=>({x,i})).filter(o=>o.x[0]==="RAM"&&(!b||o.x[2]===b[4]));
+cpu.innerHTML='<option value="">CPU चुनें'+(b?" — "+b[2]:"")+'</option>'+cpus.map(o=>'<option value="'+o.i+'">'+o.x[1]+'</option>').join("");
+ram.innerHTML='<option value="">RAM चुनें'+(b?" — "+b[4]:"")+'</option>'+rams.map(o=>'<option value="'+o.i+'">'+o.x[1]+'</option>').join("");
+}
 function selected(cat,id){
 let n=Number(id);
 return id!=="" && pcCatalog[cat] ? pcCatalog[cat][n] : null;
