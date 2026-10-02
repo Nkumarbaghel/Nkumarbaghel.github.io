@@ -465,8 +465,10 @@ filters.innerHTML=(c?c.subs:[]).map(s=>'<button class="filter" onclick="subSearc
 if(cat==="pcparts") renderBuilder(); else document.getElementById("pcBuilder")?.remove();
 }
 function hardwareCard(cat,p,i){
+let originalIndex=pcCatalog[cat]?pcCatalog[cat].indexOf(p):i;
+if(originalIndex<0) originalIndex=i;
 let labels=cat==="pcparts"?"PC Part":cat==="laptopparts"?"Laptop Part":cat==="laptop"?"Laptop Model":cat==="monitor"?"Monitor":"Product";
-return '<article class="card" onclick="openHardware(&quot;'+cat+'&quot;,'+i+')"><span class="badge">'+labels+'</span><div class="visual"><div class="iconVisual">'+(cat==="monitor"?"🖥️":cat==="laptop"?"💻":cat==="laptopparts"?"🔩":"🧩")+'</div></div><div class="info"><h3>'+p[1]+'</h3><div class="meta">'+p.slice(0,1)+" • "+p.slice(2,5).join(" • ")+'</div><div class="meta">'+p.slice(5).join(" • ")+'</div><div class="btns"><button onclick="event.stopPropagation();openHardware(&quot;'+cat+'&quot;,'+i+')">पूरी Details</button><button onclick="event.stopPropagation();askHardware(&quot;'+cat+'&quot;,'+i+')">पूछें</button></div></div></article>';
+return '<article class="card" onclick="openHardware(&quot;'+cat+'&quot;,'+originalIndex+')"><span class="badge">'+labels+'</span><div class="visual"><div class="iconVisual">'+(cat==="monitor"?"🖥️":cat==="laptop"?"💻":cat==="laptopparts"?"🔩":"🧩")+'</div></div><div class="info"><h3>'+p[1]+'</h3><div class="meta">'+p.slice(0,1)+" • "+p.slice(2,5).join(" • ")+'</div><div class="meta">'+p.slice(5).join(" • ")+'</div><div class="btns"><button onclick="event.stopPropagation();openHardware(&quot;'+cat+'&quot;,'+originalIndex+')">पूरी Details</button><button onclick="event.stopPropagation();askHardware(&quot;'+cat+'&quot;,'+originalIndex+')">पूछें</button></div></div></article>';
 }
 function openHardware(cat,i){
 let p=pcCatalog[cat][i],c=categories.find(x=>x.id===cat);
@@ -579,7 +581,7 @@ const subAliases={
 "Motherboard":["Motherboard"],
 "Cooler":["COOLER","Cooler"],
 "Wi-Fi Router":["Router","Wi-Fi Router"],
-"4G/5G Router":["Router","4G/5G Router"],
+"4G/5G Router":["4G/5G Router"],
 "Switch":["Switch"],
 "Wi-Fi Adapter":["Wi-Fi Adapter","USB Adapter"],
 "Range Extender":["Range Extender"],
@@ -590,8 +592,8 @@ const subAliases={
 "Pen Drive":["Pen Drive"],
 "MicroSD":["MicroSD"],
 "SD Card":["SD Card"],
-"SATA SSD":["SSD"],
-"NVMe SSD":["SSD"],
+"SATA SSD":["SATA SSD","SSD"],
+"NVMe SSD":["NVMe SSD","SSD"],
 "HDD":["HDD"],
 "Printer Parts":["Printer Parts"],
 "Cartridge":["Cartridge"],
@@ -602,32 +604,109 @@ const subAliases={
 "Thermal":["Thermal"]
 };
 
+const hardwareSubRules={
+pcparts:{
+"Motherboard":p=>p[0]==="Motherboard",
+"Processor":p=>p[0]==="CPU",
+"RAM":p=>p[0]==="RAM",
+"SSD":p=>p[0]==="SSD",
+"HDD":p=>p[0]==="HDD",
+"Graphics Card":p=>p[0]==="GPU",
+"SMPS":p=>p[0]==="PSU",
+"Cabinet":p=>p[0]==="CABINET",
+"Cooler":p=>p[0]==="COOLER",
+"CMOS":p=>normalizeSearch(p.join(" ")).includes("cmos"),
+"LAN Card":p=>normalizeSearch(p.join(" ")).includes("lancard")
+},
+laptop:{
+"HP":p=>p[0]==="HP","Dell":p=>p[0]==="Dell","Lenovo":p=>p[0]==="Lenovo","ASUS":p=>p[0]==="ASUS",
+"Acer":p=>p[0]==="Acer","MSI":p=>p[0]==="MSI","Apple MacBook":p=>p[0]==="Apple",
+"Chromebook":p=>normalizeSearch(p.join(" ")).includes("chromebook")
+},
+laptopparts:{
+"LCD":p=>p[0]==="LCD","Keyboard":p=>p[0]==="Keyboard","Battery":p=>p[0]==="Battery","Charger":p=>p[0]==="Charger",
+"DC Jack":p=>p[0]==="DC Jack","Fan":p=>p[0]==="Fan","Hinges":p=>p[0]==="Hinges","Touchpad":p=>p[0]==="Touchpad",
+"Motherboard":p=>p[0]==="Motherboard","RAM":p=>p[0]==="RAM","SSD":p=>p[0]==="SSD","Wi-Fi Card":p=>p[0]==="Wi-Fi Card"
+},
+monitor:{
+"14 inch":p=>normalizeSearch(p.join(" ")).includes("14inch"),
+"15.6 inch":p=>normalizeSearch(p.join(" ")).includes("15.6inch"),
+"17.3 inch":p=>normalizeSearch(p.join(" ")).includes("17.3inch"),
+"19 inch":p=>normalizeSearch(p.join(" ")).includes("19inch"),
+"21.5 inch":p=>normalizeSearch(p.join(" ")).includes("21.5inch"),
+"22 inch":p=>normalizeSearch(p.join(" ")).includes("22inch"),
+"24 inch":p=>normalizeSearch(p.join(" ")).includes("24inch"),
+"27 inch":p=>normalizeSearch(p.join(" ")).includes("27inch"),
+"IPS":p=>normalizeSearch(p.join(" ")).includes("ips"),
+"Gaming":p=>normalizeSearch(p.join(" ")).includes("gaming"),
+"Curved":p=>normalizeSearch(p.join(" ")).includes("curved")
+},
+pcacc:{
+"Keyboard":p=>p[0]==="Keyboard","Mouse":p=>p[0]==="Mouse","Webcam":p=>p[0]==="Webcam","Speaker":p=>p[0]==="Speaker",
+"Headphone":p=>p[0]==="Headphone","USB Hub":p=>p[0]==="USB Hub","HDMI":p=>normalizeSearch(p[0]).includes("hdmi"),
+"VGA":p=>normalizeSearch(p[0]).includes("vga"),"DisplayPort":p=>normalizeSearch(p[0]).includes("displayport"),
+"LAN Cable":p=>normalizeSearch(p[0]).includes("lancable"),"Stand":p=>p[0]==="Stand"
+},
+storage:{
+"SATA SSD":p=>p[0]==="SSD"&&normalizeSearch(p.join(" ")).includes("sata"),
+"NVMe SSD":p=>p[0]==="SSD"&&normalizeSearch(p.join(" ")).includes("nvme"),
+"HDD":p=>p[0]==="HDD","External HDD":p=>p[0]==="External","Pen Drive":p=>p[0]==="Pen Drive",
+"MicroSD":p=>p[0]==="MicroSD","SD Card":p=>p[0]==="SD Card","Enclosure":p=>p[0]==="Enclosure"
+},
+network:{
+"Wi-Fi Router":p=>p[0]==="Router","4G/5G Router":p=>normalizeSearch(p.join(" ")).includes("4g5g"),
+"Switch":p=>p[0]==="Switch","Wi-Fi Adapter":p=>p[0]==="USB Adapter"||p[0]==="Wi-Fi Adapter",
+"Range Extender":p=>p[0]==="Range Extender","LAN Cable":p=>p[0]==="LAN Cable","RJ45":p=>p[0]==="RJ45",
+"Access Point":p=>p[0]==="Access Point"
+},
+power:{
+"UPS":p=>p[0]==="UPS","SMPS":p=>p[0]==="SMPS","Adapter":p=>p[0]==="Adapter","Laptop Charger":p=>normalizeSearch(p.join(" ")).includes("laptopcharger"),
+"Mobile Charger":p=>normalizeSearch(p.join(" ")).includes("mobilecharger"),"Extension Board":p=>p[0]==="Extension Board",
+"Power Cable":p=>p[0]==="Power Cable","DC Cable":p=>p[0]==="DC Cable"
+},
+printer:{
+"Inkjet":p=>p[0]==="Inkjet","Laser":p=>p[0]==="Laser","Thermal":p=>p[0]==="Thermal","Cartridge":p=>p[0]==="Cartridge",
+"Toner":p=>p[0]==="Toner","Drum":p=>p[0]==="Drum","Ink":p=>p[0]==="Ink","Cable":p=>p[0]==="Cable",
+"Adapter":p=>p[0]==="Adapter","Printer Parts":p=>p[0]==="Printer Parts"
+}
+};
+
+function normalizeSearch(v){
+return String(v||"").toLowerCase().replace(/[^a-z0-9]+/g,"");
+}
 function genericSubProduct(catId,sub){
 let c=categories.find(x=>x.id===catId);
 return [catId,c?c.icon:"🛍️",sub+" — Model-wise Catalog",c?c.name:"Product",sub+" • model/variant अनुसार products","Exact model, photo, price और stock WhatsApp पर confirm करें"];
 }
-
 function subMatchesHardware(p,s){
-let target=normalizeSearch(s);
+let rule=hardwareSubRules[active]?.[s];
+if(rule)return rule(p);
 let aliases=subAliases[s]||[s];
-return aliases.some(a=>normalizeSearch(p.join(" ")).includes(normalizeSearch(a))) ||
-       normalizeSearch(p[0])===target;
+let text=normalizeSearch(p.join(" "));
+return aliases.some(a=>text.includes(normalizeSearch(a)))||normalizeSearch(p[0])===normalizeSearch(s);
 }
-
+function showGenericHardwareSub(catId,sub){
+let gp=genericSubProduct(catId,sub);
+let existing=products.findIndex(p=>p[0]===gp[0]&&p[2]===gp[2]);
+if(existing<0){products.push(gp);existing=products.length-1;}
+grid.innerHTML=productCard(products[existing],existing);
+document.getElementById("catalogSub").textContent=sub+" — इस Sub-category का catalog placeholder";
+}
 function subSearch(s){
 document.getElementById("q").value=s;
 if(pcCatalog[active]){
 let list=(pcCatalog[active]||[]).filter(p=>subMatchesHardware(p,s));
 if(list.length){
-grid.innerHTML=list.map((p,i)=>hardwareCard(active,p,i)).join("");
-}else{
-grid.innerHTML='<div class="note">इस Sub-category के exact models अभी catalog में नहीं जोड़े गए हैं। Exact model/part number भेजने पर इसी Sub-category में जोड़ा जाएगा।</div>';
-}
+grid.innerHTML=list.map(p=>hardwareCard(active,p,pcCatalog[active].indexOf(p))).join("");
 document.getElementById("catalogSub").textContent=s+" — केवल इसी Sub-category के models/products";
+}else{
+showGenericHardwareSub(active,s);
+document.getElementById("catalogSub").textContent=s+" — exact models अभी catalog में नहीं हैं; requirement WhatsApp से confirm करें";
+}
 if(active==="pcparts") renderBuilder();
 return;
 }
-let list=products.filter(p=>p[0]===active && normalizeSearch(p.join(" ")).includes(normalizeSearch(s)));
+let list=products.filter(p=>p[0]===active&&normalizeSearch(p.join(" ")).includes(normalizeSearch(s)));
 if(!list.length){
 let gp=genericSubProduct(active,s);
 let existing=products.findIndex(p=>p[0]===gp[0]&&p[2]===gp[2]);
@@ -637,6 +716,7 @@ list=[products[existing]];
 grid.innerHTML=list.map(p=>productCard(p,products.indexOf(p))).join("");
 document.getElementById("catalogSub").textContent=s+" — केवल इसी Sub-category के products";
 }
+
 function selectCat(id){
 active=id;
 document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
