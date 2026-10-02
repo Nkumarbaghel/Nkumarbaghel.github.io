@@ -544,39 +544,93 @@ window.open("https://wa.me/"+WA+"?text="+msg,"_blank");
 
 function renderProducts(){
 if(active==="mobile"){renderPhoneCatalog();return;}
-if(pcCatalog[active]){
-renderHardwareCatalog(active);
-return;
-}
 let c=categories.find(x=>x.id===active);
 if(active==="all"){
 document.getElementById("catalogTitle").textContent="⭐ Featured Catalog";
-document.getElementById("catalogSub").textContent="सभी categories के शुरुआती products — किसी product पर tap करके Details और WhatsApp enquiry करें।";
+document.getElementById("catalogSub").textContent="पहले Category चुनें। उसके बाद Sub-category चुनने पर केवल उसी के products दिखेंगे।";
 filters.innerHTML="";
-let list=products;
-grid.innerHTML=list.length?list.map((p,i)=>productCard(p,i)).join(""):'<div class="note">अभी catalog में products उपलब्ध नहीं हैं।</div>';
+grid.innerHTML='<div class="note">🛍️ Product देखने के लिए ऊपर से कोई Category चुनें। Category के अंदर Sub-category चुनने पर केवल उसी के products/models दिखाई देंगे।</div>';
 return;
 }
-document.getElementById("catalogTitle").textContent=(c?c.icon+" ":"")+" "+(c?c.name:"Product Catalog");
-document.getElementById("catalogSub").textContent=c?c.desc+" • Sub-category चुनकर matching products देखें।":"Products";
+document.getElementById("catalogTitle").textContent=(c?c.icon+" ":"")+ (c?c.name:"Product Catalog");
+document.getElementById("catalogSub").textContent=c?c.desc+" • पहले Sub-category चुनें।":"Sub-category चुनें";
 renderFilters(c);
-let list=products.filter(p=>p[0]===active);
-grid.innerHTML=list.length?list.map((p,i)=>productCard(p,i)).join(""):'<div class="note">इस category के detailed products अभी catalog में नहीं मिले। Exact model/part number भेजने पर इसे जोड़ा जा सकता है।</div>';
+if(pcCatalog[active]){
+document.getElementById("catalogSub").textContent="पहले Sub-category चुनें — एक साथ सभी models नहीं दिखाए जाएंगे।";
+grid.innerHTML='<div class="note">👆 ऊपर दिए गए Sub-category में से एक चुनें। उसके बाद केवल उसी Sub-category के matching models/products दिखाई देंगे।</div>';
+if(active==="pcparts") document.getElementById("pcBuilder")?.remove();
+return;
+}
+grid.innerHTML='<div class="note">👆 ऊपर दिए गए Sub-category में से एक चुनें। उसके बाद केवल उसी Sub-category के products दिखाई देंगे।</div>';
 }
 
 function renderFilters(c){
 if(!c){filters.innerHTML="";return}
 filters.innerHTML=c.subs.map(s=>'<button class="filter" onclick="subSearch(&quot;'+s.replace(/"/g,"&quot;")+'&quot;)">'+s+'</button>').join("");
 }
+
+function normalizeSearch(v){
+return String(v||"").toLowerCase().replace(/[^a-z0-9]+/g,"");
+}
+const subAliases={
+"Processor":["CPU","Processor"],
+"Graphics Card":["GPU","Graphics Card"],
+"SMPS":["SMPS","PSU"],
+"Motherboard":["Motherboard"],
+"Cooler":["COOLER","Cooler"],
+"Wi-Fi Router":["Router","Wi-Fi Router"],
+"4G/5G Router":["Router","4G/5G Router"],
+"Switch":["Switch"],
+"Wi-Fi Adapter":["Wi-Fi Adapter","USB Adapter"],
+"Range Extender":["Range Extender"],
+"Access Point":["Access Point"],
+"LAN Cable":["LAN Cable"],
+"RJ45":["RJ45"],
+"External HDD":["External"],
+"Pen Drive":["Pen Drive"],
+"MicroSD":["MicroSD"],
+"SD Card":["SD Card"],
+"SATA SSD":["SSD"],
+"NVMe SSD":["SSD"],
+"HDD":["HDD"],
+"Printer Parts":["Printer Parts"],
+"Cartridge":["Cartridge"],
+"Toner":["Toner"],
+"Ink":["Ink"],
+"Laser":["Laser"],
+"Inkjet":["Inkjet"],
+"Thermal":["Thermal"]
+};
+
+function genericSubProduct(catId,sub){
+let c=categories.find(x=>x.id===catId);
+return [catId,c?c.icon:"🛍️",sub+" — Model-wise Catalog",c?c.name:"Product",sub+" • model/variant अनुसार products","Exact model, photo, price और stock WhatsApp पर confirm करें"];
+}
+
+function subMatchesHardware(p,s){
+let target=normalizeSearch(s);
+let aliases=subAliases[s]||[s];
+return aliases.some(a=>normalizeSearch(p.join(" ")).includes(normalizeSearch(a))) ||
+       normalizeSearch(p[0])===target;
+}
+
 function subSearch(s){
 document.getElementById("q").value=s;
 if(pcCatalog[active]){
-let list=(pcCatalog[active]||[]).filter(p=>p.join(" ").toLowerCase().includes(s.toLowerCase()));
-grid.innerHTML=list.length?list.map((p,i)=>hardwareCard(active,p,i)).join(""):'<div class="note">इस sub-category के matching models अभी catalog में नहीं मिले। Exact model/part number भेजने पर इसे जोड़ा जा सकता है।</div>';
+let list=(pcCatalog[active]||[]).filter(p=>subMatchesHardware(p,s));
+if(list.length){
+grid.innerHTML=list.map((p,i)=>hardwareCard(active,p,i)).join("");
+}else{
+grid.innerHTML='<div class="note">इस Sub-category के exact models अभी catalog में नहीं जोड़े गए हैं। Exact model/part number भेजने पर इसी Sub-category में जोड़ा जाएगा।</div>';
+}
+document.getElementById("catalogSub").textContent=s+" — केवल इसी Sub-category के models/products";
+if(active==="pcparts") renderBuilder();
 return;
 }
-let list=products.filter(p=>p[0]===active && p.join(" ").toLowerCase().includes(s.toLowerCase()));
-grid.innerHTML=list.length?list.map(p=>productCard(p,products.indexOf(p))).join(""):'<div class="note">इस sub-category का starter product अभी catalog में नहीं जोड़ा गया है। Exact model/part और actual photo मिलने पर इसे inventory में जोड़ा जा सकता है।</div>';
+let list=products.filter(p=>p[0]===active && normalizeSearch(p.join(" ")).includes(normalizeSearch(s)));
+if(!list.length) list=[genericSubProduct(active,s)];
+grid.innerHTML=list.map(p=>productCard(p,products.indexOf(p))).join("");
+document.getElementById("catalogSub").textContent=s+" — केवल इसी Sub-category के products";
 }
 function selectCat(id){
 active=id;
