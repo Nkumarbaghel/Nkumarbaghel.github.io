@@ -461,12 +461,12 @@ grid.innerHTML=list.map((p,i)=>hardwareCard(cat,p,i)).join("");
 let c=categories.find(x=>x.id===cat);
 document.getElementById("catalogTitle").textContent=(c?c.icon+" ":"")+"Detailed Model Catalog";
 document.getElementById("catalogSub").textContent="Model-wise list • customer अपनी requirement के अनुसार model/variant चुन सकता है। Price और live stock यहाँ नहीं दिखाए गए हैं।";
-filters.innerHTML=(c?c.subs:[]).map(s=>'<button class="filter" onclick="subSearch(\\''+s.replace(/'/g,"\\\\'")+"\\')\">"+s+"</button>").join("");
+filters.innerHTML=(c?c.subs:[]).map(s=>'<button class="filter" onclick="subSearch(&quot;'+s.replace(/"/g,"&quot;")+'&quot;)">'+s+'</button>').join("");
 if(cat==="pcparts") renderBuilder(); else document.getElementById("pcBuilder")?.remove();
 }
 function hardwareCard(cat,p,i){
 let labels=cat==="pcparts"?"PC Part":cat==="laptopparts"?"Laptop Part":cat==="laptop"?"Laptop Model":cat==="monitor"?"Monitor":"Product";
-return '<article class="card" onclick="openHardware(\\''+cat+"\\',"+i+')"><span class="badge">'+labels+'</span><div class="visual"><div class="iconVisual">'+(cat==="monitor"?"🖥️":cat==="laptop"?"💻":cat==="laptopparts"?"🔩":"🧩")+'</div></div><div class="info"><h3>'+p[1]+'</h3><div class="meta">'+p.slice(0,1)+" • "+p.slice(2,5).join(" • ")+'</div><div class="meta">'+p.slice(5).join(" • ")+'</div><div class="btns"><button onclick="event.stopPropagation();openHardware(\\''+cat+"\\',"+i+')">पूरी Details</button><button onclick="event.stopPropagation();askHardware(\\''+cat+"\\',"+i+')">पूछें</button></div></div></article>';
+return '<article class="card" onclick="openHardware(&quot;'+cat+'&quot;,'+i+')"><span class="badge">'+labels+'</span><div class="visual"><div class="iconVisual">'+(cat==="monitor"?"🖥️":cat==="laptop"?"💻":cat==="laptopparts"?"🔩":"🧩")+'</div></div><div class="info"><h3>'+p[1]+'</h3><div class="meta">'+p.slice(0,1)+" • "+p.slice(2,5).join(" • ")+'</div><div class="meta">'+p.slice(5).join(" • ")+'</div><div class="btns"><button onclick="event.stopPropagation();openHardware(&quot;'+cat+'&quot;,'+i+')">पूरी Details</button><button onclick="event.stopPropagation();askHardware(&quot;'+cat+'&quot;,'+i+')">पूछें</button></div></div></article>';
 }
 function openHardware(cat,i){
 let p=pcCatalog[cat][i],c=categories.find(x=>x.id===cat);
