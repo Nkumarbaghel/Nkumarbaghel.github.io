@@ -66,7 +66,7 @@ const categories=[
 {id:"pcacc",icon:"⌨️",name:"Computer Accessories",desc:"Keyboard, mouse, webcam और cables",subs:["Keyboard","Mouse","Webcam","Speaker","Headphone","USB Hub","HDMI","VGA","DisplayPort","LAN Cable","Stand"]},
 {id:"storage",icon:"💾",name:"Storage",desc:"SSD, HDD, Pen Drive और Memory Cards",subs:["SATA SSD","NVMe SSD","HDD","External HDD","Pen Drive","MicroSD","SD Card","Enclosure"]},
 {id:"network",icon:"🌐",name:"Networking",desc:"Router, switch और network accessories",subs:["Wi-Fi Router","4G/5G Router","Switch","Wi-Fi Adapter","Range Extender","LAN Cable","RJ45","Access Point"]},
-{id:"printer",icon:"🖨️",name:"Printer & Parts",desc:"Printer, cartridge, toner, printhead, rollers और repair parts",subs:["Inkjet","Laser","Thermal","Cartridge","Toner","Drum","Ink","Printhead","Pickup Roller","Paper Feed Roller","Encoder Strip","Encoder Disc","Fuser Unit","Transfer Roller","Developer Unit","Maintenance Box","Waste Ink Pad","Ribbon","Power Supply","Formatter Board","Control Panel","Cable","Adapter","Printer Parts"]},
+{id:"printer",icon:"🖨️",name:"Printer & Parts",desc:"Printer, cartridge, toner, printhead, rollers और repair parts",subs:["Inkjet","Laser","Thermal","Cartridge","Toner","Drum","Ink","Printhead","Pickup Roller","Paper Feed Roller","Encoder Strip","Encoder Disc","Fuser Unit","Transfer Roller","Developer Unit","Maintenance Box","Waste Ink Pad","Ribbon","Power Supply","Formatter Board","Control Panel","ADF Roller","ADF Pad","Scanner Glass","Duplex Unit","Paper Sensor","Cover Sensor","Cable","Adapter","Printer Parts"]},
 {id:"power",icon:"🔌",name:"Power & Charging",desc:"Chargers, adapters, UPS और power items",subs:["Laptop Charger","Mobile Charger","Adapter","SMPS","UPS","Extension Board","Power Cable","DC Cable"]}
 ];
 
@@ -450,7 +450,13 @@ printer:[
 ["Printer Parts","Printer Gear Set family","Drive mechanism","Gear assembly","Model-specific","Gear set","Exact printer model required"],
 ["Printer Parts","Printer Platen Roller family","Paper feed","Roller","Model-specific","Platen","Exact printer model required"],
 ["Printer Parts","Printer Sensor family","Paper/cover/position","Sensor","Model-specific","Sensor","Exact printer model required"],
-["Printer Parts","Printer Ribbon Cable / FFC family","Internal","FFC/FPC","Model-specific","Cable","Exact part number required"]
+["Printer Parts","Printer Ribbon Cable / FFC family","Internal","FFC/FPC","Model-specific","Cable","Exact part number required"],
+["ADF Roller","ADF Pickup Roller family","ADF","Paper feed","Model-specific","Rubber roller","Exact printer model required"],
+["ADF Pad","ADF Separation Pad family","ADF","Paper separation","Model-specific","Pad","Exact printer model required"],
+["Scanner Glass","Printer Scanner/ADF Glass family","Scanner","A4/A3 varies","Model-specific","Glass assembly","Exact printer model required"],
+["Duplex Unit","Printer Duplex Unit family","Duplex","Auto double-side","Model-specific","Duplex assembly","Exact printer model required"],
+["Paper Sensor","Printer Paper Sensor family","Paper path","Optical/mechanical","Model-specific","Sensor","Exact part number required"],
+["Cover Sensor","Printer Cover Sensor family","Cover detection","Sensor","Model-specific","Sensor","Exact part number required"]
 ],
 power:[
 ["UPS","APC BX600C-IN","600VA","360W","Line-interactive","Backup","PC"],
@@ -740,7 +746,9 @@ printer:{
 "Encoder Disc":p=>p[0]==="Encoder Disc","Fuser Unit":p=>p[0]==="Fuser Unit","Transfer Roller":p=>p[0]==="Transfer Roller",
 "Developer Unit":p=>p[0]==="Developer Unit","Maintenance Box":p=>p[0]==="Maintenance Box","Waste Ink Pad":p=>p[0]==="Waste Ink Pad",
 "Ribbon":p=>p[0]==="Ribbon","Power Supply":p=>p[0]==="Power Supply","Formatter Board":p=>p[0]==="Formatter Board",
-"Control Panel":p=>p[0]==="Control Panel","Cable":p=>p[0]==="Cable","Adapter":p=>p[0]==="Adapter","Printer Parts":p=>p[0]==="Printer Parts"
+"Control Panel":p=>p[0]==="Control Panel","ADF Roller":p=>p[0]==="ADF Roller","ADF Pad":p=>p[0]==="ADF Pad",
+"Scanner Glass":p=>p[0]==="Scanner Glass","Duplex Unit":p=>p[0]==="Duplex Unit","Paper Sensor":p=>p[0]==="Paper Sensor",
+"Cover Sensor":p=>p[0]==="Cover Sensor","Cable":p=>p[0]==="Cable","Adapter":p=>p[0]==="Adapter","Printer Parts":p=>p[0]==="Printer Parts"
 }
 };
 
