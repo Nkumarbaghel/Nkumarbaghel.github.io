@@ -628,7 +628,12 @@ if(active==="pcparts") renderBuilder();
 return;
 }
 let list=products.filter(p=>p[0]===active && normalizeSearch(p.join(" ")).includes(normalizeSearch(s)));
-if(!list.length) list=[genericSubProduct(active,s)];
+if(!list.length){
+let gp=genericSubProduct(active,s);
+let existing=products.findIndex(p=>p[0]===gp[0]&&p[2]===gp[2]);
+if(existing<0){products.push(gp);existing=products.length-1;}
+list=[products[existing]];
+}
 grid.innerHTML=list.map(p=>productCard(p,products.indexOf(p))).join("");
 document.getElementById("catalogSub").textContent=s+" — केवल इसी Sub-category के products";
 }
