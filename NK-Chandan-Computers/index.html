@@ -482,17 +482,17 @@ function renderBuilder(){
 let wrap=document.getElementById("pcBuilder");
 if(!wrap){wrap=document.createElement("div");wrap.id="pcBuilder";wrap.className="note";filters.insertAdjacentElement("afterend",wrap);}
 const pick=(cat)=>pcCatalog[cat]||[];
-const opts=(cat,label)=>'<option value="">'+label+'</option>'+pick(cat).map((x,i)=>'<option value="'+i+'">'+x[1]+'</option>').join("");
+const opts=(cat,label,types)=>'<option value="">'+label+'</option>'+pick(cat).map((x,i)=>types&&types.length&&!types.includes(x[0])?null:'<option value="'+i+'">'+x[1]+'</option>').filter(Boolean).join("");
 wrap.innerHTML='<div style="font-size:18px;font-weight:900;color:var(--nav)">🛠️ पूरा PC Configurator</div><p>Customer एक-एक component चुनकर अपना पूरा PC build कर सकता है। Motherboard चुनने के बाद compatible CPU और RAM को प्राथमिकता से दिखाया जाता है। Final compatibility, BIOS, dimensions, cooler mounting और PSU requirement को order से पहले confirm किया जाएगा।</p><div class="filters builderGrid">'+
-'<label>Motherboard<select id="buildBoard" onchange="updateBuilder()">'+opts("pcparts","Motherboard चुनें")+'</select></label>'+
-'<label>CPU<select id="buildCpu" onchange="updateBuilder()">'+opts("pcparts","CPU चुनें")+'</select></label>'+
-'<label>RAM<select id="buildRam" onchange="updateBuilder()">'+opts("pcparts","RAM चुनें")+'</select></label>'+
-'<label>GPU<select id="buildGpu" onchange="updateBuilder()">'+opts("pcparts","Graphics Card चुनें")+'</select></label>'+
-'<label>SSD<select id="buildSsd" onchange="updateBuilder()">'+opts("storage","SSD चुनें")+'</select></label>'+
-'<label>HDD<select id="buildHdd" onchange="updateBuilder()">'+opts("storage","HDD चुनें")+'</select></label>'+
-'<label>PSU / SMPS<select id="buildPsu" onchange="updateBuilder()">'+opts("power","SMPS/PSU चुनें")+'</select></label>'+
-'<label>Cabinet<select id="buildCase" onchange="updateBuilder()">'+opts("pcparts","Cabinet चुनें")+'</select></label>'+
-'<label>CPU Cooler<select id="buildCooler" onchange="updateBuilder()">'+opts("pcparts","Cooler चुनें")+'</select></label>'+
+'<label>Motherboard<select id="buildBoard" onchange="updateBuilder()">'+opts("pcparts","Motherboard चुनें",["Motherboard"])+'</select></label>'+
+'<label>CPU<select id="buildCpu" onchange="updateBuilder()">'+opts("pcparts","CPU चुनें",["CPU"])+'</select></label>'+
+'<label>RAM<select id="buildRam" onchange="updateBuilder()">'+opts("pcparts","RAM चुनें",["RAM"])+'</select></label>'+
+'<label>GPU<select id="buildGpu" onchange="updateBuilder()">'+opts("pcparts","Graphics Card चुनें",["GPU"])+'</select></label>'+
+'<label>SSD<select id="buildSsd" onchange="updateBuilder()">'+opts("storage","SSD चुनें",["SSD"])+'</select></label>'+
+'<label>HDD<select id="buildHdd" onchange="updateBuilder()">'+opts("storage","HDD चुनें",["HDD"])+'</select></label>'+
+'<label>PSU / SMPS<select id="buildPsu" onchange="updateBuilder()">'+opts("power","SMPS/PSU चुनें",["SMPS"])+'</select></label>'+
+'<label>Cabinet<select id="buildCase" onchange="updateBuilder()">'+opts("pcparts","Cabinet चुनें",["CABINET"])+'</select></label>'+
+'<label>CPU Cooler<select id="buildCooler" onchange="updateBuilder()">'+opts("pcparts","Cooler चुनें",["COOLER"])+'</select></label>'+
 '</div><div id="buildResult" class="builderResult">Components चुनते ही compatibility summary यहाँ दिखाई जाएगी।</div><div class="btns"><button onclick="sendBuildWhatsApp()">🟢 WhatsApp पर पूरा Build पूछें</button></div>';
 }
 function selected(cat,id){
