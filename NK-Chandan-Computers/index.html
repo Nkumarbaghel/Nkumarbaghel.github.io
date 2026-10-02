@@ -15,7 +15,7 @@
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:.18s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #173b6618}.badge{position:absolute;top:9px;left:9px;background:#e8f7ee;color:var(--green);font-size:9px;font-weight:900;padding:4px 6px;border-radius:3px;z-index:2}.visual{height:175px;background:linear-gradient(135deg,#edf6f7,#e2ebf1);display:grid;place-items:center}.device{width:116px;height:140px;background:#151515;border:6px solid #555;border-radius:15px;box-shadow:0 8px 18px #0003;position:relative}.device:before{content:"";position:absolute;inset:8px;background:linear-gradient(135deg,#283744,#060708);border-radius:8px}.device:after{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:26px;height:6px;border-radius:6px;background:#333}.iconVisual{font-size:55px;filter:drop-shadow(0 6px 8px #0002)}.info{padding:11px}.info h3{margin:5px 0;font-size:14px;color:var(--nav)}.meta{font-size:10px;color:var(--mut);line-height:1.45}.price{font-size:15px;font-weight:1000;margin-top:7px}.stock{color:var(--green);font-size:10px;font-weight:800;margin-top:3px}.btns{display:flex;gap:7px;margin-top:9px}.btns button{flex:1;border-radius:5px;padding:8px;border:1px solid var(--teal);background:#fff;color:var(--teal);font-weight:900;font-size:10px;cursor:pointer}.btns button:last-child{border:0;background:var(--orange);color:#172b3d}
 .note{background:#fff;border:1px solid var(--line);padding:13px;border-radius:8px;font-size:11px;color:var(--mut);line-height:1.6}.contact{background:#fff;border:1px solid var(--line);padding:22px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:15px}.wa{background:#20b85a;color:#fff;padding:12px 18px;border-radius:6px;font-weight:900;white-space:nowrap}footer{background:var(--nav2);color:#b9c9d6;margin-top:30px;padding:25px 0;font-size:11px}
 dialog{width:min(960px,calc(100% - 16px));border:0;border-radius:13px;padding:0;box-shadow:0 30px 100px #00142670}dialog::backdrop{background:#061526aa}.mh{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:900;color:var(--nav)}.x{border:0;border-radius:50%;width:35px;height:35px;font-size:22px;cursor:pointer}.md{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;padding:22px}.large{min-height:350px;background:#edf6f7;border-radius:10px;display:grid;place-items:center}.large .device{width:180px;height:260px}.detailVisual{font-size:92px}.facts{display:grid;gap:7px;margin:13px 0}.fact{background:#f5f7f9;padding:9px;border-radius:6px;font-size:12px}.fact b{color:var(--nav)}.modalBtn{display:inline-block;background:var(--orange);padding:11px 17px;border-radius:5px;font-weight:900}
-.phoneVariant{font-size:10px;color:var(--mut)}@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.depts{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.top span{display:none}.nav{flex-wrap:wrap}.brand{font-size:15px}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(2,1fr);gap:8px}.visual{height:150px}.device{width:92px;height:115px}.info{padding:9px}.info h3{font-size:12px}.depts{grid-template-columns:repeat(2,1fr);gap:8px}.dept{padding:11px}.heroIn{padding:22px}.md{grid-template-columns:1fr}.large{min-height:250px}.contact{flex-direction:column;align-items:flex-start}.wa{width:100%;text-align:center}}
+.phoneVariant{font-size:10px;color:var(--mut)}@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.depts{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.builderGrid{grid-template-columns:1fr 1fr}.top span{display:none}.nav{flex-wrap:wrap}.brand{font-size:15px}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(2,1fr);gap:8px}.visual{height:150px}.device{width:92px;height:115px}.info{padding:9px}.info h3{font-size:12px}.depts{grid-template-columns:repeat(2,1fr);gap:8px}.dept{padding:11px}.heroIn{padding:22px}.md{grid-template-columns:1fr}.large{min-height:250px}.contact{flex-direction:column;align-items:flex-start}.wa{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -481,17 +481,56 @@ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("नमस्ते 
 function renderBuilder(){
 let wrap=document.getElementById("pcBuilder");
 if(!wrap){wrap=document.createElement("div");wrap.id="pcBuilder";wrap.className="note";filters.insertAdjacentElement("afterend",wrap);}
-let boards=pcCatalog.pcparts.filter(x=>x[0]==="Motherboard"),cpus=pcCatalog.pcparts.filter(x=>x[0]==="CPU"),rams=pcCatalog.pcparts.filter(x=>x[0]==="RAM"),gpus=pcCatalog.pcparts.filter(x=>x[0]==="GPU");
-wrap.innerHTML='<b>🛠️ PC Modification / Builder</b><p>पहले Motherboard चुनें। उसके socket के हिसाब से CPU और DDR type के हिसाब से RAM चुनें। नीचे की compatibility check ग्राहक को गलत combination से बचाने के लिए है।</p><div class="filters"><select id="buildBoard" onchange="updateBuilder()"><option value="">Motherboard चुनें</option>'+boards.map((x,i)=>'<option value="'+i+'">'+x[1]+' — '+x[2]+' / '+x[4]+'</option>').join("")+'</select><select id="buildCpu" onchange="updateBuilder()"><option value="">CPU चुनें</option>'+cpus.map((x,i)=>'<option value="'+i+'">'+x[1]+' — '+x[2]+'</option>').join("")+'</select><select id="buildRam" onchange="updateBuilder()"><option value="">RAM चुनें</option>'+rams.map((x,i)=>'<option value="'+i+'">'+x[1]+' — '+x[2]+'</option>').join("")+'</select><select id="buildGpu"><option value="">GPU चुनें</option>'+gpus.map((x,i)=>'<option value="'+i+'">'+x[1]+' — '+x[2]+'</option>').join("")+'</select></div><div id="buildResult">Motherboard + CPU + RAM चुनकर compatibility देखें।</div>';
+const pick=(cat)=>pcCatalog[cat]||[];
+const opts=(cat,label)=>'<option value="">'+label+'</option>'+pick(cat).map((x,i)=>'<option value="'+i+'">'+x[1]+'</option>').join("");
+wrap.innerHTML='<div style="font-size:18px;font-weight:900;color:var(--nav)">🛠️ पूरा PC Configurator</div><p>Customer एक-एक component चुनकर अपना पूरा PC build कर सकता है। Motherboard चुनने के बाद compatible CPU और RAM को प्राथमिकता से दिखाया जाता है। Final compatibility, BIOS, dimensions, cooler mounting और PSU requirement को order से पहले confirm किया जाएगा।</p><div class="filters builderGrid">'+
+'<label>Motherboard<select id="buildBoard" onchange="updateBuilder()">'+opts("pcparts","Motherboard चुनें")+'</select></label>'+
+'<label>CPU<select id="buildCpu" onchange="updateBuilder()">'+opts("pcparts","CPU चुनें")+'</select></label>'+
+'<label>RAM<select id="buildRam" onchange="updateBuilder()">'+opts("pcparts","RAM चुनें")+'</select></label>'+
+'<label>GPU<select id="buildGpu" onchange="updateBuilder()">'+opts("pcparts","Graphics Card चुनें")+'</select></label>'+
+'<label>SSD<select id="buildSsd" onchange="updateBuilder()">'+opts("storage","SSD चुनें")+'</select></label>'+
+'<label>HDD<select id="buildHdd" onchange="updateBuilder()">'+opts("storage","HDD चुनें")+'</select></label>'+
+'<label>PSU / SMPS<select id="buildPsu" onchange="updateBuilder()">'+opts("power","SMPS/PSU चुनें")+'</select></label>'+
+'<label>Cabinet<select id="buildCase" onchange="updateBuilder()">'+opts("pcparts","Cabinet चुनें")+'</select></label>'+
+'<label>CPU Cooler<select id="buildCooler" onchange="updateBuilder()">'+opts("pcparts","Cooler चुनें")+'</select></label>'+
+'</div><div id="buildResult" class="builderResult">Components चुनते ही compatibility summary यहाँ दिखाई जाएगी।</div><div class="btns"><button onclick="sendBuildWhatsApp()">🟢 WhatsApp पर पूरा Build पूछें</button></div>';
+}
+function selected(cat,id){
+let n=Number(id);
+return id!=="" && pcCatalog[cat] ? pcCatalog[cat][n] : null;
 }
 function updateBuilder(){
-let b=pcCatalog.pcparts.filter(x=>x[0]==="Motherboard")[Number(document.getElementById("buildBoard").value)];
-let u=pcCatalog.pcparts.filter(x=>x[0]==="CPU")[Number(document.getElementById("buildCpu").value)];
-let r=pcCatalog.pcparts.filter(x=>x[0]==="RAM")[Number(document.getElementById("buildRam").value)];
+let b=selected("pcparts",document.getElementById("buildBoard")?.value);
+let u=selected("pcparts",document.getElementById("buildCpu")?.value);
+let r=selected("pcparts",document.getElementById("buildRam")?.value);
+let g=selected("pcparts",document.getElementById("buildGpu")?.value);
+let s=selected("storage",document.getElementById("buildSsd")?.value);
+let h=selected("storage",document.getElementById("buildHdd")?.value);
+let p=selected("power",document.getElementById("buildPsu")?.value);
+let cs=selected("pcparts",document.getElementById("buildCase")?.value);
+let co=selected("pcparts",document.getElementById("buildCooler")?.value);
 let out=[];
-if(b&&u) out.push(b[2]===u[2]?"✅ Motherboard/CPU socket match":"⚠️ Socket mismatch — दूसरा CPU/Motherboard चुनें");
-if(b&&r) out.push(b[4]===r[2]?"✅ RAM type match":"⚠️ DDR mismatch — RAM type बदलें");
-document.getElementById("buildResult").innerHTML=out.length?out.join("<br>"):"Motherboard + CPU + RAM चुनकर compatibility देखें।";
+if(b&&u) out.push({ok:b[2]===u[2],text:b[2]===u[2]?"Motherboard / CPU socket match: "+b[2]:"Socket mismatch: Motherboard "+b[2]+" vs CPU "+u[2]});
+if(b&&r) out.push({ok:b[4]===r[2],text:b[4]===r[2]?"Motherboard / RAM type match: "+b[4]:"RAM mismatch: Motherboard "+b[4]+" vs RAM "+r[2]});
+if(g) out.push({ok:true,text:"GPU: "+g[1]+" selected — PCIe compatibility and case clearance must be confirmed"});
+if(s) out.push({ok:true,text:"SSD: "+s[1]+" selected"});
+if(h) out.push({ok:true,text:"HDD: "+h[1]+" selected"});
+if(p) out.push({ok:true,text:"PSU: "+p[1]+" selected — wattage/connectors must be checked against final CPU/GPU"});
+if(cs) out.push({ok:true,text:"Cabinet: "+cs[1]+" selected — motherboard/GPU/cooler dimensions must be confirmed"});
+if(co) out.push({ok:true,text:"Cooler: "+co[1]+" selected — socket mounting and thermal capacity must be confirmed"});
+let cls=out.map(x=>'<div class="fact">'+(x.ok?"✅ ":"⚠️ ")+x.text+'</div>').join("");
+document.getElementById("buildResult").innerHTML=(out.length?cls:"<div class=\"fact\">अभी कोई component नहीं चुना गया है।</div>")+
+'<div class="fact"><b>Final check:</b> BIOS support, socket/chipset, RAM type, M.2/SATA interface, GPU length, cabinet form factor, cooler clearance, PSU wattage/connectors और actual stock order से पहले confirm होंगे।</div>';
+}
+function sendBuildWhatsApp(){
+let ids=["buildBoard","buildCpu","buildRam","buildGpu","buildSsd","buildHdd","buildPsu","buildCase","buildCooler"];
+let cats=["pcparts","pcparts","pcparts","pcparts","storage","storage","power","pcparts","pcparts"];
+let labels=["Motherboard","CPU","RAM","GPU","SSD","HDD","PSU","Cabinet","Cooler"];
+let lines=[];
+ids.forEach((id,k)=>{let x=selected(cats[k],document.getElementById(id)?.value);if(x)lines.push(labels[k]+": "+x[1]);});
+let msg="नमस्ते NK & Chandan Computers, मुझे यह पूरा PC configure करना है:%0A"+(lines.length?lines.join("%0A"):"अभी कोई component select नहीं है।")+
+"%0Aकृपया compatibility, actual photo, exact model, price और live stock confirm करें।";
+window.open("https://wa.me/"+WA+"?text="+msg,"_blank");
 }
 
 function renderFilters(c){
