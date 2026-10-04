@@ -1,7 +1,8 @@
 // Blog categories: icon-only. Legacy folder/card styles are intentionally bypassed.
 document.addEventListener("DOMContentLoaded",()=>{
   const hero=document.querySelector(".blog-hero");
-  if(!hero||typeof posts==="undefined"||document.querySelector("#categoryFolders"))return;
+  const postSource=Array.isArray(window.posts)?window.posts:[];
+  if(!hero||!postSource.length||document.querySelector("#categoryFolders"))return;
 
   const style=document.createElement("style");
   style.id="category-icon-styles-v2";
@@ -45,7 +46,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   function openFolder(key,name){
     const unique=new Map();
-    posts.filter(p=>classify(p,key)).forEach(p=>unique.set(`${norm(p.title)}|${p.date||""}`,p));
+    postSource.filter(p=>classify(p,key)).forEach(p=>unique.set(`${norm(p.title)}|${p.date||""}`,p));
     const matches=Array.from(unique.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
     const modal=document.createElement("div");
     modal.className="folder-modal";
