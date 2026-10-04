@@ -16,6 +16,36 @@
 <meta name="theme-color" content="#09090b">
 <title>CG Neel Baghel | Official Website</title>
 <style>
+/* PREMIUM VISUAL LAYER */
+::selection{background:#ef233c;color:#fff}
+body{background-color:#07080a}
+.site-header{box-shadow:0 10px 35px rgba(0,0,0,.18)}
+.nav-cta{padding:9px 14px!important;border:1px solid rgba(239,35,60,.45);border-radius:999px!important;background:rgba(239,35,60,.08);color:#fff!important}
+.nav-cta:hover{background:#ef233c!important;color:#fff!important}
+.nav-cta:after{display:none}
+.hero{background:linear-gradient(180deg,rgba(255,255,255,.015),transparent 55%)}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(to bottom,black,transparent 78%);pointer-events:none}
+.hero-grid,.hero .container{position:relative;z-index:1}
+.hero-photo{isolation:isolate}
+.hero-photo:before{content:"";position:absolute;inset:-18px -22px 18px 18px;border:1px solid rgba(239,35,60,.28);border-radius:34px;z-index:-1;transform:rotate(3deg)}
+.hero-photo:after{content:"";position:absolute;width:180px;height:180px;right:-55px;top:-45px;border-radius:50%;background:rgba(244,201,93,.09);filter:blur(20px);z-index:-1}
+.hero-photo img{box-shadow:0 35px 90px rgba(0,0,0,.55)}
+.floating-card{position:absolute;padding:12px 15px;border:1px solid rgba(255,255,255,.1);background:rgba(12,13,16,.78);backdrop-filter:blur(16px);border-radius:15px;box-shadow:0 15px 40px rgba(0,0,0,.28);z-index:3}
+.floating-card strong,.floating-card span{display:block}.floating-card strong{font-size:12px}.floating-card span{font-size:9px;color:#8e949d;margin-top:2px}
+.card-one{left:-38px;top:17%}.card-two{right:-38px;bottom:24%}
+.premium-line{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}
+.premium-line .container{min-height:48px;display:flex;align-items:center;justify-content:center;gap:38px;flex-wrap:wrap;color:#6f757e;font-size:9px;font-weight:800;letter-spacing:.18em}
+.stat{position:relative;overflow:hidden}.stat:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);transform:translateX(-100%);transition:.7s}.stat:hover:before{transform:translateX(100%)}
+.section:nth-of-type(even){background:linear-gradient(180deg,rgba(255,255,255,.012),transparent)}
+.section-head .kicker{position:relative;display:inline-block}.section-head .kicker:before,.section-head .kicker:after{content:"";display:inline-block;width:22px;height:1px;background:var(--red);vertical-align:middle;margin:0 9px}
+.card,.about-card,.contact-card,.tool,.listing{box-shadow:0 12px 35px rgba(0,0,0,.12)}
+.btn{box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.primary:hover{box-shadow:0 14px 35px rgba(239,35,60,.3)}
+.gallery-item{position:relative}.gallery-item:after{content:"View Gallery ↗";position:absolute;left:14px;bottom:12px;padding:6px 9px;border-radius:999px;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);font-size:10px;font-weight:700;opacity:0;transform:translateY(6px);transition:.25s}.gallery-item:hover:after{opacity:1;transform:none}
+.floating-wa{border:3px solid #08090b;box-shadow:0 12px 35px rgba(22,163,74,.28)}
+@media(max-width:900px){.card-one{left:-12px}.card-two{right:-12px}}
+@media(max-width:680px){.nav-cta{margin-top:5px;text-align:center}.premium-line .container{gap:12px 20px;padding:10px 0}.floating-card{display:none}.hero-photo:before{inset:-10px -8px 10px 8px}}
+@media(prefers-reduced-motion:no-preference){.hero-photo img{animation:premiumFloat 7s ease-in-out infinite}.photo-badge{animation:softPulse 4s ease-in-out infinite}@keyframes premiumFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes softPulse{0%,100%{box-shadow:0 0 0 rgba(239,35,60,0)}50%{box-shadow:0 0 24px rgba(239,35,60,.14)}}}
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
 :root{--bg:#08090b;--panel:#101216;--panel2:#15181d;--text:#f7f7f8;--muted:#aeb3bb;--red:#ef233c;--red2:#ff5b6b;--gold:#f4c95d;--line:rgba(255,255,255,.09);--shadow:0 25px 70px rgba(0,0,0,.4)}
 *{box-sizing:border-box;scroll-behavior:smooth}
@@ -54,7 +84,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:#
 <a class="brand" href="#home"><img src="logo.jpeg" alt="CG Neel Baghel logo"><span>CG Neel Baghel</span></a>
 <button class="menu" id="menu" aria-label="Menu">☰</button>
 <nav class="nav" id="nav">
-<a href="#home">Home</a><a href="#about">About</a><a href="#business">Business</a><a href="#promotion">Promotion</a><a href="#services">Services</a><a href="blog.html">Blog</a><a href="gallery.html">Gallery</a><a href="#contact">Contact</a>
+<a href="#home">Home</a><a href="#about">About</a><a href="#business">Business</a><a href="#promotion">Promotion</a><a href="#services">Services</a><a href="blog.html">Blog</a><a href="gallery.html">Gallery</a><a href="#contact">Contact</a><a class="nav-cta" href="https://wa.me/918889643345" target="_blank" rel="noopener">WhatsApp ↗</a>
 </nav>
 </div>
 </header>
@@ -76,11 +106,14 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:#
 <div class="hero-photo reveal">
 <img src="profile.jpeg" alt="Neel Kumar Baghel">
 <div class="photo-badge">CG NEEL BAGHEL • OFFICIAL</div>
+<div class="floating-card card-one"><strong>Digital Creator</strong><span>Content • Culture • Community</span></div>
+<div class="floating-card card-two"><strong>Local Business</strong><span>CG + MP Platform</span></div>
 </div>
 </div>
 </section>
 
-<section class="section" style="padding-top:20px">
+<div class="premium-line"><div class="container"><span>✦ PERSONAL BRAND</span><span>✦ DIGITAL PRESENCE</span><span>✦ LOCAL COMMUNITY</span><span>✦ CHHATTISGARH</span></div></div>
+<section class="section" style="padding-top:55px">
 <div class="container stats">
 <div class="stat"><strong>CG + MP</strong><span>स्थानीय फोकस</span></div>
 <div class="stat"><strong>Local Business</strong><span>Business Directory</span></div>
