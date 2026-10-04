@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.setAttribute("href", href);
   };
   if (id) {
-    const p = uniquePosts.find(x => String(x.id) === String(id));
+    const p = uniquePosts.find(x => String(x.id) === String(id)) || (id === "jab-ek-jati-praman-patra-ke-liye-15-kilometer-jana-padta-tha" ? window.digitalRuralStory : null);
     box.style.display = "none";
     document.querySelector(".blog-tools")?.style.setProperty("display", "none", "important");
     document.querySelector(".blog-hero")?.style.setProperty("display", "none", "important");
