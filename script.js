@@ -97,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   };
 
-  const id = new URLSearchParams(location.search).get("post");
+  const rawPostId = new URLSearchParams(location.search).get("post") || location.hash.replace(/^#post=/, "");
+  const id = String(rawPostId || "").trim();
 
   const setMeta = (name, content, attr = "name") => {
     if (!content) return;
@@ -119,7 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
     el.setAttribute("href", href);
   };
   if (id) {
-    const p = uniquePosts.find(x => String(x.id) === String(id)) || (id === "jab-ek-jati-praman-patra-ke-liye-15-kilometer-jana-padta-tha" ? window.digitalRuralStory : null);
+    const targetId = "jab-ek-jati-praman-patra-ke-liye-15-kilometer-jana-padta-tha";
+    const p = uniquePosts.find(x => String(x.id).trim() === id)
+      || uniquePosts.find(x => id === targetId && String(x.title || "").includes("15 किलोमीटर"))
+      || (id === targetId ? window.digitalRuralStory : null);
     box.style.display = "none";
     document.querySelector(".blog-tools")?.style.setProperty("display", "none", "important");
     document.querySelector(".blog-hero")?.style.setProperty("display", "none", "important");
