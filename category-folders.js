@@ -47,6 +47,11 @@ document.addEventListener("DOMContentLoaded",()=>{
   function openFolder(key,name){
     const unique=new Map();
     postSource.filter(p=>classify(p,key)).forEach(p=>unique.set(`${norm(p.title)}|${p.date||""}`,p));
+    // Always include the latest digital rural story in this folder.
+    if(key==="digital"){
+      const latest={id:"jab-ek-jati-praman-patra-ke-liye-15-kilometer-jana-padta-tha",title:"जब एक जाति प्रमाण पत्र के लिए 15 किलोमीटर जाना पड़ता था — गाँव से डिजिटल सेवा तक मेरी कहानी",date:"2026-10-04",category:"डिजिटल बदलाव | ग्रामीण अनुभव",excerpt:"एक समय जाति प्रमाण पत्र बनवाने के लिए मुझे अपने गाँव से लगभग 15 किलोमीटर दूर तहसील कार्यालय के दो-तीन चक्कर लगाने पड़ते थे। आज नजदीकी CSC और डिजिटल सेवाओं ने ऐसी परेशानियों को काफी कम कर दिया है। यह मेरे अपने अनुभव की कहानी है।"};
+      unique.set(`${norm(latest.title)}|${latest.date}`, latest);
+    }
     const matches=Array.from(unique.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
     const modal=document.createElement("div");
     modal.className="folder-modal";
