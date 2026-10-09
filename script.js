@@ -97,7 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   };
 
-  const rawPostId = new URLSearchParams(location.search).get("post") || location.hash.replace(/^#post=/, "");
+  // Read the requested article ID consistently from query string or hash.
+  const params = new URLSearchParams(location.search);
+  const rawPostId = params.get("post") || params.get("id") || location.hash.replace(/^#post=/, "");
   const id = String(rawPostId || "").trim();
 
   const setMeta = (name, content, attr = "name") => {
