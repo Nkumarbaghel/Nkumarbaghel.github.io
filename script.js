@@ -19,16 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .replace(/\s+/g, " ")
     .trim();
 
-  // Prefer the canonical window.posts array, and explicitly include the dedicated article
-  // so a script/global-name collision or stale posts.js cannot hide it.
-  const sourcePosts = Array.isArray(window.posts)
-    ? [...window.posts]
-    : (typeof posts !== "undefined" && Array.isArray(posts) ? [...posts] : []);
-  if (window.digitalRuralStory && !sourcePosts.some(p =>
-    String(p.id || "").trim() === String(window.digitalRuralStory.id || "").trim()
-  )) {
-    sourcePosts.push(window.digitalRuralStory);
-  }
+  const sourcePosts = Array.isArray(window.posts) ? window.posts : posts;
   const uniquePosts = Array.from(new Map(
     sourcePosts.map(p => [
       `${normalize(p.title)}|${String(p.date || "").trim()}`,
@@ -132,16 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.setAttribute("href", href);
   };
   if (id) {
-    const targetId = "jab-ek-jati-praman-patra-ke-liye-15-kilometer-jana-padta-tha";
-    const isDigitalRuralStory = id === targetId
-      || /jati-praman-patra|15-kilometer|15.kilometer/i.test(id)
-      || (id.includes("जाति") && id.includes("15"));
-    const p = uniquePosts.find(x => String(x.id || "").trim() === id)
-      || (isDigitalRuralStory ? uniquePosts.find(x =>
-        String(x.id || "").trim() === targetId
-        || String(x.title || "").includes("15 किलोमीटर")
-      ) : null)
-      || (isDigitalRuralStory ? window.digitalRuralStory : null);
+    const p = uniquePosts.find(x => String(x.id || "").trim() === id);
     box.style.display = "none";
     document.querySelector(".blog-tools")?.style.setProperty("display", "none", "important");
     document.querySelector(".blog-hero")?.style.setProperty("display", "none", "important");
