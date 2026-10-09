@@ -21,8 +21,7 @@ header{width:100%;position:relative;z-index:9999;background:#080808;border-botto
 <section id="detail" class="detail"></section>
 </main>
 <footer><p>© 2026 CG Neel Baghel. All Rights Reserved.</p><p><a href="index.html">Home</a><a href="index.html#about">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></p></footer>
-<script src="posts.js?v=20261009-1"></script>
-<script src="digital-rural-story.js?v=20261009-1"></script>
+<script src="posts.js?v=20261009-2"></script>
 <script src="business-blog.js?v=20260826-1"></script>
 <script src="news-divyang-seva-sangh.js?v=20260823-1"></script>
 <script src="career-jobs.js?v=20260823-1"></script>
@@ -31,32 +30,9 @@ header{width:100%;position:relative;z-index:9999;background:#080808;border-botto
 <script src="chhattisgarh-festivals.js?v=20260823-1"></script>
 <script src="my-thoughts-special.js?v=20260823-1"></script>
 <script src="internet-social-media.js?v=20260823-1"></script>
-<script src="category-folders.js?v=20261009-1"></script>
-<script src="script.js?v=20261009-3"></script>
+<script src="category-folders.js?v=20261009-2"></script>
+<script src="script.js?v=20261009-4"></script>
 <script>
-(function(){
-  function renderDigitalFallback(){
-    try{
-      const id=new URLSearchParams(location.search).get("post");
-      const target="jab-ek-jati-praman-patra-ke-liye-15-kilometer-jana-padta-tha";
-      const p=window.digitalRuralStory;
-      if(id!==target || !p) return;
-      const detail=document.querySelector("#detail");
-      const box=document.querySelector("#posts");
-      if(!detail) return;
-      if(box) box.style.display="none";
-      document.querySelector(".blog-tools")?.style.setProperty("display","none","important");
-      document.querySelector(".blog-hero")?.style.setProperty("display","none","important");
-      detail.style.display="block";
-      const d=new Date(p.date+"T00:00:00");
-      const date=isNaN(d)?"":d.toLocaleDateString("hi-IN",{day:"numeric",month:"long",year:"numeric"});
-      detail.innerHTML='<article class="article-page"><a href="blog.html" class="back-link">← सभी लेख</a><small class="article-meta">'+p.category+' • '+date+'</small><h1>'+p.title+'</h1><p class="article-excerpt">'+p.excerpt+'</p><div class="article">'+p.content+'</div></article>';
-      document.title=p.title+" | CG Neel Baghel";
-    }catch(e){ console.error("Digital article fallback:",e); }
-  }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",renderDigitalFallback);
-  else renderDigitalFallback();
-})();
 </script>
 </body>
 </html>
