@@ -12,6 +12,8 @@
     content: `
       <p><strong>जय माता दी! 🙏🌺</strong></p>
       <p>नवरात्रि हिंदू धर्म का एक पवित्र त्योहार है। ‘नवरात्रि’ का अर्थ है नौ रातें। इन दिनों माँ दुर्गा और उनके नौ स्वरूपों की पूजा की जाती है। यह पर्व शक्ति, भक्ति, साहस और बुराई पर अच्छाई की विजय का प्रतीक माना जाता है। नवरात्रि से जुड़ी सबसे प्रसिद्ध पौराणिक कथाओं में माँ दुर्गा और महिषासुर की कथा शामिल है।</p>
+
+      <figure style="margin:24px auto;text-align:center;max-width:760px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Durga_Mahishasuramardini.jpg?width=1000" alt="माँ दुर्गा महिषासुरमर्दिनी का पारंपरिक चित्र" loading="lazy" style="display:block;width:100%;height:auto;max-height:680px;object-fit:contain;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.18)"><figcaption style="font-size:.88em;opacity:.82;margin-top:8px">माँ दुर्गा महिषासुरमर्दिनी — चित्र: Wikimedia Commons, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Durga_Mahishasuramardini.jpg" target="_blank" rel="noopener noreferrer">स्रोत व लाइसेंस</a>)</figcaption></figure>
       <h2>अध्याय 1: जब महिषासुर का अत्याचार बढ़ने लगा</h2>
       <p>पौराणिक कथा के अनुसार, प्राचीन समय में महिषासुर नाम का एक शक्तिशाली असुर था। उसने कठोर तपस्या करके भगवान ब्रह्मा को प्रसन्न किया और ऐसा वरदान माँगा कि कोई देवता या पुरुष उसका वध न कर सके। उसे विश्वास था कि कोई स्त्री उसे पराजित नहीं कर पाएगी।</p>
       <p>वरदान मिलने के बाद उसका अहंकार बढ़ गया। उसने स्वर्ग पर अधिकार करने का प्रयास किया और देवताओं तथा अन्य प्राणियों पर अत्याचार करने लगा। संसार में भय और अन्याय फैलने लगा।</p>
@@ -20,6 +22,8 @@
       <h2>अध्याय 3: माँ दुर्गा और महिषासुर का युद्ध</h2>
       <p>माँ दुर्गा और महिषासुर के बीच भयंकर युद्ध हुआ। कथा में महिषासुर को अलग-अलग रूप धारण करके युद्ध करते हुए बताया गया है। माँ दुर्गा ने धैर्य, पराक्रम और दिव्य शक्ति से उसका सामना किया। अंततः माँ दुर्गा ने महिषासुर का वध किया। इसलिए उन्हें <strong>महिषासुरमर्दिनी</strong>, अर्थात महिषासुर का संहार करने वाली देवी, कहा जाता है।</p>
       <p>यह विजय संदेश देती है कि अहंकार, अत्याचार और अन्याय चाहे कितने भी शक्तिशाली क्यों न हों, सत्य और धर्म की विजय का आदर्श सदैव महत्त्वपूर्ण है।</p>
+
+      <figure style="margin:24px auto;text-align:center;max-width:760px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Durga_Mahisasuramardini.JPG?width=1000" alt="माँ दुर्गा और महिषासुर के युद्ध का पारंपरिक चित्र" loading="lazy" style="display:block;width:100%;height:auto;max-height:680px;object-fit:contain;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.18)"><figcaption style="font-size:.88em;opacity:.82;margin-top:8px">माँ दुर्गा और महिषासुर के युद्ध का ऐतिहासिक चित्र — Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Durga_Mahisasuramardini.JPG" target="_blank" rel="noopener noreferrer">चित्र का स्रोत</a>)</figcaption></figure>
       <h2>अध्याय 4: नवदुर्गा के नौ स्वरूप</h2>
       <p>नवरात्रि के नौ दिनों में माँ दुर्गा के नौ स्वरूपों की पूजा की जाती है, जिन्हें नवदुर्गा कहा जाता है:</p>
       <ol>
@@ -34,6 +38,8 @@
         <li><strong>माँ सिद्धिदात्री:</strong> सिद्धि और आध्यात्मिक पूर्णता से जुड़ा स्वरूप।</li>
       </ol>
       <p>इन दिनों अनेक भक्त व्रत रखते हैं, पूजा-पाठ करते हैं, दुर्गा सप्तशती का पाठ करते हैं और परिवार की सुख-शांति तथा कल्याण की प्रार्थना करते हैं। रीति-रिवाज क्षेत्र और परिवार के अनुसार अलग हो सकते हैं।</p>
+      <figure style="margin:24px auto;text-align:center;max-width:760px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Navadurga.jpg?width=1000" alt="नवदुर्गा परंपरा से जुड़ा देवी स्वरूप" loading="lazy" style="display:block;width:100%;height:auto;max-height:680px;object-fit:contain;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.18)"><figcaption style="font-size:.88em;opacity:.82;margin-top:8px">नवदुर्गा परंपरा का एक देवी स्वरूप — Wikimedia Commons, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Navadurga.jpg" target="_blank" rel="noopener noreferrer">स्रोत व लाइसेंस</a>)</figcaption></figure>
+
       <h2>अध्याय 5: नवरात्रि के बाद दशहरा क्यों मनाया जाता है?</h2>
       <p>शारदीय नवरात्रि के बाद दसवें दिन विजयादशमी या दशहरा मनाया जाता है। देवी परंपरा में यह माँ दुर्गा की महिषासुर पर विजय का उत्सव है। उत्तर भारत की एक प्रमुख परंपरा में यह दिन भगवान श्रीराम की रावण पर विजय से भी जुड़ा है। इस प्रकार विजयादशमी धर्म और अच्छाई की विजय का प्रतीक है।</p>
       <h2>अध्याय 6: साल में नवरात्रि के प्रमुख अवसर</h2>
