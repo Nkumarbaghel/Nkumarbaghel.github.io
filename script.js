@@ -69,8 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
     return a;
   }
 
+  function postUrl(p) {
+    if (p.id === "जब-छत्तीसगढ़-गाँव-से-इंटरनेट-तक-पहुँचा-हमारी-मिट्टी-की-नई-कह") {
+      return "blog-chhattisgarh-gaon-se-internet-tak.html";
+    }
+    if (p.id === "kam-budget-mein-apne-business-ka-promotion-kaise-karein") {
+      return "blog-business-kam-budget-promotion.html";
+    }
+    return "blog.html?post=" + encodeURIComponent(p.id);
+  }
+
   function card(p) {
-    return `<article class="card blog-card"><div class="post-info"><small>${esc(p.category || "सामान्य")} • ${date(p.date)}</small><div class="post-meta-row"><span class="meta-pill">⏱️ ${readTime(p)} मिनट पढ़ने का समय</span><span class="meta-pill">📖 लेख</span></div><h2>${esc(p.title)}</h2><p>${esc(p.excerpt || "")}</p><a href="${p.id === "जब-छत्तीसगढ़-गाँव-से-इंटरनेट-तक-पहुँचा-हमारी-मिट्टी-की-नई-कह" ? "blog-chhattisgarh-gaon-se-internet-tak.html" : "blog.html?post=" + encodeURIComponent(p.id)}">पूरा लेख पढ़ें →</a></div></article>`;
+    return `<article class="card blog-card"><div class="post-info"><small>${esc(p.category || "सामान्य")} • ${date(p.date)}</small><div class="post-meta-row"><span class="meta-pill">⏱️ ${readTime(p)} मिनट पढ़ने का समय</span><span class="meta-pill">📖 लेख</span></div><h2>${esc(p.title)}</h2><p>${esc(p.excerpt || "")}</p><a href="${postUrl(p)}">पूरा लेख पढ़ें →</a></div></article>`;
   }
 
   function render() {
@@ -108,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let el = document.head.querySelector(`meta[${attr}="${name}"]`);
     if (!el) {
       el = document.createElement("meta");
-      el.setAttribute("${attr}", name);
+      el.setAttribute(attr, name);
       document.head.appendChild(el);
     }
     el.setAttribute("content", content);
@@ -169,8 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
       document.head.appendChild(schema);
 
       const viewsKey = "cgneel-views-" + p.id;
-      const views = Number(localStorage.getItem(viewsKey) || 0) + 1;
-      localStorage.setItem(viewsKey, String(views));
+      let views = 0;
+      try {
+        views = Number(localStorage.getItem(viewsKey) || 0) + 1;
+        localStorage.setItem(viewsKey, String(views));
+      } catch (error) {
+        // Keep the article readable when browser storage is disabled or unavailable.
+        views = 0;
+      }
       const related = uniquePosts.filter(x => x.id !== p.id && x.category === p.category).slice(0, 3);
 
       detail.innerHTML = `<article class="article-page"><a href="blog.html" class="back-link">← सभी लेख</a><small class="article-meta">${esc(p.category || "सामान्य")} • ${date(p.date)} • ⏱️ ${readTime(p)} मिनट</small><h1>${esc(p.title)}</h1>${p.image ? `<img class="article-image" src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">` : ""}${p.excerpt ? `<p class="article-excerpt">${esc(p.excerpt)}</p>` : ""}<div class="article-actions"><button id="shareBtn">📤 शेयर करें</button><button id="copyBtn">🔗 लिंक कॉपी करें</button><button onclick="window.print()">🖨️ Print</button></div><div class="article">${p.content || ""}</div><div class="article-actions"><span class="meta-pill">👁️ इस डिवाइस पर views: ${views}</span></div>${related.length ? `<div class="related"><h2>आपको ये भी पसंद आ सकता है</h2><div class="related-grid">${related.map(x => `<div class="related-card"><small>${esc(x.category || "सामान्य")} • ${date(x.date)}</small><a href="blog.html?post=${encodeURIComponent(x.id)}">${esc(x.title)}</a></div>`).join("")}</div></div>` : ""}</article>`;
